@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class TestCreator {
+public class TestCreatorOld {
     
     
     private final static int JFRAME_WIDTH = 550;
@@ -53,7 +53,7 @@ public class TestCreator {
     
     // TODO: Créer une fenêtre.
     
-    public TestCreator() {
+    public TestCreatorOld() {
         initTestCreatorWindow();
         /*
         this.previousButton = new JButton(previousButtonName);
@@ -78,57 +78,16 @@ public class TestCreator {
     }
     
     private void initTestCreatorWindow() {
-        testNameLabel = new JLabel("Nom du test");
-        testNameLabel.setBounds(0, 0, 90, 30);
-        testNameLabel.setVisible(true);
-    
-        this.testNameField = new JTextField();
-        this.testNameField.setBounds(95, 5, 415, 20);
-        this.testNameField.setBackground(Color.WHITE);
-        this.testNameField.setOpaque(true);
-        this.testNameField.setVisible(true);
-    
-        questionLabel.setLocation(0, 0);
-        questionLabel.setSize(90, 30);
-        questionLabel.setVisible(true);
-    
-        this.questionIdPanel = new JPanel(null);
-        this.questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        this.questionIdPanel.setSize(510, 40);
-        this.questionIdPanel.setLocation(0, 0);
-        this.questionIdPanel.setVisible(true);
-    
-        this.headerPanel = new JPanel(null);
-        this.headerPanel.setSize(510, 35);
-        this.headerPanel.setLocation(18, (30));
-        this.headerPanel.setVisible(true);
-    
-        this.centerPanel = new JPanel(null);
-        this.centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        this.centerPanel.setSize(510, 290);
-        this.centerPanel.setLocation(18, 90);
-        this.centerPanel.setVisible(true);
-    
-        this.footerPanel = new JPanel(null);
-        this.footerPanel.setBackground(Color.GRAY);
-        this.footerPanel.setSize(510, 90);
-        this.footerPanel.setLocation(18, 395);
-        this.footerPanel.setVisible(true);
-        
         this.testCreatorWindow = new JFrame(windowNameLabel);
         this.testCreatorWindow.setSize(JFRAME_WIDTH, JFRAME_HEIGHT);
         this.positionTestCreatorWindow();
         this.testCreatorWindow.setResizable(false);
         this.testCreatorWindow.setLayout(null);
         this.testCreatorWindow.setVisible(true);
-    
-        this.questionIdPanel.add(questionLabel);
         
-        this.headerPanel.add(testNameLabel);
-        this.headerPanel.add(testNameField);
-        
-        this.centerPanel.add(this.questionIdPanel);
-        
+        initHeaderPanel();
+        initCenterPanel();
+        initFooterPanel();
         this.testCreatorWindow.getContentPane().add(this.headerPanel);
         this.testCreatorWindow.getContentPane().add(this.centerPanel);
         this.testCreatorWindow.getContentPane().add(this.footerPanel);
@@ -146,6 +105,73 @@ public class TestCreator {
         this.testCreatorWindow.setLocation(x, y);
     }
     
+    private void initHeaderPanel() {
+        this.headerPanel = new JPanel(null);
+        this.headerPanel.setSize(510, 35);
+        this.headerPanel.setLocation(18, (30));
+        this.headerPanel.setVisible(true);
+        
+        initTestNameLabel();
+        iniTestNameField();
+        this.headerPanel.add(testNameLabel);
+        this.headerPanel.add(testNameField);
+        this.headerPanel.validate();
+        this.headerPanel.repaint();
+    }
+    
+    private void iniTestNameField() {
+        this.testNameField = new JTextField();
+        this.testNameField.setBounds(95, 5, 415, 20);
+        this.testNameField.setBackground(Color.WHITE);
+        this.testNameField.setOpaque(true);
+        this.testNameField.setVisible(true);
+    }
+    
+    private void initTestNameLabel() {
+        this.testNameLabel = new JLabel("Nom du test");
+        this.testNameLabel.setBounds(0, 0, 90, 30);
+        this.testNameLabel.setVisible(true);
+    }
+    
+    private void initCenterPanel() {
+        this.centerPanel = new JPanel(null);
+        this.centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.centerPanel.setSize(510, 290);
+        this.centerPanel.setLocation(18, 90);
+        this.centerPanel.setVisible(true);
+        
+        iniQuestionIdPanel();
+        this.centerPanel.add(this.questionIdPanel);
+        this.centerPanel.validate();
+        this.centerPanel.repaint();
+    }
+    
+    private void iniQuestionIdPanel() {
+        this.questionIdPanel = new JPanel(null);
+        this.questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.questionIdPanel.setSize(510, 40);
+        this.questionIdPanel.setLocation(0, 0);
+        this.questionIdPanel.setVisible(true);
+        
+        initQuestionLabel();
+        this.questionIdPanel.add(this.questionLabel);
+        this.questionIdPanel.validate();
+        this.questionIdPanel.repaint();
+    }
+    
+    private void initQuestionLabel() {
+        this.questionLabel.setLocation(0, 0);
+        this.questionLabel.setSize(90, 30);
+        this.questionLabel.setVisible(true);
+    }
+    
+    private void initFooterPanel() {
+        this.footerPanel = new JPanel(null);
+        this.footerPanel.setBackground(Color.GRAY);
+        this.footerPanel.setSize(510, 90);
+        this.footerPanel.setLocation(18, 395);
+        this.footerPanel.setVisible(true);
+    }
     
     public static void main(String[] args) {
         
@@ -220,5 +246,3 @@ public class TestCreator {
     
     
 }
-
-
