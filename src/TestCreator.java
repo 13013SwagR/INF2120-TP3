@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TestCreator {
+
     
     
     private final static int JFRAME_WIDTH = 550;
