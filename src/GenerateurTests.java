@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GenerateurTests {
     /************************************
@@ -12,6 +14,10 @@ public class GenerateurTests {
     private JButton buttonSupprimer;
     private JComboBox<String> listeDeTests;
     private JPanel blackLine;
+
+    private ActionListener creerListener;
+
+    TestCreator testCreation;
 
 
     /************************************
@@ -33,8 +39,16 @@ public class GenerateurTests {
          ************************************/
 
         //creation et initialisation des proprietes de la fenetre principale
+
+        double screenWidth = java.awt.Toolkit.getDefaultToolkit()
+                .getScreenSize().getWidth();
+        double screenHeight = java.awt.Toolkit.getDefaultToolkit()
+                .getScreenSize().getHeight();
+        int x = (int) ((screenWidth / 2) - (HAUT_BOUTON / 2));
+        int y = (int) ((screenHeight / 2) - (LARGEUR_BOUTON / 2));
+
         fenetreDemarage = new JFrame("Générateur de tests");
-        fenetreDemarage.setBounds(400, 300, 380, 360);
+        fenetreDemarage.setBounds(x, y, 380, 360);
         fenetreDemarage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetreDemarage.setResizable(false);
         fenetreDemarage.setLayout(null);  //pas de layout manager
@@ -80,6 +94,19 @@ public class GenerateurTests {
          * AFFICHAGE DE LA FENETRE*
          **************************/
         fenetreDemarage.setVisible(true);
+
+        /*******************
+         * ACTIONS HANDLING*
+         *******************/
+        //Boutton creer
+
+        creerListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                testCreation = new TestCreator();
+            }
+        };
+        buttonCreer.addActionListener(creerListener);
 
 
 
