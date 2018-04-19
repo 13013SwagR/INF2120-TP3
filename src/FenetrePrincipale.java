@@ -1,6 +1,11 @@
 import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.*;
 
-public class GenerateurTests {
+public class FenetrePrincipale {
     /************************************
      * VARIABLES D'INSTANCES
      ************************************/
@@ -19,7 +24,7 @@ public class GenerateurTests {
 
 
 
-    public GenerateurTests() {
+    public FenetrePrincipale() {
         initialisationDeFenetre();
     }
 
