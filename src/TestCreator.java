@@ -42,10 +42,12 @@ public class TestCreator {
     private JLabel questionNumberLabel;
     
     private JTextField testNameField;
-    private JTextField answer1;
-    private JTextField answer2;
-    private JTextField answer3;
-    private JTextField answer4;
+    private JTextField answer1Input;
+    private JTextField answer2Input;
+    private JTextField answer3Input;
+    private JTextField answer4Input;
+    
+    private JTextArea statementInput;
     
     private JCheckBox boxAnswer1;
     private JCheckBox boxAnswer2;
@@ -100,11 +102,18 @@ public class TestCreator {
         this.questionNumberLabel.setVisible(true);
         
         statementLabel.setSize(90, 30);
-        statementLabel.setLocation(30, 0);
+        statementLabel.setLocation(20, 0);
         statementLabel.setVisible(true);
         
+        this.statementInput = new JTextArea();
+        this.statementInput.setSize(480, 60);
+        this.statementInput.setLocation(20, 25);
+        this.statementInput.setLineWrap(true);
+        this.statementInput.setWrapStyleWord(true);
+        this.statementInput.setVisible(true);
+        
         this.questionDataPanel = new JPanel(null);
-        this.questionDataPanel.setSize(510, 250);
+        this.questionDataPanel.setSize(510, 251);
         this.questionDataPanel.setLocation(0, 39);
         this.questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.questionDataPanel.setVisible(true);
@@ -123,7 +132,7 @@ public class TestCreator {
         this.centerPanel = new JPanel(null);
         this.centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.centerPanel.setSize(510, 290);
-        this.centerPanel.setLocation(18, 90);
+        this.centerPanel.setLocation(18, 75);
         this.centerPanel.setVisible(true);
         
         this.footerPanel = new JPanel(null);
@@ -138,8 +147,9 @@ public class TestCreator {
         this.testCreatorWindow.setResizable(false);
         this.testCreatorWindow.setLayout(null);
         this.testCreatorWindow.setVisible(true);
-    
+        
         this.questionDataPanel.add(statementLabel);
+        this.questionDataPanel.add(this.statementInput);
         
         this.questionIdPanel.add(questionLabel);
         this.questionIdPanel.add(this.questionNumberLabel);
