@@ -1,8 +1,9 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 
 public class TestCreator {
-
     
     
     private final static int JFRAME_WIDTH = 550;
@@ -18,7 +19,7 @@ public class TestCreator {
     private static JLabel questionLabel = new JLabel("QUESTION");
     private static JLabel statementLabel = new JLabel("Énoncé");
     private static JLabel optionsStatementLabel = new JLabel("Choix de "
-            + "réponses (cochez la bonne réponse");
+            + "réponses (cochez la bonne réponse)");
     private static JLabel option1Label = new JLabel("1)");
     private static JLabel option2Label = new JLabel("2)");
     private static JLabel option3Label = new JLabel("3)");
@@ -33,6 +34,7 @@ public class TestCreator {
     private JPanel questionIdPanel;
     private JPanel questionDataPanel;
     private JPanel footerPanel;
+    private JPanel mainButtonsPanel;
     
     private JButton previousButton;
     private JButton nextButton;
@@ -59,29 +61,12 @@ public class TestCreator {
     
     public TestCreator() {
         initTestCreatorWindow();
-        /*
-        this.previousButton = new JButton(previousButtonName);
-        this.nextButton = new JButton(nextButtonName);
-        this.addButton = new JButton(addButtonName);
-        this.removeButton = new JButton(removeButtonName);
-        this.saveButton = new JButton(saveButtonName);
-        
-        
-        this.questionNumber = new JLabel(Integer.toString(questionsIndex));
-        
-        this.answer1 = new JTextField();
-        this.answer2 = new JTextField();
-        this.answer3 = new JTextField();
-        this.answer4 = new JTextField();
-        
-        this.boxAnswer1 = new JCheckBox();
-        this.boxAnswer2 = new JCheckBox();
-        this.boxAnswer3 = new JCheckBox();
-        this.boxAnswer4 = new JCheckBox();*/
     }
     
     private void initTestCreatorWindow() {
         questionsIndex++;
+        
+        //Composants headerPanel
         
         testNameLabel = new JLabel("Nom du test");
         testNameLabel.setBounds(0, 0, 90, 30);
@@ -93,32 +78,116 @@ public class TestCreator {
         this.testNameField.setOpaque(true);
         this.testNameField.setVisible(true);
         
+        //Composants questionIdPanel
+        
         questionLabel.setLocation(10, 0);
         questionLabel.setSize(90, 30);
         questionLabel.setVisible(true);
         
         this.questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
         this.questionNumberLabel.setSize(10, 30);
-        this.questionNumberLabel.setLocation(150, 0);
+        this.questionNumberLabel.setLocation(90, 0);
         this.questionNumberLabel.setVisible(true);
+        
+        //Composants questionDataPanel
         
         statementLabel.setSize(90, 30);
         statementLabel.setLocation(20, 0);
         statementLabel.setVisible(true);
         
         this.statementInput = new JTextArea();
-        this.statementInput.setSize(480, 60);
+        this.statementInput.setSize(480, 50);
         this.statementInput.setLocation(20, 25);
         this.statementInput.setLineWrap(true);
         this.statementInput.setWrapStyleWord(true);
         this.statementInput.setVisible(true);
-    
-        optionsStatementLabel.setSize(300, 30);
-        optionsStatementLabel.setLocation(20, 45);
+        
+        optionsStatementLabel.setSize(420, 30);
+        optionsStatementLabel.setLocation(20, 90);
         optionsStatementLabel.setVisible(true);
         
+        option1Label.setSize(40, 30);
+        option1Label.setLocation(20, 130);
+        option1Label.setVisible(true);
+        
+        this.answer1Input = new JTextField();
+        this.answer1Input.setSize(380, 20);
+        this.answer1Input.setLocation(50, 137);
+        this.answer1Input.setVisible(true);
+        
+        this.boxAnswer1 = new JCheckBox();
+        this.boxAnswer1.setLocation(440, 130);
+        this.boxAnswer1.setSize(30, 30);
+        this.boxAnswer1.setVisible(true);
+        
+        option2Label.setSize(40, 30);
+        option2Label.setLocation(20, 160);
+        option2Label.setVisible(true);
+        
+        this.answer2Input = new JTextField();
+        this.answer2Input.setSize(380, 20);
+        this.answer2Input.setLocation(50, 167);
+        this.answer2Input.setVisible(true);
+        
+        this.boxAnswer2 = new JCheckBox();
+        this.boxAnswer2.setLocation(440, 160);
+        this.boxAnswer2.setSize(30, 30);
+        this.boxAnswer2.setVisible(true);
+        
+        option3Label.setSize(40, 30);
+        option3Label.setLocation(20, 190);
+        option3Label.setVisible(true);
+        
+        this.answer3Input = new JTextField();
+        this.answer3Input.setSize(380, 20);
+        this.answer3Input.setLocation(50, 197);
+        this.answer3Input.setVisible(true);
+        
+        this.boxAnswer3 = new JCheckBox();
+        this.boxAnswer3.setLocation(440, 190);
+        this.boxAnswer3.setSize(30, 30);
+        this.boxAnswer3.setVisible(true);
+        
+        option4Label.setSize(40, 30);
+        option4Label.setLocation(20, 220);
+        option4Label.setVisible(true);
+        
+        this.answer4Input = new JTextField();
+        this.answer4Input.setSize(380, 20);
+        this.answer4Input.setLocation(50, 227);
+        this.answer4Input.setVisible(true);
+        
+        this.boxAnswer4 = new JCheckBox();
+        this.boxAnswer4.setLocation(440, 220);
+        this.boxAnswer4.setSize(30, 30);
+        this.boxAnswer4.setVisible(true);
+        
+        //Composants FooterPanel
+        
+        this.previousButton = new JButton(previousButtonNameLabel);
+        this.previousButton.setVisible(true);
+    
+        this.nextButton = new JButton(nextButtonNameLabel);
+        this.nextButton.setVisible(true);
+        
+        this.addButton = new JButton(addButtonNameLabel);
+        this.addButton.setVisible(true);
+        
+        this.removeButton = new JButton(removeButtonNameLabel);
+        this.removeButton.setVisible(true);
+        
+        this.saveButton = new JButton(saveButtonNameLabel);
+        this.saveButton.setVisible(true);
+        
+        //Initialisation des JPanels
+        
+        this.mainButtonsPanel = new JPanel(new GridLayout(0,4,20,0));
+        this.mainButtonsPanel.setLocation(90, 0);
+        this.mainButtonsPanel.setSize(330,15);
+        this.mainButtonsPanel.setVisible(true);
+        
         this.questionDataPanel = new JPanel(null);
-        this.questionDataPanel.setSize(510, 251);
+        this.questionDataPanel.setSize(510, 290);
         this.questionDataPanel.setLocation(0, 39);
         this.questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.questionDataPanel.setVisible(true);
@@ -135,15 +204,13 @@ public class TestCreator {
         this.headerPanel.setVisible(true);
         
         this.centerPanel = new JPanel(null);
-        this.centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        this.centerPanel.setSize(510, 290);
+        this.centerPanel.setSize(510, 330);
         this.centerPanel.setLocation(18, 75);
         this.centerPanel.setVisible(true);
         
         this.footerPanel = new JPanel(null);
-        this.footerPanel.setBackground(Color.GRAY);
         this.footerPanel.setSize(510, 90);
-        this.footerPanel.setLocation(18, 395);
+        this.footerPanel.setLocation(18, 420);
         this.footerPanel.setVisible(true);
         
         this.testCreatorWindow = new JFrame(windowNameLabel);
@@ -153,9 +220,29 @@ public class TestCreator {
         this.testCreatorWindow.setLayout(null);
         this.testCreatorWindow.setVisible(true);
         
+        
+        //Ajout des composants aux JPanels et JFrame
+    
+        this.mainButtonsPanel.add(this.previousButton);
+        this.mainButtonsPanel.add(this.addButton);
+        this.mainButtonsPanel.add(this.removeButton);
+        this.mainButtonsPanel.add(this.nextButton);
+        
         this.questionDataPanel.add(statementLabel);
         this.questionDataPanel.add(optionsStatementLabel);
         this.questionDataPanel.add(this.statementInput);
+        this.questionDataPanel.add(option1Label);
+        this.questionDataPanel.add(this.answer1Input);
+        this.questionDataPanel.add(this.boxAnswer1);
+        this.questionDataPanel.add(option2Label);
+        this.questionDataPanel.add(this.answer2Input);
+        this.questionDataPanel.add(this.boxAnswer2);
+        this.questionDataPanel.add(option3Label);
+        this.questionDataPanel.add(this.answer3Input);
+        this.questionDataPanel.add(this.boxAnswer3);
+        this.questionDataPanel.add(option4Label);
+        this.questionDataPanel.add(this.answer4Input);
+        this.questionDataPanel.add(this.boxAnswer4);
         
         this.questionIdPanel.add(questionLabel);
         this.questionIdPanel.add(this.questionNumberLabel);
@@ -165,6 +252,8 @@ public class TestCreator {
         
         this.centerPanel.add(this.questionIdPanel);
         this.centerPanel.add(this.questionDataPanel);
+        
+        this.footerPanel.add(this.mainButtonsPanel);
         
         this.testCreatorWindow.getContentPane().add(this.headerPanel);
         this.testCreatorWindow.getContentPane().add(this.centerPanel);
