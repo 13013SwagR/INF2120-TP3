@@ -31,6 +31,7 @@ public class TestCreatorOld {
     private JPanel centerPanel;
     private JPanel questionIdPanel;
     private JPanel footerPanel;
+    private static JPanel sideSpacerPanel;
     
     private JButton previousButton;
     private JButton nextButton;
@@ -78,24 +79,28 @@ public class TestCreatorOld {
     }
     
     private void initTestCreatorWindow() {
+        
         this.testCreatorWindow = new JFrame(windowNameLabel);
         this.testCreatorWindow.setSize(JFRAME_WIDTH, JFRAME_HEIGHT);
-        this.positionTestCreatorWindow();
+        this.locateTestCreatorWindow();
         this.testCreatorWindow.setResizable(false);
-        this.testCreatorWindow.setLayout(null);
+        this.testCreatorWindow.setLayout(new BorderLayout(5,30));
         this.testCreatorWindow.setVisible(true);
         
         initHeaderPanel();
         initCenterPanel();
         initFooterPanel();
-        this.testCreatorWindow.getContentPane().add(this.headerPanel);
-        this.testCreatorWindow.getContentPane().add(this.centerPanel);
-        this.testCreatorWindow.getContentPane().add(this.footerPanel);
+        this.testCreatorWindow.getContentPane().add(this.headerPanel,
+                BorderLayout.NORTH);
+        this.testCreatorWindow.getContentPane().add(this.centerPanel,
+                BorderLayout.CENTER);
+        this.testCreatorWindow.getContentPane().add(this.footerPanel,
+                BorderLayout.SOUTH);
         // TODO: Effacer avant la remise
         this.testCreatorWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
-    private void positionTestCreatorWindow() {
+    private void locateTestCreatorWindow() {
         double screenWidth = java.awt.Toolkit.getDefaultToolkit()
                 .getScreenSize().getWidth();
         double screenHeight = java.awt.Toolkit.getDefaultToolkit()
@@ -107,37 +112,37 @@ public class TestCreatorOld {
     
     private void initHeaderPanel() {
         this.headerPanel = new JPanel(null);
-        this.headerPanel.setSize(510, 35);
-        this.headerPanel.setLocation(18, (30));
+        this.headerPanel.setSize(510, 55);
+        //this.headerPanel.setLocation(18, (30));
         this.headerPanel.setVisible(true);
         
         initTestNameLabel();
         iniTestNameField();
         this.headerPanel.add(testNameLabel);
         this.headerPanel.add(testNameField);
-        this.headerPanel.validate();
+        this.headerPanel.revalidate();
         this.headerPanel.repaint();
     }
     
     private void iniTestNameField() {
         this.testNameField = new JTextField();
-        this.testNameField.setBounds(95, 5, 415, 20);
+        this.testNameField.setBounds(120, 30, 385, 20);
         this.testNameField.setBackground(Color.WHITE);
         this.testNameField.setOpaque(true);
         this.testNameField.setVisible(true);
     }
     
     private void initTestNameLabel() {
-        this.testNameLabel = new JLabel("Nom du test");
-        this.testNameLabel.setBounds(0, 0, 90, 30);
-        this.testNameLabel.setVisible(true);
+        testNameLabel = new JLabel("Nom du test");
+        testNameLabel.setBounds(0, 0, 90, 30);
+        testNameLabel.setVisible(true);
     }
     
     private void initCenterPanel() {
         this.centerPanel = new JPanel(null);
         this.centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.centerPanel.setSize(510, 290);
-        this.centerPanel.setLocation(18, 90);
+        //this.centerPanel.setLocation(18, 90);
         this.centerPanel.setVisible(true);
         
         iniQuestionIdPanel();
@@ -154,39 +159,34 @@ public class TestCreatorOld {
         this.questionIdPanel.setVisible(true);
         
         initQuestionLabel();
-        this.questionIdPanel.add(this.questionLabel);
+        this.questionIdPanel.add(questionLabel);
         this.questionIdPanel.validate();
         this.questionIdPanel.repaint();
     }
     
     private void initQuestionLabel() {
-        this.questionLabel.setLocation(0, 0);
-        this.questionLabel.setSize(90, 30);
-        this.questionLabel.setVisible(true);
+        questionLabel.setLocation(0, 0);
+        questionLabel.setSize(90, 30);
+        questionLabel.setVisible(true);
     }
     
     private void initFooterPanel() {
         this.footerPanel = new JPanel(null);
         this.footerPanel.setBackground(Color.GRAY);
         this.footerPanel.setSize(510, 90);
-        this.footerPanel.setLocation(18, 395);
+        //this.footerPanel.setLocation(18, 395);
         this.footerPanel.setVisible(true);
     }
     
     public static void main(String[] args) {
         
-        TestCreatorOld example = new TestCreatorOld();
+        //TestCreatorOld example = new TestCreatorOld();
         
         
         // OU Exécution d'un thread, MAJ du GUI
-      /*
-      javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Exemple1JFrame();
-            }
-      });
-      */
+      
+      javax.swing.SwingUtilities.invokeLater(TestCreatorOld::new);
+      
     }
     /** TODO: Bouton [ < ] :
      Ce bouton sert à revenir à la question qui précède la question courante. Il doit être désactivé

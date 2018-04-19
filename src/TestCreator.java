@@ -30,6 +30,7 @@ public class TestCreator {
     private JPanel headerPanel;
     private JPanel centerPanel;
     private JPanel questionIdPanel;
+    private JPanel questionDataPanel;
     private JPanel footerPanel;
     
     private JButton previousButton;
@@ -38,7 +39,7 @@ public class TestCreator {
     private JButton removeButton;
     private JButton saveButton;
     
-    private JLabel questionNumber;
+    private JLabel questionNumberLabel;
     
     private JTextField testNameField;
     private JTextField answer1;
@@ -62,7 +63,6 @@ public class TestCreator {
         this.removeButton = new JButton(removeButtonName);
         this.saveButton = new JButton(saveButtonName);
         
-        questionsIndex++;
         
         this.questionNumber = new JLabel(Integer.toString(questionsIndex));
         
@@ -78,37 +78,54 @@ public class TestCreator {
     }
     
     private void initTestCreatorWindow() {
+        questionsIndex++;
+        
         testNameLabel = new JLabel("Nom du test");
         testNameLabel.setBounds(0, 0, 90, 30);
         testNameLabel.setVisible(true);
-    
+        
         this.testNameField = new JTextField();
         this.testNameField.setBounds(95, 5, 415, 20);
         this.testNameField.setBackground(Color.WHITE);
         this.testNameField.setOpaque(true);
         this.testNameField.setVisible(true);
-    
-        questionLabel.setLocation(0, 0);
+        
+        questionLabel.setLocation(10, 0);
         questionLabel.setSize(90, 30);
         questionLabel.setVisible(true);
-    
+        
+        this.questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
+        this.questionNumberLabel.setSize(10, 30);
+        this.questionNumberLabel.setLocation(95, 0);
+        this.questionNumberLabel.setVisible(true);
+        
+        statementLabel.setSize(90, 30);
+        statementLabel.setLocation(30, 0);
+        statementLabel.setVisible(true);
+        
+        this.questionDataPanel = new JPanel(null);
+        this.questionDataPanel.setSize(510, 250);
+        this.questionDataPanel.setLocation(0, 39);
+        this.questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.questionDataPanel.setVisible(true);
+        
         this.questionIdPanel = new JPanel(null);
         this.questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.questionIdPanel.setSize(510, 40);
         this.questionIdPanel.setLocation(0, 0);
         this.questionIdPanel.setVisible(true);
-    
+        
         this.headerPanel = new JPanel(null);
         this.headerPanel.setSize(510, 35);
         this.headerPanel.setLocation(18, (30));
         this.headerPanel.setVisible(true);
-    
+        
         this.centerPanel = new JPanel(null);
         this.centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.centerPanel.setSize(510, 290);
         this.centerPanel.setLocation(18, 90);
         this.centerPanel.setVisible(true);
-    
+        
         this.footerPanel = new JPanel(null);
         this.footerPanel.setBackground(Color.GRAY);
         this.footerPanel.setSize(510, 90);
@@ -122,12 +139,16 @@ public class TestCreator {
         this.testCreatorWindow.setLayout(null);
         this.testCreatorWindow.setVisible(true);
     
+        this.questionDataPanel.add(statementLabel);
+        
         this.questionIdPanel.add(questionLabel);
+        this.questionIdPanel.add(this.questionNumberLabel);
         
         this.headerPanel.add(testNameLabel);
         this.headerPanel.add(testNameField);
         
         this.centerPanel.add(this.questionIdPanel);
+        this.centerPanel.add(this.questionDataPanel);
         
         this.testCreatorWindow.getContentPane().add(this.headerPanel);
         this.testCreatorWindow.getContentPane().add(this.centerPanel);
@@ -149,8 +170,8 @@ public class TestCreator {
     
     public static void main(String[] args) {
         
-        TestCreatorOld example = new TestCreatorOld();
-        
+        // TestCreator example = new TestCreator();
+        javax.swing.SwingUtilities.invokeLater(TestCreator::new);
         
         // OU Exécution d'un thread, MAJ du GUI
       /*
