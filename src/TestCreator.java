@@ -16,8 +16,8 @@ public class TestCreator {
     private static JLabel testNameLabel;
     private static JLabel questionLabel = new JLabel("QUESTION");
     private static JLabel statementLabel = new JLabel("Énoncé");
-    private static JLabel answerOptionsLabel = new JLabel("Choix de réponses "
-            + "(cochez la bonne réponse");
+    private static JLabel optionsStatementLabel = new JLabel("Choix de "
+            + "réponses (cochez la bonne réponse");
     private static JLabel option1Label = new JLabel("1)");
     private static JLabel option2Label = new JLabel("2)");
     private static JLabel option3Label = new JLabel("3)");
@@ -98,7 +98,7 @@ public class TestCreator {
         
         this.questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
         this.questionNumberLabel.setSize(10, 30);
-        this.questionNumberLabel.setLocation(95, 0);
+        this.questionNumberLabel.setLocation(150, 0);
         this.questionNumberLabel.setVisible(true);
         
         statementLabel.setSize(90, 30);
@@ -111,6 +111,10 @@ public class TestCreator {
         this.statementInput.setLineWrap(true);
         this.statementInput.setWrapStyleWord(true);
         this.statementInput.setVisible(true);
+    
+        optionsStatementLabel.setSize(300, 30);
+        optionsStatementLabel.setLocation(20, 45);
+        optionsStatementLabel.setVisible(true);
         
         this.questionDataPanel = new JPanel(null);
         this.questionDataPanel.setSize(510, 251);
@@ -149,6 +153,7 @@ public class TestCreator {
         this.testCreatorWindow.setVisible(true);
         
         this.questionDataPanel.add(statementLabel);
+        this.questionDataPanel.add(optionsStatementLabel);
         this.questionDataPanel.add(this.statementInput);
         
         this.questionIdPanel.add(questionLabel);
