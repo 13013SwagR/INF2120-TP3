@@ -60,7 +60,7 @@ public class ExemplesJOptionPaneAvecConfirmation {
       afficherOptionChoisie(option);
       */
 
-/*
+
         //TEST 2
         option = JOptionPane.showConfirmDialog(null,
                 "Ceci est un message avec\nles options YES / NO.",
@@ -68,9 +68,9 @@ public class ExemplesJOptionPaneAvecConfirmation {
                 JOptionPane.YES_NO_OPTION);
         //affiche la reponse choisie
         afficherOptionChoisie(option);
-*/
 
 
+      /*
       //TEST 3
       option = JOptionPane.showConfirmDialog(null,
                                     "Ceci est un message avec\nles options YES / NO / CANCEL.",
@@ -78,7 +78,7 @@ public class ExemplesJOptionPaneAvecConfirmation {
                                     JOptionPane.YES_NO_CANCEL_OPTION);
       //affiche la reponse choisie
       afficherOptionChoisie(option);
-
+      */
 
 
     }
