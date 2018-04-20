@@ -35,6 +35,7 @@ public class TestCreator {
     private JPanel questionDataPanel;
     private JPanel footerPanel;
     private JPanel mainButtonsPanel;
+    private JPanel saveButtonPanel;
     
     private JButton previousButton;
     private JButton nextButton;
@@ -65,169 +66,24 @@ public class TestCreator {
     
     private void initTestCreatorWindow() {
         questionsIndex++;
-        
-        //Composants headerPanel
-        
-        testNameLabel = new JLabel("Nom du test");
-        testNameLabel.setBounds(0, 0, 90, 30);
-        testNameLabel.setVisible(true);
-        
-        this.testNameField = new JTextField();
-        this.testNameField.setBounds(95, 5, 415, 20);
-        this.testNameField.setBackground(Color.WHITE);
-        this.testNameField.setOpaque(true);
-        this.testNameField.setVisible(true);
-        
-        //Composants questionIdPanel
-        
-        questionLabel.setLocation(10, 0);
-        questionLabel.setSize(90, 30);
-        questionLabel.setVisible(true);
-        
-        this.questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
-        this.questionNumberLabel.setSize(10, 30);
-        this.questionNumberLabel.setLocation(90, 0);
-        this.questionNumberLabel.setVisible(true);
-        
-        //Composants questionDataPanel
-        
-        statementLabel.setSize(90, 30);
-        statementLabel.setLocation(20, 0);
-        statementLabel.setVisible(true);
-        
-        this.statementInput = new JTextArea();
-        this.statementInput.setSize(480, 50);
-        this.statementInput.setLocation(20, 25);
-        this.statementInput.setLineWrap(true);
-        this.statementInput.setWrapStyleWord(true);
-        this.statementInput.setVisible(true);
-        
-        optionsStatementLabel.setSize(420, 30);
-        optionsStatementLabel.setLocation(20, 90);
-        optionsStatementLabel.setVisible(true);
-        
-        option1Label.setSize(40, 30);
-        option1Label.setLocation(20, 130);
-        option1Label.setVisible(true);
-        
-        this.answer1Input = new JTextField();
-        this.answer1Input.setSize(380, 20);
-        this.answer1Input.setLocation(50, 137);
-        this.answer1Input.setVisible(true);
-        
-        this.boxAnswer1 = new JCheckBox();
-        this.boxAnswer1.setLocation(440, 130);
-        this.boxAnswer1.setSize(30, 30);
-        this.boxAnswer1.setVisible(true);
-        
-        option2Label.setSize(40, 30);
-        option2Label.setLocation(20, 160);
-        option2Label.setVisible(true);
-        
-        this.answer2Input = new JTextField();
-        this.answer2Input.setSize(380, 20);
-        this.answer2Input.setLocation(50, 167);
-        this.answer2Input.setVisible(true);
-        
-        this.boxAnswer2 = new JCheckBox();
-        this.boxAnswer2.setLocation(440, 160);
-        this.boxAnswer2.setSize(30, 30);
-        this.boxAnswer2.setVisible(true);
-        
-        option3Label.setSize(40, 30);
-        option3Label.setLocation(20, 190);
-        option3Label.setVisible(true);
-        
-        this.answer3Input = new JTextField();
-        this.answer3Input.setSize(380, 20);
-        this.answer3Input.setLocation(50, 197);
-        this.answer3Input.setVisible(true);
-        
-        this.boxAnswer3 = new JCheckBox();
-        this.boxAnswer3.setLocation(440, 190);
-        this.boxAnswer3.setSize(30, 30);
-        this.boxAnswer3.setVisible(true);
-        
-        option4Label.setSize(40, 30);
-        option4Label.setLocation(20, 220);
-        option4Label.setVisible(true);
-        
-        this.answer4Input = new JTextField();
-        this.answer4Input.setSize(380, 20);
-        this.answer4Input.setLocation(50, 227);
-        this.answer4Input.setVisible(true);
-        
-        this.boxAnswer4 = new JCheckBox();
-        this.boxAnswer4.setLocation(440, 220);
-        this.boxAnswer4.setSize(30, 30);
-        this.boxAnswer4.setVisible(true);
-        
-        //Composants FooterPanel
-        
-        this.previousButton = new JButton(previousButtonNameLabel);
-        this.previousButton.setVisible(true);
-    
-        this.nextButton = new JButton(nextButtonNameLabel);
-        this.nextButton.setVisible(true);
-        
-        this.addButton = new JButton(addButtonNameLabel);
-        this.addButton.setVisible(true);
-        
-        this.removeButton = new JButton(removeButtonNameLabel);
-        this.removeButton.setVisible(true);
-        
-        this.saveButton = new JButton(saveButtonNameLabel);
-        this.saveButton.setVisible(true);
-        
-        //Initialisation des JPanels
-        
-        this.mainButtonsPanel = new JPanel(new GridLayout(0,4,20,0));
-        this.mainButtonsPanel.setLocation(90, 0);
-        this.mainButtonsPanel.setSize(330,15);
-        this.mainButtonsPanel.setVisible(true);
-        
-        this.questionDataPanel = new JPanel(null);
-        this.questionDataPanel.setSize(510, 290);
-        this.questionDataPanel.setLocation(0, 39);
-        this.questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        this.questionDataPanel.setVisible(true);
-        
-        this.questionIdPanel = new JPanel(null);
-        this.questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        this.questionIdPanel.setSize(510, 40);
-        this.questionIdPanel.setLocation(0, 0);
-        this.questionIdPanel.setVisible(true);
-        
-        this.headerPanel = new JPanel(null);
-        this.headerPanel.setSize(510, 35);
-        this.headerPanel.setLocation(18, (30));
-        this.headerPanel.setVisible(true);
-        
-        this.centerPanel = new JPanel(null);
-        this.centerPanel.setSize(510, 330);
-        this.centerPanel.setLocation(18, 75);
-        this.centerPanel.setVisible(true);
-        
-        this.footerPanel = new JPanel(null);
-        this.footerPanel.setSize(510, 90);
-        this.footerPanel.setLocation(18, 420);
-        this.footerPanel.setVisible(true);
-        
+        initHeaderPanel();
+        initCenterPanel();
+        initFooterPanel();
         this.testCreatorWindow = new JFrame(windowNameLabel);
         this.testCreatorWindow.setSize(JFRAME_WIDTH, JFRAME_HEIGHT);
         this.positionTestCreatorWindow();
         this.testCreatorWindow.setResizable(false);
         this.testCreatorWindow.setLayout(null);
         this.testCreatorWindow.setVisible(true);
-        
-        
-        //Ajout des composants aux JPanels et JFrame
+        addComponentsToParents();
+        // TODO: Effacer avant la remise
+        this.testCreatorWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
     
-        this.mainButtonsPanel.add(this.previousButton);
-        this.mainButtonsPanel.add(this.addButton);
-        this.mainButtonsPanel.add(this.removeButton);
-        this.mainButtonsPanel.add(this.nextButton);
-        
+    private void addComponentsToParents() {
+        this.headerPanel.add(testNameLabel);
+        this.headerPanel.add(testNameField);
+    
         this.questionDataPanel.add(statementLabel);
         this.questionDataPanel.add(optionsStatementLabel);
         this.questionDataPanel.add(this.statementInput);
@@ -243,23 +99,285 @@ public class TestCreator {
         this.questionDataPanel.add(option4Label);
         this.questionDataPanel.add(this.answer4Input);
         this.questionDataPanel.add(this.boxAnswer4);
-        
+    
         this.questionIdPanel.add(questionLabel);
         this.questionIdPanel.add(this.questionNumberLabel);
         
-        this.headerPanel.add(testNameLabel);
-        this.headerPanel.add(testNameField);
-        
         this.centerPanel.add(this.questionIdPanel);
         this.centerPanel.add(this.questionDataPanel);
+    
+        this.saveButtonPanel.add(saveButton);
+        
+        this.mainButtonsPanel.add(this.previousButton);
+        this.mainButtonsPanel.add(this.addButton);
+        this.mainButtonsPanel.add(this.removeButton);
+        this.mainButtonsPanel.add(this.nextButton);
         
         this.footerPanel.add(this.mainButtonsPanel);
+        this.footerPanel.add(this.saveButtonPanel);
         
         this.testCreatorWindow.getContentPane().add(this.headerPanel);
         this.testCreatorWindow.getContentPane().add(this.centerPanel);
         this.testCreatorWindow.getContentPane().add(this.footerPanel);
-        // TODO: Effacer avant la remise
-        this.testCreatorWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    private void initFooterPanel() {
+        this.footerPanel = new JPanel(null);
+        this.footerPanel.setSize(510, 90);
+        this.footerPanel.setLocation(18, 420);
+        this.footerPanel.setVisible(true);
+        initMainButtonsPanel();
+        initSaveButtonPanel();
+    }
+    
+    private void initSaveButtonPanel() {
+        this.saveButtonPanel = new JPanel(null);
+        this.saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0,
+                0, 0, Color
+                .BLACK));
+        this.saveButtonPanel.setSize(510,60);
+        this.saveButtonPanel.setLocation(0,25);
+        this.saveButtonPanel.setVisible(true);
+        initSaveButton();
+    }
+    
+    private void initCenterPanel() {
+        this.centerPanel = new JPanel(null);
+        this.centerPanel.setSize(510, 330);
+        this.centerPanel.setLocation(18, 75);
+        this.centerPanel.setVisible(true);
+        //Composants questionIdPanel
+        initQuestionIdPanel();
+        //Composants questionDataPanel
+        initQuestionDataPanel();
+    }
+    
+    private void initHeaderPanel() {
+        this.headerPanel = new JPanel(null);
+        this.headerPanel.setSize(510, 35);
+        this.headerPanel.setLocation(18, (30));
+        this.headerPanel.setVisible(true);
+        initTestNameLabel();
+        initTestNameField();
+    }
+    
+    private void initQuestionIdPanel() {
+        this.questionIdPanel = new JPanel(null);
+        this.questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.questionIdPanel.setSize(510, 40);
+        this.questionIdPanel.setLocation(0, 0);
+        this.questionIdPanel.setVisible(true);
+        initQuestionLabel();
+        initQuestionNumberLabel();
+    }
+    
+    private void initQuestionDataPanel() {
+        this.questionDataPanel = new JPanel(null);
+        this.questionDataPanel.setSize(510, 290);
+        this.questionDataPanel.setLocation(0, 39);
+        this.questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.questionDataPanel.setVisible(true);
+        initStatementLabel();
+        initStatementInput();
+        initOptionsStatementLabel();
+        initOptions();
+    }
+    
+    private void initMainButtonsPanel() {
+        this.mainButtonsPanel = new JPanel(new GridLayout(0,4,20,0));
+        this.mainButtonsPanel.setLocation(90, 0);
+        this.mainButtonsPanel.setSize(330,15);
+        this.mainButtonsPanel.setVisible(true);
+        initPreviousButton();
+        initNextButton();
+        initAddButton();
+        initRemoveButton();
+    }
+    
+    private void initSaveButton() {
+        this.saveButton = new JButton(saveButtonNameLabel);
+        this.saveButton.setSize(200, 20);
+        this.saveButton.setLocation((510-200)/2,20);
+        this.saveButton.setVisible(true);
+    }
+    
+    private void initRemoveButton() {
+        this.removeButton = new JButton(removeButtonNameLabel);
+        this.removeButton.setVisible(true);
+    }
+    
+    private void initAddButton() {
+        this.addButton = new JButton(addButtonNameLabel);
+        this.addButton.setVisible(true);
+    }
+    
+    private void initNextButton() {
+        this.nextButton = new JButton(nextButtonNameLabel);
+        this.nextButton.setVisible(true);
+    }
+    
+    private void initPreviousButton() {
+        this.previousButton = new JButton(previousButtonNameLabel);
+        this.previousButton.setVisible(true);
+    }
+    
+    private void initOptions() {
+        initOption1();
+        initOption2();
+        initOption3();
+        initOption4();
+    }
+    
+    private void initOption4() {
+        initOption4Label();
+        initOption4Input();
+        initBoxAnswer4();
+    }
+    
+    private void initBoxAnswer4() {
+        this.boxAnswer4 = new JCheckBox();
+        this.boxAnswer4.setLocation(440, 220);
+        this.boxAnswer4.setSize(30, 30);
+        this.boxAnswer4.setVisible(true);
+    }
+    
+    private void initOption4Input() {
+        this.answer4Input = new JTextField();
+        this.answer4Input.setSize(380, 20);
+        this.answer4Input.setLocation(50, 227);
+        this.answer4Input.setVisible(true);
+    }
+    
+    private void initOption3() {
+        initOption3Label();
+        initAnswer3Input();
+        initBoxAnswer3();
+    }
+    
+    private void initOption2() {
+        initOption2Label();
+        initAnswer2Input();
+        initBoxAnswer2();
+    }
+    
+    private void initOption1() {
+        initOption1Label();
+        initAnswer1Input();
+        initBoxAnswer1();
+    }
+    
+    private void initOption4Label() {
+        option4Label.setSize(40, 30);
+        option4Label.setLocation(20, 220);
+        option4Label.setVisible(true);
+    }
+    
+    private void initBoxAnswer3() {
+        this.boxAnswer3 = new JCheckBox();
+        this.boxAnswer3.setLocation(440, 190);
+        this.boxAnswer3.setSize(30, 30);
+        this.boxAnswer3.setVisible(true);
+    }
+    
+    private void initAnswer3Input() {
+        this.answer3Input = new JTextField();
+        this.answer3Input.setSize(380, 20);
+        this.answer3Input.setLocation(50, 197);
+        this.answer3Input.setVisible(true);
+    }
+    
+    private void initOption3Label() {
+        option3Label.setSize(40, 30);
+        option3Label.setLocation(20, 190);
+        option3Label.setVisible(true);
+    }
+    
+    private void initBoxAnswer2() {
+        this.boxAnswer2 = new JCheckBox();
+        this.boxAnswer2.setLocation(440, 160);
+        this.boxAnswer2.setSize(30, 30);
+        this.boxAnswer2.setVisible(true);
+    }
+    
+    private void initAnswer2Input() {
+        this.answer2Input = new JTextField();
+        this.answer2Input.setSize(380, 20);
+        this.answer2Input.setLocation(50, 167);
+        this.answer2Input.setVisible(true);
+    }
+    
+    private void initOption2Label() {
+        option2Label.setSize(40, 30);
+        option2Label.setLocation(20, 160);
+        option2Label.setVisible(true);
+    }
+    
+    private void initBoxAnswer1() {
+        this.boxAnswer1 = new JCheckBox();
+        this.boxAnswer1.setLocation(440, 130);
+        this.boxAnswer1.setSize(30, 30);
+        this.boxAnswer1.setVisible(true);
+    }
+    
+    private void initAnswer1Input() {
+        this.answer1Input = new JTextField();
+        this.answer1Input.setSize(380, 20);
+        this.answer1Input.setLocation(50, 137);
+        this.answer1Input.setVisible(true);
+    }
+    
+    private void initOption1Label() {
+        option1Label.setSize(40, 30);
+        option1Label.setLocation(20, 130);
+        option1Label.setVisible(true);
+    }
+    
+    private void initOptionsStatementLabel() {
+        optionsStatementLabel.setSize(420, 30);
+        optionsStatementLabel.setLocation(20, 90);
+        optionsStatementLabel.setVisible(true);
+    }
+    
+    private void initStatementInput() {
+        this.statementInput = new JTextArea();
+        this.statementInput.setSize(480, 50);
+        this.statementInput.setLocation(20, 25);
+        this.statementInput.setLineWrap(true);
+        this.statementInput.setWrapStyleWord(true);
+        this.statementInput.setVisible(true);
+    }
+    
+    private void initStatementLabel() {
+        statementLabel.setSize(90, 30);
+        statementLabel.setLocation(20, 0);
+        statementLabel.setVisible(true);
+    }
+    
+    private void initQuestionNumberLabel() {
+        this.questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
+        this.questionNumberLabel.setSize(10, 30);
+        this.questionNumberLabel.setLocation(90, 0);
+        this.questionNumberLabel.setVisible(true);
+    }
+    
+    private void initQuestionLabel() {
+        questionLabel.setLocation(10, 0);
+        questionLabel.setSize(90, 30);
+        questionLabel.setVisible(true);
+    }
+    
+    private void initTestNameField() {
+        this.testNameField = new JTextField();
+        this.testNameField.setBounds(95, 5, 415, 20);
+        this.testNameField.setBackground(Color.WHITE);
+        this.testNameField.setOpaque(true);
+        this.testNameField.setVisible(true);
+    }
+    
+    private void initTestNameLabel() {
+        testNameLabel = new JLabel("Nom du test");
+        testNameLabel.setBounds(0, 0, 90, 30);
+        testNameLabel.setVisible(true);
     }
     
     private void positionTestCreatorWindow() {
