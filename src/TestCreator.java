@@ -52,6 +52,7 @@ public class TestCreator {
     private JTextField answer4Input;
     
     private JTextArea statementInput;
+    private JScrollPane statementInputScrollPane;
     
     private JCheckBox boxAnswer1;
     private JCheckBox boxAnswer2;
@@ -81,12 +82,18 @@ public class TestCreator {
     }
     
     private void addComponentsToParents() {
+        
+        
         this.headerPanel.add(testNameLabel);
         this.headerPanel.add(testNameField);
-    
+        
         this.questionDataPanel.add(statementLabel);
         this.questionDataPanel.add(optionsStatementLabel);
-        this.questionDataPanel.add(this.statementInput);
+    
+        this.questionDataPanel.add(this.statementInputScrollPane);
+        
+        
+        
         this.questionDataPanel.add(option1Label);
         this.questionDataPanel.add(this.answer1Input);
         this.questionDataPanel.add(this.boxAnswer1);
@@ -99,13 +106,13 @@ public class TestCreator {
         this.questionDataPanel.add(option4Label);
         this.questionDataPanel.add(this.answer4Input);
         this.questionDataPanel.add(this.boxAnswer4);
-    
+        
         this.questionIdPanel.add(questionLabel);
         this.questionIdPanel.add(this.questionNumberLabel);
         
         this.centerPanel.add(this.questionIdPanel);
         this.centerPanel.add(this.questionDataPanel);
-    
+        
         this.saveButtonPanel.add(saveButton);
         
         this.mainButtonsPanel.add(this.previousButton);
@@ -134,9 +141,9 @@ public class TestCreator {
         this.saveButtonPanel = new JPanel(null);
         this.saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0,
                 0, 0, Color
-                .BLACK));
-        this.saveButtonPanel.setSize(510,60);
-        this.saveButtonPanel.setLocation(0,25);
+                        .BLACK));
+        this.saveButtonPanel.setSize(510, 60);
+        this.saveButtonPanel.setLocation(0, 25);
         this.saveButtonPanel.setVisible(true);
         initSaveButton();
     }
@@ -184,9 +191,9 @@ public class TestCreator {
     }
     
     private void initMainButtonsPanel() {
-        this.mainButtonsPanel = new JPanel(new GridLayout(0,4,20,0));
+        this.mainButtonsPanel = new JPanel(new GridLayout(0, 4, 20, 0));
         this.mainButtonsPanel.setLocation(90, 0);
-        this.mainButtonsPanel.setSize(330,15);
+        this.mainButtonsPanel.setSize(330, 15);
         this.mainButtonsPanel.setVisible(true);
         initPreviousButton();
         initNextButton();
@@ -197,7 +204,7 @@ public class TestCreator {
     private void initSaveButton() {
         this.saveButton = new JButton(saveButtonNameLabel);
         this.saveButton.setSize(200, 20);
-        this.saveButton.setLocation((510-200)/2,20);
+        this.saveButton.setLocation((510 - 200) / 2, 20);
         this.saveButton.setVisible(true);
     }
     
@@ -213,11 +220,13 @@ public class TestCreator {
     
     private void initNextButton() {
         this.nextButton = new JButton(nextButtonNameLabel);
+        this.nextButton.setEnabled(false);
         this.nextButton.setVisible(true);
     }
     
     private void initPreviousButton() {
         this.previousButton = new JButton(previousButtonNameLabel);
+        this.previousButton.setEnabled(false);
         this.previousButton.setVisible(true);
     }
     
@@ -345,6 +354,15 @@ public class TestCreator {
         this.statementInput.setLineWrap(true);
         this.statementInput.setWrapStyleWord(true);
         this.statementInput.setVisible(true);
+        initStatementInputScrollPane();
+    }
+    
+    private void initStatementInputScrollPane() {
+        this.statementInputScrollPane = new JScrollPane(statementInput);
+        this.statementInputScrollPane.setSize(480, 50);
+        this.statementInputScrollPane.setLocation(20,25);
+        this.statementInputScrollPane.setVerticalScrollBarPolicy(JScrollPane
+                .VERTICAL_SCROLLBAR_AS_NEEDED);
     }
     
     private void initStatementLabel() {
@@ -461,8 +479,8 @@ public class TestCreator {
      la liste déroulante de la fenêtre #1.
      - La fenêtre #2 se ferme.
      - Un message de confirmation de l’enregistrement est affiché.*/
-
-
+    
+    
 }
 
 
