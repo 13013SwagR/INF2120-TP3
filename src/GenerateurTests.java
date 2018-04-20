@@ -1,8 +1,11 @@
+//import com.sun.xml.internal.bind.v2.TODO;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GenerateurTests {
     /************************************
@@ -18,6 +21,8 @@ public class GenerateurTests {
     private ActionListener creerListener;
 
     TestCreator testCreation;
+
+    private ArrayList<TestCreator> createdTests = new ArrayList<>();
 
 
     /************************************
@@ -80,6 +85,12 @@ public class GenerateurTests {
          * AFFICHAGE D'UNE LISTE DEROULANTE*
          ***********************************/
         listeDeTests = new JComboBox<String>();
+        for(int i = 0; i<createdTests.size(); i++){
+            //listeDeTests.add();
+            //createdTests.get(i).testNameAnswer;
+            // TODO create testNameAnswer in TestCreator
+
+        }
         listeDeTests.addItem("blabla");
         listeDeTests.setEnabled(true);
 
@@ -104,6 +115,7 @@ public class GenerateurTests {
             @Override
             public void actionPerformed(ActionEvent e) {
                 testCreation = new TestCreator();
+                createdTests.add(testCreation);
             }
         };
         buttonCreer.addActionListener(creerListener);

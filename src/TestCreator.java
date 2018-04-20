@@ -343,8 +343,8 @@ public class TestCreator {
      la liste déroulante de la fenêtre #1.
      - La fenêtre #2 se ferme.
      - Un message de confirmation de l’enregistrement est affiché.*/
-    
-    
+
+
 }
 
 
