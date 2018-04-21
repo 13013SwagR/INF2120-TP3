@@ -9,6 +9,7 @@ public class Question {
     private boolean answer2;
     private boolean answer3;
     private boolean answer4;
+    private String testerAnswer;
     
     public Question(int questionNumber) {
         this.questionNumber = questionNumber;
@@ -21,6 +22,7 @@ public class Question {
         this.answer2 = false;
         this.answer3 = false;
         this.answer4 = false;
+        this.testerAnswer = "0";
     }
     
     public String getQuestionStatement() {
@@ -104,6 +106,14 @@ public class Question {
         return answerOption1.length() > 0 &&
                 answerOption2.length() > 0 &&
                 answerOption3.length() > 0 && answerOption4.length() > 0;
+    }
+    
+    public String getTesterAnswer() {
+        return testerAnswer;
+    }
+    
+    public void setTesterAnswer(String testerAnswer) {
+        this.testerAnswer = testerAnswer;
     }
 }
 
