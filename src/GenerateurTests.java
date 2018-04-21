@@ -12,13 +12,11 @@ public class GenerateurTests {
      ************************************/
     private static JFrame startUpWindow;
     private static JFrame testCreatorWindow;
-    private static ActionListener startupWindowListener;
-    
     
     private static ArrayList createdTests = new ArrayList<>();
-    private static ArrayList<Test> testsList= new ArrayList<Test>();
-    
-    
+    private static ArrayList<Test> testsList = new ArrayList<Test>();
+    private static Question currentQuestion;
+    private static Test currentTest = new Test();
     //Ajouts
     private static final JLabel questionLabel = new JLabel("QUESTION");
     private static final JLabel statementLabel = new JLabel("Énoncé");
@@ -62,6 +60,7 @@ public class GenerateurTests {
     private static JCheckBox boxAnswer2;
     private static JCheckBox boxAnswer3;
     private static JCheckBox boxAnswer4;
+    private static ButtonGroup boxAnswersGroup;
     
     
     private static JLabel testNameLabel;
@@ -72,14 +71,17 @@ public class GenerateurTests {
     private static JTextField answer3Input;
     private static JTextField answer4Input;
     
-    private static JTextArea statementInput;
+    private static JTextArea questionStatementInput;
     private static JScrollPane statementInputScrollPane;
     
+    private static ActionListener createNewTestButtonListener;
+    private static ActionListener addButtonListener;
+    
     private static int questionsIndex = 0;
+    
     /************************************
      * CONSTANTES DE CLASSE
      ************************************/
-    
     
     
     public static void initStartUpWindow() {
@@ -97,17 +99,17 @@ public class GenerateurTests {
         
         startUpWindow.setVisible(true);
         
-        createNewTestButtonActionListener();
+        
     }
     
     private static void createNewTestButtonActionListener() {
-        startupWindowListener = new ActionListener() {
+        createNewTestButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 initTestCreatorWindow();
             }
         };
-        createNewTestButton.addActionListener(startupWindowListener);
+        createNewTestButton.addActionListener(createNewTestButtonListener);
     }
     
     private static void addComponentsToStartupWindow() {
@@ -120,6 +122,7 @@ public class GenerateurTests {
     
     private static void initStartupWindowButtons() {
         createNewTestButton = createStandardJButton("Créer un nouveau test", 150);
+        createNewTestButtonActionListener();
         buttonPasser = createStandardJButton("Passer le test sélectionné", -30);
         buttonSupprimer = createStandardJButton("Supprimer le test sélectionné", -80);
     }
@@ -186,7 +189,6 @@ public class GenerateurTests {
     }
     
     
-    
     private static void initTestCreatorWindow() {
         testCreatorWindow = new JFrame(windowNameLabel);
         testCreatorWindow.setSize(TEST_CREATOR_WINDOW_WIDTH, TEST_CREATOR_WINDOW_HEIGHT);
@@ -194,7 +196,7 @@ public class GenerateurTests {
         testCreatorWindow.setResizable(false);
         testCreatorWindow.setLayout(null);
         testCreatorWindow.setVisible(true);
-    
+        
         initHeaderPanel();
         initCenterPanel();
         initFooterPanel();
@@ -204,7 +206,6 @@ public class GenerateurTests {
         
         addComponentsToParents();
     }
-    
     
     
     private static int getTestCreatorWindowPositionY() {
@@ -248,15 +249,15 @@ public class GenerateurTests {
         testCreatorWindow.add(headerPanel);
         testCreatorWindow.add(centerPanel);
         saveButtonPanel.add(saveButton);
-    
+        
         mainButtonsPanel.add(previousButton);
         mainButtonsPanel.add(addButton);
         mainButtonsPanel.add(removeButton);
         mainButtonsPanel.add(nextButton);
-    
+        
         footerPanel.add(mainButtonsPanel);
         footerPanel.add(saveButtonPanel);
-    
+        
         testCreatorWindow.getContentPane().add(footerPanel);
     }
     
@@ -307,6 +308,11 @@ public class GenerateurTests {
         initOption2();
         initOption3();
         initOption4();
+        boxAnswersGroup = new ButtonGroup();
+        boxAnswersGroup.add(boxAnswer1);
+        boxAnswersGroup.add(boxAnswer2);
+        boxAnswersGroup.add(boxAnswer3);
+        boxAnswersGroup.add(boxAnswer4);
     }
     
     private static void initOption4() {
@@ -420,17 +426,17 @@ public class GenerateurTests {
     }
     
     private static void initStatementInput() {
-        statementInput = new JTextArea();
-        statementInput.setSize(480, 50);
-        statementInput.setLocation(20, 25);
-        statementInput.setLineWrap(true);
-        statementInput.setWrapStyleWord(true);
-        statementInput.setVisible(true);
+        questionStatementInput = new JTextArea();
+        questionStatementInput.setSize(480, 50);
+        questionStatementInput.setLocation(20, 25);
+        questionStatementInput.setLineWrap(true);
+        questionStatementInput.setWrapStyleWord(true);
+        questionStatementInput.setVisible(true);
         initStatementInputScrollPane();
     }
     
     private static void initStatementInputScrollPane() {
-        statementInputScrollPane = new JScrollPane(statementInput);
+        statementInputScrollPane = new JScrollPane(questionStatementInput);
         statementInputScrollPane.setSize(480, 50);
         statementInputScrollPane.setLocation(20, 25);
         statementInputScrollPane.setVerticalScrollBarPolicy(JScrollPane
@@ -475,7 +481,7 @@ public class GenerateurTests {
         footerPanel.setSize(510, 90);
         footerPanel.setLocation(18, 420);
         footerPanel.setVisible(true);
-    
+        
         initMainButtonsPanel();
         initSaveButtonPanel();
     }
@@ -485,7 +491,7 @@ public class GenerateurTests {
         mainButtonsPanel.setLocation(90, 0);
         mainButtonsPanel.setSize(330, 15);
         mainButtonsPanel.setVisible(true);
-    
+        
         initPreviousButton();
         initNextButton();
         initAddButton();
@@ -499,7 +505,53 @@ public class GenerateurTests {
     
     private static void initAddButton() {
         addButton = new JButton(addButtonNameLabel);
-        addButton.setVisible(true);
+        initAddButtonListener();
+    }
+    
+    private static void initAddButtonListener() {
+        addButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (isQuestionComplete()) {
+                    saveCurrentQuestion();
+                    questionsIndex++;
+                    questionStatementInput.setText("");
+                }
+            }
+        };
+        addButton.addActionListener(addButtonListener);
+    }
+    
+    private static boolean isQuestionComplete() {
+        return isACheckBoxSelected() && isTheQuestionWritten() &&
+                areAllAnswersWritten();
+    }
+    
+    private static boolean areAllAnswersWritten() {
+        return !(answer1Input.getText().equals("") || answer2Input.equals("")
+                || answer3Input.equals("") || answer4Input.equals(""));
+    }
+    
+    private static boolean isTheQuestionWritten() {
+        return !questionStatementInput.getText().equals("");
+    }
+    
+    private static boolean isACheckBoxSelected() {
+        return boxAnswer1.isSelected() || boxAnswer2.isSelected() ||
+                boxAnswer3.isSelected() || boxAnswer4.isSelected();
+    }
+    
+    private static void saveCurrentQuestion() {
+        currentQuestion = new Question(questionsIndex);
+        currentQuestion.setQuestionStatement(questionStatementInput.getText());
+        currentQuestion.setAnswerOptions(answer1Input.getText(),
+                answer2Input.getText(), answer3Input.getText(),
+                answer4Input.getText());
+        currentQuestion.setAnswers(boxAnswer1.isSelected(),
+                boxAnswer2.isSelected(),
+                boxAnswer3.isSelected(),
+                boxAnswer4.isSelected());
+        currentTest.addQuestion(currentQuestion);
     }
     
     private static void initNextButton() {

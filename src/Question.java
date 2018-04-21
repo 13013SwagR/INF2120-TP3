@@ -1,18 +1,26 @@
-import java.util.ArrayList;
-
 public class Question {
+    private int questionNumber;
     private String questionStatement;
-    private String question1;
-    private String question2;
-    private String question3;
-    private String question4;
+    private String answerOption1;
+    private String answerOption2;
+    private String answerOption3;
+    private String answerOption4;
+    private boolean answer1;
+    private boolean answer2;
+    private boolean answer3;
+    private boolean answer4;
     
-    public Question() {
+    public Question(int questionNumber) {
+        this.questionNumber = questionNumber;
         this.questionStatement = "";
-        this.question1 = "";
-        this.question2 = "";
-        this.question3 = "";
-        this.question4 = "";
+        this.answerOption1 = "";
+        this.answerOption2 = "";
+        this.answerOption3 = "";
+        this.answerOption4 = "";
+        this.answer1 = false;
+        this.answer2 = false;
+        this.answer3 = false;
+        this.answer4 = false;
     }
     
     public String getQuestionStatement() {
@@ -23,35 +31,52 @@ public class Question {
         this.questionStatement = questionStatement;
     }
     
-    public String getQuestion1() {
-        return question1;
+    public String getAnswerOption1() {
+        return answerOption1;
     }
     
-    public void setQuestion1(String question1) {
-        this.question1 = question1;
+    public void setAnswerOptions(String question1, String question2, String
+            question3, String question4) {
+        this.answerOption1 = question1;
+        this.answerOption2 = question2;
+        this.answerOption3 = question3;
+        
+        this.answerOption4 = question4;
     }
     
-    public String getQuestion2() {
-        return question2;
+    public String getAnswerOption2() {
+        return answerOption2;
     }
     
-    public void setQuestion2(String question2) {
-        this.question2 = question2;
+    public String getAnswerOption3() {
+        return answerOption3;
     }
     
-    public String getQuestion3() {
-        return question3;
+    public String getAnswerOption4() {
+        return answerOption4;
     }
     
-    public void setQuestion3(String question3) {
-        this.question3 = question3;
+    public boolean isAnswer1() {
+        return answer1;
     }
     
-    public String getQuestion4() {
-        return question4;
+    public void setAnswers(boolean answer1, boolean answer2, boolean answer3
+            , boolean answer4) {
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
     }
     
-    public void setQuestion4(String question4) {
-        this.question4 = question4;
+    public boolean isAnswer2() {
+        return answer2;
+    }
+    
+    public boolean isAnswer3() {
+        return answer3;
+    }
+    
+    public boolean isAnswer4() {
+        return answer4;
     }
 }

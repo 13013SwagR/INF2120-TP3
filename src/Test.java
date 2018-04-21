@@ -4,11 +4,11 @@ public class Test {
     private ArrayList<Question> questionsList = new ArrayList<Question>();
     private String testName;
     
-    public Test(String testName, ArrayList<Question> questionsList) {
-        this.testName = testName;
-        this.questionsList = questionsList;
-    }
+    public Test() {}
     
+    public void addQuestion(Question question) {
+        this.questionsList.add(question);
+    }
     public String getTestName() {
         return testName;
     }
