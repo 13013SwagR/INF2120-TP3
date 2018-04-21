@@ -4,10 +4,44 @@ public class Test {
     private ArrayList<Question> questionsList = new ArrayList<Question>();
     private String testName;
     
-    public Test() {}
+    public Test() {
+    }
     
     public void addQuestion(Question question) {
         this.questionsList.add(question);
+    }
+    
+    public void removeQuestion(Question question) {
+        this.questionsList.remove(question);
+    }
+    
+    public boolean isAQuestion(Question question) {
+        return this.questionsList.contains(question);
+    }
+    
+    public boolean hasNext(int questionIndex) {
+        
+        return hasMoreThanNQuestion(questionIndex);
+    }
+    
+    public boolean hasPrevious(int questionIndex) {
+        return hasMoreThanNQuestion(0) && !isFirstQuestion(questionIndex);
+    }
+    
+    private boolean hasMoreThanNQuestion(int n) {
+        return questionsList.size() > n;
+    }
+    
+    private boolean isFirstQuestion(int questionIndex) {
+        return 0 == questionIndex - 1;
+    }
+    
+    public Question getNextQuestion(int questionIndex) {
+        return this.questionsList.get(questionIndex);
+    }
+    
+    public Question getPreviousQuestion(int questionIndex) {
+        return this.questionsList.get(questionIndex - 1);
     }
     public String getTestName() {
         return testName;

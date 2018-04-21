@@ -79,4 +79,12 @@ public class Question {
     public boolean isAnswer4() {
         return answer4;
     }
+    
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+    
+    public void setQuestionNumber(int questionNumber) {
+        this.questionNumber = questionNumber;
+    }
 }

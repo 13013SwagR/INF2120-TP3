@@ -1,5 +1,7 @@
 //import com.sun.xml.internal.bind.v2.TODO;
 
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -76,8 +78,9 @@ public class GenerateurTests {
     
     private static ActionListener createNewTestButtonListener;
     private static ActionListener addButtonListener;
+    private static ActionListener removeButtonListener;
     
-    private static int questionsIndex = 0;
+    private static int questionsIndex = 1;
     
     /************************************
      * CONSTANTES DE CLASSE
@@ -179,7 +182,7 @@ public class GenerateurTests {
                 .getScreenSize().getWidth();
     }
     
-    public static JButton createStandardJButton(String buttonName, int height) {
+    private static JButton createStandardJButton(String buttonName, int height) {
         JButton newJButton = new JButton(buttonName);
         newJButton.setBounds(
                 startUpWindow.getWidth() / 2 - LARGEUR_BOUTON / 2
@@ -313,6 +316,7 @@ public class GenerateurTests {
         boxAnswersGroup.add(boxAnswer2);
         boxAnswersGroup.add(boxAnswer3);
         boxAnswersGroup.add(boxAnswer4);
+        
     }
     
     private static void initOption4() {
@@ -500,7 +504,64 @@ public class GenerateurTests {
     
     private static void initRemoveButton() {
         removeButton = new JButton(removeButtonNameLabel);
-        removeButton.setVisible(true);
+        removeButton.setEnabled(false);
+        initRemoveButtonListener();
+    }
+    
+    private static void initRemoveButtonListener() {
+        removeButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (anotherQuestionExist()) {
+                    Question questionToRemove = currentQuestion;
+                    setExistingQuestion();
+                    currentTest.removeQuestion(questionToRemove);
+                    System.out.print(questionsIndex);
+                    updateButtonsStatus();
+                }
+            }
+        };
+        removeButton.addActionListener(removeButtonListener);
+    }
+    
+    private static void setExistingQuestion() {
+        if (currentTest.hasNext(questionsIndex)) {
+            setNextQuestion();
+            questionsIndex--;
+            adjustCurrentQuestionNumberToCurrentQuestionIndex();
+        } else {
+            setPreviousQuestion();
+        }
+    }
+    
+    private static void adjustCurrentQuestionNumberToCurrentQuestionIndex() {
+        currentQuestion.setQuestionNumber(questionsIndex);
+        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber()));
+    }
+    
+    private static void setNextQuestion() {
+        currentQuestion = currentTest.getNextQuestion(questionsIndex);
+        questionsIndex++;
+        setToCurrentQuestion();
+    }
+    
+    private static void setToCurrentQuestion() {
+        questionStatementInput.setText(currentQuestion.getQuestionStatement());
+        answer1Input.setText(currentQuestion.getAnswerOption1());
+        answer2Input.setText(currentQuestion.getAnswerOption2());
+        answer3Input.setText(currentQuestion.getAnswerOption3());
+        answer4Input.setText(currentQuestion.getAnswerOption4());
+        boxAnswer1.setSelected(currentQuestion.isAnswer1());
+        boxAnswer2.setSelected(currentQuestion.isAnswer2());
+        boxAnswer3.setSelected(currentQuestion.isAnswer3());
+        boxAnswer4.setSelected(currentQuestion.isAnswer4());
+        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber()));
+    }
+    
+    private static void setPreviousQuestion() {
+        currentQuestion = currentTest.getPreviousQuestion(questionsIndex - 1);
+        questionsIndex--;
+        setToCurrentQuestion();
     }
     
     private static void initAddButton() {
@@ -516,6 +577,8 @@ public class GenerateurTests {
                     saveCurrentQuestion();
                     questionsIndex++;
                     resetQuestionForm();
+                    currentQuestion = new Question(questionsIndex);
+                    updateButtonsStatus();
                 }
             }
         };
@@ -528,10 +591,7 @@ public class GenerateurTests {
         answer2Input.setText("");
         answer3Input.setText("");
         answer4Input.setText("");
-        boxAnswer1.setSelected(false);
-        boxAnswer2.setSelected(false);
-        boxAnswer3.setSelected(false);
-        boxAnswer4.setSelected(false);
+        boxAnswersGroup.clearSelection();
         questionNumberLabel.setText(Integer.toString(questionsIndex));
     }
     
@@ -570,13 +630,30 @@ public class GenerateurTests {
     private static void initNextButton() {
         nextButton = new JButton(nextButtonNameLabel);
         nextButton.setEnabled(false);
-        nextButton.setVisible(true);
+    
+        nextButtonListener();
+        
+    }
+    
+    private static void nextButtonListener() {
+        removeButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (anotherQuestionExist()) {
+                    Question questionToRemove = currentQuestion;
+                    setExistingQuestion();
+                    currentTest.removeQuestion(questionToRemove);
+                    System.out.print(questionsIndex);
+                    updateButtonsStatus();
+                }
+            }
+        };
+        removeButton.addActionListener(removeButtonListener);
     }
     
     private static void initPreviousButton() {
         previousButton = new JButton(previousButtonNameLabel);
         previousButton.setEnabled(false);
-        previousButton.setVisible(true);
     }
     
     private static void initSaveButtonPanel() {
@@ -593,6 +670,41 @@ public class GenerateurTests {
         saveButton.setSize(200, 20);
         saveButton.setLocation((510 - 200) / 2, 20);
         saveButton.setVisible(true);
+    }
+    
+    private static void updateButtonsStatus() {
+        updateRemoveButtonStatus();
+        updateNextButtonStatus();
+        updatePreviousButtonStatus();
+    }
+    
+    private static void updatePreviousButtonStatus() {
+        if (currentTest.hasPrevious(questionsIndex)) {
+            previousButton.setEnabled(true);
+        } else {
+            previousButton.setEnabled(false);
+        }
+    }
+    
+    private static void updateNextButtonStatus() {
+        if (currentTest.hasNext(questionsIndex)) {
+            nextButton.setEnabled(true);
+        } else {
+            nextButton.setEnabled(false);
+        }
+    }
+    
+    private static void updateRemoveButtonStatus() {
+        if (anotherQuestionExist()) {
+            removeButton.setEnabled(true);
+        } else {
+            removeButton.setEnabled(false);
+        }
+    }
+    
+    private static boolean anotherQuestionExist() {
+        boolean debug1 = currentTest.hasPrevious(questionsIndex);
+        return currentTest.hasPrevious(questionsIndex) || currentTest.hasNext(questionsIndex);
     }
     
     public static void main(String[] args) {
