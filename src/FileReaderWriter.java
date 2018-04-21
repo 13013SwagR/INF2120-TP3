@@ -1,45 +1,57 @@
 import java.io.*;
-import java.util.Locale;
 
 
 public class FileReaderWriter {
-    public final static String testsFileName = "tests.txt";
     
-    public static  String FileReaderWriter() {
-         BufferedReader testsFileInput;
-         PrintWriter out;
-         String ligne1Produits;
-         String ligne2Produits;
-        double prix = 0;
-        double prixReduit;
-        try {    //ouvrir les flux (lecture et ecriture)
-            testsFileInput = new BufferedReader(new FileReader(testsFileName));  //Creer un objet FileReader
-            out = new PrintWriter(new FileWriter(testsFileName));
-            //On suppose que les fichiers en lecture sont bien formes.
-            while (testsFileInput.ready()) {     //ecrire la ligne lue dans le fichier de copie
-                ligne1Produits = testsFileInput.readLine().trim();
-                ligne2Produits = testsFileInput.readLine().trim();
-                try {
-                    prix = Double.parseDouble(ligne2Produits);
-                } catch (NumberFormatException nfe) {
-                    rabais = 0; //si erreur format, on n'accorde aucun rabais
-                }
-                if (rabais
-                        > 0) {  //on n'ecrit que les produits avec rabais (> 0)
-                    prixReduit = prix - prix * rabais / 100;
-                    out.println(ligne1Produits);
-                    out.printf(Locale.ENGLISH, "%-1.2f\n", prixReduit); //ou simplement utiliser un println ici.
-                }
-            }
-            testsFileInput.close(); //fermer les flux
-            out.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("le fichier ne peut etre lu.");
+    private final static String FILE_NAME = "tests.txt";
+    
+    public static String read() {
+        String fileContent;
+        BufferedReader testsFile = null;
+        try {
+            testsFile = createFileReader();
+            fileContent = read(testsFile);
+            testsFile.close();
         } catch (IOException e) {
-            System.out.println("Erreur d'entree / sortie.");
-        } finally {
-//close everything.
+            fileContent = "";
         }
+        return fileContent;
+    }
+    
+    public static boolean write(String fileContent) {
+        PrintWriter file = createPrintWriter();
+        if (isFileEmpty(file)) {
+            return false;
+        }
+        file.println(fileContent);
+        file.close();
+        return true;
+    }
+    
+    private static String read(BufferedReader testsFile) throws
+                                                         IOException {
+        StringBuilder fileContent = new StringBuilder();
+        while (testsFile.ready()) {
+            fileContent.append(testsFile.readLine().trim());
+        }
+        return fileContent.toString();
+    }
+    
+    private static boolean isFileEmpty(PrintWriter file) {
+        return file == null;
+    }
+    
+    private static PrintWriter createPrintWriter() {
+        try {
+            return new PrintWriter(new FileWriter(FILE_NAME));
+        } catch (IOException e) {
+            return null;
+        }
+    }
+    
+    private static BufferedReader createFileReader() throws IOException {
+        
+        return new BufferedReader(new FileReader(FILE_NAME));
     }
     
     

@@ -15,8 +15,7 @@ public class GenerateurTests {
     private static JFrame startUpWindow;
     private static JFrame testCreatorWindow;
     
-    private static ArrayList createdTests = new ArrayList<>();
-    private static ArrayList<Test> testsList = new ArrayList<Test>();
+    private static ArrayList<Test> testsList = new ArrayList<>();
     private static Question currentQuestion;
     private static Test currentTest;
     //Ajouts
@@ -61,8 +60,6 @@ public class GenerateurTests {
     private static JButton passTestButton;
     private static JButton deleteTestButton;
     private static JComboBox<String> testsListComboBox;
-    private static ActionListener saveButtonListener;
-    private static ActionListener correctTestButtonListener;
     private static JCheckBox boxAnswer1;
     private static JCheckBox boxAnswer2;
     private static JCheckBox boxAnswer3;
@@ -105,12 +102,7 @@ public class GenerateurTests {
     }
     
     private static void createNewTestButtonActionListener() {
-        ActionListener createNewTestButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                initTestCreatorWindow();
-            }
-        };
+        ActionListener createNewTestButtonListener = e -> initTestCreatorWindow();
         createNewTestButton.addActionListener(createNewTestButtonListener);
     }
     
@@ -131,17 +123,12 @@ public class GenerateurTests {
     }
     
     private static void initPassTestButtonListener() {
-        ActionListener passTestButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                initTesterWindow();
-            }
-        };
+        ActionListener passTestButtonListener = e -> initTesterWindow();
         passTestButton.addActionListener(passTestButtonListener);
     }
     
     private static void initTestsListComboBox() {
-        testsListComboBox = new JComboBox<String>();
+        testsListComboBox = new JComboBox<>();
         getTestList();
         testsListComboBox.addItem("blabla");
         testsListComboBox.setEnabled(true);
@@ -721,7 +708,7 @@ public class GenerateurTests {
     }
     
     private static void initCorrectTestButtonListener() {
-        correctTestButtonListener = new ActionListener() {
+        ActionListener correctTestButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentQuestion.setTesterAnswer(findTesterAnswer());
@@ -764,7 +751,7 @@ public class GenerateurTests {
     }
     
     private static void initSaveButtonListener() {
-        saveButtonListener = new ActionListener() {
+        ActionListener saveButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveCurrentQuestion();
@@ -773,7 +760,7 @@ public class GenerateurTests {
                     testsList.add(currentTest);
                     getTestList();
                 }
-                
+            
             }
         };
         saveButton.addActionListener(saveButtonListener);
