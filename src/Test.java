@@ -7,8 +7,13 @@ public class Test {
     public Test() {
     }
     
-    public void addQuestion(Question question) {
-        this.questionsList.add(question);
+    public void save(Question question) {
+        if (isAQuestion(question)) {
+            int questionIndex = this.questionsList.indexOf(question);
+            this.questionsList.set(questionIndex, question);
+        } else {
+            this.questionsList.add(question);
+        }
     }
     
     public void removeQuestion(Question question) {

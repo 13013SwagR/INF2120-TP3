@@ -87,4 +87,23 @@ public class Question {
     public void setQuestionNumber(int questionNumber) {
         this.questionNumber = questionNumber;
     }
+    
+    public boolean isQuestionComplete() {
+        return isAnswerOptionsComplete() && isAnswerSelected() && isQuestionStatementFilled();
+    }
+    
+    private boolean isQuestionStatementFilled() {
+        return this.questionStatement.length() > 0;
+    }
+    
+    private boolean isAnswerSelected() {
+        return answer1 || answer2 || answer3 || answer4;
+    }
+    
+    private boolean isAnswerOptionsComplete() {
+        return answerOption1.length() > 0 &&
+                answerOption2.length() > 0 &&
+                answerOption3.length() > 0 && answerOption4.length() > 0;
+    }
 }
+
