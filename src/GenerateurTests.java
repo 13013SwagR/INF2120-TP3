@@ -515,11 +515,24 @@ public class GenerateurTests {
                 if (isQuestionComplete()) {
                     saveCurrentQuestion();
                     questionsIndex++;
-                    questionStatementInput.setText("");
+                    resetQuestionForm();
                 }
             }
         };
         addButton.addActionListener(addButtonListener);
+    }
+    
+    private static void resetQuestionForm() {
+        questionStatementInput.setText("");
+        answer1Input.setText("");
+        answer2Input.setText("");
+        answer3Input.setText("");
+        answer4Input.setText("");
+        boxAnswer1.setSelected(false);
+        boxAnswer2.setSelected(false);
+        boxAnswer3.setSelected(false);
+        boxAnswer4.setSelected(false);
+        questionNumberLabel.setText(Integer.toString(questionsIndex));
     }
     
     private static boolean isQuestionComplete() {
