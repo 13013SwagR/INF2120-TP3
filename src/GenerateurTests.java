@@ -58,6 +58,7 @@ public class GenerateurTests {
     private static JButton buttonPasser;
     private static JButton buttonSupprimer;
     private static JComboBox<String> testsListComboBox;
+    private static ActionListener saveButtonListener;
     private static JCheckBox boxAnswer1;
     private static JCheckBox boxAnswer2;
     private static JCheckBox boxAnswer3;
@@ -126,7 +127,7 @@ public class GenerateurTests {
     
     private static void initTestsListComboBox() {
         testsListComboBox = new JComboBox<String>();
-        testsListComboBox = getTestList();
+        getTestList();
         testsListComboBox.addItem("blabla");
         testsListComboBox.setEnabled(true);
         testsListComboBox.setBounds(
@@ -136,15 +137,14 @@ public class GenerateurTests {
                 HAUT_BOUTON - 10);
     }
     
-    private static JComboBox<String> getTestList() {
-        JComboBox<String> listeDeTests;
-        listeDeTests = new JComboBox<String>();
-        for (int i = 0; i < createdTests.size(); i++) {
-            //listeDeTests.add();
-            //createdTests.get(i).testNameAnswer;
-            // TODO create testNameAnswer in TestCreator
+    private static void getTestList() {
+       // testsListComboBox.removeActionListener(saveButtonListener);
+        for (Test test : testsList) {
+            testsListComboBox.addItem(test.toString());
+            testsListComboBox.setSelectedItem(test);
         }
-        return listeDeTests;
+        //testsListComboBox.addActionListener(saveButtonListener);
+        
     }
     
     private static JPanel createStartUpWindowBlackLine() {
@@ -197,9 +197,6 @@ public class GenerateurTests {
         initHeaderPanel();
         initCenterPanel();
         initFooterPanel();
-        
-        // TODO: Effacer avant la remise
-        testCreatorWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         addComponentsToParents();
     }
@@ -560,7 +557,6 @@ public class GenerateurTests {
     
     private static void initAddButton() {
         addButton = new JButton(addButtonNameLabel);
-        addButton.setEnabled(false);
         initAddButtonListener();
     }
     
@@ -673,22 +669,34 @@ public class GenerateurTests {
         saveButton.setSize(200, 20);
         saveButton.setLocation((510 - 200) / 2, 20);
         saveButton.setVisible(true);
+    
+        initSaveButtonListener();
+        
+    }
+    
+    private static void initSaveButtonListener() {
+        saveButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saveCurrentQuestion();
+                currentTest.setTestName(testNameField.getText());
+                if (currentTest.isComplete()) {
+                    testsList.add(currentTest);
+                    getTestList();
+                }
+                
+            }
+        };
+        saveButton.addActionListener(saveButtonListener);
+        //testsListComboBox.addActionListener(saveButtonListener);
     }
     
     private static void updateButtonsStatus() {
         updateRemoveButtonStatus();
         updateNextButtonStatus();
         updatePreviousButtonStatus();
-        updateAddButtonStatus();
     }
     
-    private static void updateAddButtonStatus() {
-        if (currentQuestion.isQuestionComplete()) {
-            addButton.setEnabled(true);
-        } else {
-            addButton.setEnabled(false);
-        }
-    }
     private static void updatePreviousButtonStatus() {
         if (currentTest.hasPrevious(questionsIndex)) {
             previousButton.setEnabled(true);

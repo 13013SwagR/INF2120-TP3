@@ -7,6 +7,18 @@ public class Test {
     public Test() {
     }
     
+    public boolean isComplete() {
+        boolean result = true;
+        for (Question question : questionsList) {
+            result = result && question.isQuestionComplete();
+        }
+        return result && hasAName();
+    }
+    
+    private boolean hasAName() {
+        return testName != null && testName.length() > 0;
+    }
+    
     public void save(Question question) {
         if (isAQuestion(question)) {
             int questionIndex = this.questionsList.indexOf(question);
@@ -48,6 +60,7 @@ public class Test {
     public Question getPreviousQuestion(int questionIndex) {
         return this.questionsList.get(questionIndex - 1);
     }
+    
     public String getTestName() {
         return testName;
     }
@@ -63,4 +76,11 @@ public class Test {
     public void setQuestionsList(ArrayList<Question> questionsList) {
         this.questionsList = questionsList;
     }
+    
+    @Override
+    public String toString() {
+        return this.getTestName();
+    }
 }
+
+
