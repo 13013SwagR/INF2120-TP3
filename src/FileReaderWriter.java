@@ -7,7 +7,7 @@ public class FileReaderWriter {
     
     public static String read() {
         String fileContent;
-        BufferedReader testsFile = null;
+        BufferedReader testsFile;
         try {
             testsFile = createFileReader();
             fileContent = read(testsFile);
@@ -31,8 +31,9 @@ public class FileReaderWriter {
     private static String read(BufferedReader testsFile) throws
                                                          IOException {
         StringBuilder fileContent = new StringBuilder();
+        fileContent.append("\n");
         while (testsFile.ready()) {
-            fileContent.append(testsFile.readLine().trim());
+            fileContent.append(testsFile.readLine().trim() + "\n");
         }
         return fileContent.toString();
     }
@@ -50,7 +51,6 @@ public class FileReaderWriter {
     }
     
     private static BufferedReader createFileReader() throws IOException {
-        
         return new BufferedReader(new FileReader(FILE_NAME));
     }
     

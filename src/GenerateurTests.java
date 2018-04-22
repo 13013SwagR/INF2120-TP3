@@ -67,15 +67,15 @@ public class GenerateurTests {
     private static ButtonGroup boxAnswersGroup;
     
     
-    private static JLabel testNameLabel;
+    private static final JLabel TEST_NAME_LABEL = new JLabel("Nom du test");
     private static JLabel questionNumberLabel;
-    private static JTextField testNameField;
+    private static JTextField testNameField = new JTextField();
     private static JTextField answer1Input;
     private static JTextField answer2Input;
     private static JTextField answer3Input;
     private static JTextField answer4Input;
     
-    private static JTextArea questionStatementInput;
+    private static JTextArea questionStatementInput = new JTextArea();
     private static JScrollPane statementInputScrollPane;
     
     /************************************
@@ -84,7 +84,6 @@ public class GenerateurTests {
     
     
     private static void initStartUpWindow() {
-        importTests();
         startUpWindow = new JFrame("Générateur de tests");
         startUpWindow.setBounds(getStartupWindowPositionX(),
                 getStartupWindowPositionY(), STARTUP_WINDOW_WIDTH, STARTUP_WINDOW_HEIGHT);
@@ -94,6 +93,7 @@ public class GenerateurTests {
         
         initStartupWindowButtons();
         initTestsListComboBox();
+        importTests();
         addComponentsToStartupWindow();
         
         startUpWindow.setVisible(true);
@@ -101,12 +101,75 @@ public class GenerateurTests {
     
     private static void importTests() {
         String fileContent = FileReaderWriter.read();
-        ArrayList fileContentSplitted = new ArrayList();
-        fileContent.split("\n");
-        // TODO
+        
+        for (String test : fileContent.split("=====")) {
+            if (test.contains("-----")) {
+                testsList.add(importTest(test));
+            }
+        }
+        updateTestListComboBox();
     }
     
-    private static void createNewTestButtonActionListener() {
+    private static Test importTest(String test) {
+        Test importingTest = new Test();
+        int sectionIndex;
+        int amountOfQuestions;
+        
+        String[] testSections = test.split("-----");
+        importingTest.setTestName(testSections[0].split("\n")[1]);
+        amountOfQuestions = Integer.parseInt(testSections[0].split("\n")[2]);
+        
+        for (int questionNumber = 1; questionNumber <= amountOfQuestions; questionNumber++) {
+            sectionIndex = (questionNumber * 3) - 3;
+            importingTest.save(importQuestion(
+                    testSections[sectionIndex + 1],
+                    testSections[sectionIndex + 2],
+                    testSections[sectionIndex + 3], questionNumber));
+        }
+        return importingTest;
+    }
+    
+    private static Question importQuestion(String questionStatement, String questionAnswerOptions,
+                                           String questionAnswer, int questionNumber) {
+        
+        Question importingQuestion = new Question(questionNumber);
+        
+        importingQuestion.setQuestionStatement(questionStatement);
+        
+        importingQuestion = importQuestionAnswerOptions(importingQuestion, questionAnswerOptions);
+        
+        importingQuestion = importQuestionAnswer(importingQuestion, questionAnswer);
+        
+        return importingQuestion;
+    }
+    
+    private static Question importQuestionAnswerOptions(Question importingQuestion, String
+            questionAnswerOptions) {
+        String[] questionAnswers;
+        questionAnswers = questionAnswerOptions.split("<>");
+        importingQuestion.setAnswerOptions(questionAnswers[0], questionAnswers[1],
+                questionAnswers[2], questionAnswers[3]);
+        return importingQuestion;
+    }
+    
+    private static Question importQuestionAnswer(Question importingQuestion, String questionSection) {
+        switch (questionSection) {
+            case "0":
+                importingQuestion.setAnswers(true, false, false, false);
+                break;
+            case "1":
+                importingQuestion.setAnswers(false, true, false, false);
+                break;
+            case "2":
+                importingQuestion.setAnswers(false, false, true, false);
+                break;
+            case "3":
+                importingQuestion.setAnswers(false, false, false, true);
+        }
+        return importingQuestion;
+    }
+    
+    private static void createNewTestButtonListener() {
         ActionListener createNewTestButtonListener = e -> initTestCreatorWindow();
         createNewTestButton.addActionListener(createNewTestButtonListener);
     }
@@ -121,7 +184,7 @@ public class GenerateurTests {
     
     private static void initStartupWindowButtons() {
         createNewTestButton = createStandardJButton("Créer un nouveau test", 150);
-        createNewTestButtonActionListener();
+        createNewTestButtonListener();
         passTestButton = createStandardJButton("Passer le test sélectionné", -30);
         initPassTestButtonListener();
         deleteTestButton = createStandardJButton("Supprimer le test sélectionné", -80);
@@ -154,10 +217,13 @@ public class GenerateurTests {
     
     private static void initPassTestButtonListener() {
         ActionListener passTestButtonListener = e -> {
+            Object selectedTest;
             if (testsList.isEmpty()) {
                 // TODO Error message
             } else {
-                initTesterWindow();
+                selectedTest = testsListComboBox.getSelectedItem();
+                currentTest = getTestWithTestName(selectedTest.toString());
+                currentQuestion = currentTest.getQuestionsList().get(0);
             }
         };
         passTestButton.addActionListener(passTestButtonListener);
@@ -165,8 +231,7 @@ public class GenerateurTests {
     
     private static void initTestsListComboBox() {
         testsListComboBox = new JComboBox<>();
-        getTestList();
-        testsListComboBox.addItem("blabla");
+        updateTestListComboBox();
         testsListComboBox.setEnabled(true);
         testsListComboBox.setBounds(
                 (startUpWindow.getWidth() - LARGEUR_BOUTON) / 2,
@@ -175,14 +240,11 @@ public class GenerateurTests {
                 HAUT_BOUTON - 10);
     }
     
-    private static void getTestList() {
-        // testsListComboBox.removeActionListener(saveButtonListener);
+    private static void updateTestListComboBox() {
         for (Test test : testsList) {
             testsListComboBox.addItem(test.toString());
             testsListComboBox.setSelectedItem(test);
         }
-        //testsListComboBox.addActionListener(saveButtonListener);
-        
     }
     
     private static JPanel createStartUpWindowBlackLine() {
@@ -263,7 +325,7 @@ public class GenerateurTests {
         }
         mainButtonsPanel.add(nextButton);
         
-        headerPanel.add(testNameLabel);
+        headerPanel.add(TEST_NAME_LABEL);
         headerPanel.add(testNameField);
         
         questionDataPanel.add(statementLabel);
@@ -303,10 +365,8 @@ public class GenerateurTests {
         centerPanel = new JPanel(null);
         centerPanel.setSize(510, 330);
         centerPanel.setLocation(18, 75);
-        centerPanel.setVisible(true);
-        //Composants questionIdPanel
-        initQuestionIdPanel();
-        //Composants questionDataPanel
+        
+        initQuestionIdPanel(user);
         initQuestionDataPanel(user);
     }
     
@@ -314,19 +374,33 @@ public class GenerateurTests {
         headerPanel = new JPanel(null);
         headerPanel.setSize(510, 35);
         headerPanel.setLocation(18, (30));
-        headerPanel.setVisible(true);
-        initTestNameLabel();
-        initTestNameField(user);
+        
+        TEST_NAME_LABEL.setBounds(0, 0, 90, 30);
+        
+        
+        testNameField.setBounds(95, 5, 415, 20);
+        testNameField.setBackground(Color.WHITE);
+        if (user.equals(TESTER)) {
+            testNameField.setEnabled(false);
+            testNameField.setText(currentTest.getTestName());
+        }
     }
     
-    private static void initQuestionIdPanel() {
+    private static void initQuestionIdPanel(String user) {
         questionIdPanel = new JPanel(null);
         questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         questionIdPanel.setSize(510, 40);
         questionIdPanel.setLocation(0, 0);
-        questionIdPanel.setVisible(true);
-        initQuestionLabel();
-        initQuestionNumberLabel();
+        
+        questionLabel.setLocation(10, 0);
+        questionLabel.setSize(90, 30);
+        
+        questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
+        questionNumberLabel.setSize(10, 30);
+        questionNumberLabel.setLocation(90, 0);
+        if (user.equals(TESTER)) {
+            questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber()));
+        }
     }
     
     private static void initQuestionDataPanel(String user) {
@@ -334,10 +408,28 @@ public class GenerateurTests {
         questionDataPanel.setSize(510, 290);
         questionDataPanel.setLocation(0, 39);
         questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        questionDataPanel.setVisible(true);
-        initStatementLabel();
-        initStatementInput(user);
-        initOptionsStatementLabel();
+        
+        statementLabel.setSize(90, 30);
+        statementLabel.setLocation(20, 0);
+        
+        questionStatementInput.setSize(480, 50);
+        questionStatementInput.setLocation(20, 25);
+        questionStatementInput.setLineWrap(true);
+        questionStatementInput.setWrapStyleWord(true);
+        
+        statementInputScrollPane = new JScrollPane(questionStatementInput);
+        statementInputScrollPane.setSize(480, 50);
+        statementInputScrollPane.setLocation(20, 25);
+        statementInputScrollPane.setVerticalScrollBarPolicy(JScrollPane
+                .VERTICAL_SCROLLBAR_AS_NEEDED);
+        if (user.equals(TESTER)) {
+            questionStatementInput.setEnabled(false);
+            questionStatementInput.setText(currentQuestion.getQuestionStatement());
+        }
+        
+        optionsStatementLabel.setSize(420, 30);
+        optionsStatementLabel.setLocation(20, 90);
+        
         initOptions(user);
     }
     
@@ -355,175 +447,66 @@ public class GenerateurTests {
     }
     
     private static void initOption4(String user) {
-        initOption4Label();
-        initOption4Input(user);
-        initBoxAnswer4();
-    }
-    
-    private static void initBoxAnswer4() {
-        boxAnswer4 = new JCheckBox();
-        boxAnswer4.setLocation(440, 220);
-        boxAnswer4.setSize(30, 30);
-        boxAnswer4.setVisible(true);
-    }
-    
-    private static void initOption4Input(String user) {
+        option4Label.setSize(40, 30);
+        option4Label.setLocation(20, 220);
+        
         answer4Input = new JTextField();
         answer4Input.setSize(380, 20);
         answer4Input.setLocation(50, 227);
         if (user.equals(TESTER)) {
             answer4Input.setEnabled(false);
+            answer4Input.setText(currentQuestion.getAnswerOption4());
         }
+        boxAnswer4 = new JCheckBox();
+        boxAnswer4.setLocation(440, 220);
+        boxAnswer4.setSize(30, 30);
     }
     
     private static void initOption3(String user) {
-        initOption3Label();
-        initAnswer3Input(user);
-        initBoxAnswer3();
-    }
-    
-    private static void initOption2(String user) {
-        initOption2Label();
-        initAnswer2Input(user);
-        initBoxAnswer2();
-    }
-    
-    private static void initOption1(String user) {
-        initOption1Label();
-        initAnswer1Input(user);
-        initBoxAnswer1();
-    }
-    
-    private static void initOption4Label() {
-        option4Label.setSize(40, 30);
-        option4Label.setLocation(20, 220);
-        option4Label.setVisible(true);
-    }
-    
-    private static void initBoxAnswer3() {
-        boxAnswer3 = new JCheckBox();
-        boxAnswer3.setLocation(440, 190);
-        boxAnswer3.setSize(30, 30);
-        boxAnswer3.setVisible(true);
-    }
-    
-    private static void initAnswer3Input(String user) {
+        option3Label.setSize(40, 30);
+        option3Label.setLocation(20, 190);
         answer3Input = new JTextField();
         answer3Input.setSize(380, 20);
         answer3Input.setLocation(50, 197);
         if (user.equals(TESTER)) {
             answer3Input.setEnabled(false);
+            answer3Input.setText(currentQuestion.getAnswerOption3());
         }
+        boxAnswer3 = new JCheckBox();
+        boxAnswer3.setLocation(440, 190);
+        boxAnswer3.setSize(30, 30);
     }
     
-    private static void initOption3Label() {
-        option3Label.setSize(40, 30);
-        option3Label.setLocation(20, 190);
-        option3Label.setVisible(true);
-    }
-    
-    private static void initBoxAnswer2() {
-        boxAnswer2 = new JCheckBox();
-        boxAnswer2.setLocation(440, 160);
-        boxAnswer2.setSize(30, 30);
-        boxAnswer2.setVisible(true);
-    }
-    
-    private static void initAnswer2Input(String user) {
+    private static void initOption2(String user) {
+        option2Label.setSize(40, 30);
+        option2Label.setLocation(20, 160);
+        
         answer2Input = new JTextField();
         answer2Input.setSize(380, 20);
         answer2Input.setLocation(50, 167);
         if (user.equals(TESTER)) {
             answer2Input.setEnabled(false);
+            answer2Input.setText(currentQuestion.getAnswerOption2());
         }
+        boxAnswer2 = new JCheckBox();
+        boxAnswer2.setLocation(440, 160);
+        boxAnswer2.setSize(30, 30);
     }
     
-    private static void initOption2Label() {
-        option2Label.setSize(40, 30);
-        option2Label.setLocation(20, 160);
-        option2Label.setVisible(true);
-    }
-    
-    private static void initBoxAnswer1() {
-        boxAnswer1 = new JCheckBox();
-        boxAnswer1.setLocation(440, 130);
-        boxAnswer1.setSize(30, 30);
-        boxAnswer1.setVisible(true);
-    }
-    
-    private static void initAnswer1Input(String user) {
+    private static void initOption1(String user) {
+        option1Label.setSize(40, 30);
+        option1Label.setLocation(20, 130);
+        
         answer1Input = new JTextField();
         answer1Input.setSize(380, 20);
         answer1Input.setLocation(50, 137);
         if (user.equals(TESTER)) {
             answer1Input.setEnabled(false);
+            answer1Input.setText(currentQuestion.getAnswerOption1());
         }
-    }
-    
-    private static void initOption1Label() {
-        option1Label.setSize(40, 30);
-        option1Label.setLocation(20, 130);
-        option1Label.setVisible(true);
-    }
-    
-    private static void initOptionsStatementLabel() {
-        optionsStatementLabel.setSize(420, 30);
-        optionsStatementLabel.setLocation(20, 90);
-        optionsStatementLabel.setVisible(true);
-    }
-    
-    private static void initStatementInput(String user) {
-        questionStatementInput = new JTextArea();
-        questionStatementInput.setSize(480, 50);
-        questionStatementInput.setLocation(20, 25);
-        questionStatementInput.setLineWrap(true);
-        questionStatementInput.setWrapStyleWord(true);
-        initStatementInputScrollPane();
-        if (user.equals(TESTER)) {
-            questionStatementInput.setEnabled(false);
-        }
-    }
-    
-    private static void initStatementInputScrollPane() {
-        statementInputScrollPane = new JScrollPane(questionStatementInput);
-        statementInputScrollPane.setSize(480, 50);
-        statementInputScrollPane.setLocation(20, 25);
-        statementInputScrollPane.setVerticalScrollBarPolicy(JScrollPane
-                .VERTICAL_SCROLLBAR_AS_NEEDED);
-    }
-    
-    private static void initStatementLabel() {
-        statementLabel.setSize(90, 30);
-        statementLabel.setLocation(20, 0);
-        statementLabel.setVisible(true);
-    }
-    
-    private static void initQuestionNumberLabel() {
-        questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
-        questionNumberLabel.setSize(10, 30);
-        questionNumberLabel.setLocation(90, 0);
-        questionNumberLabel.setVisible(true);
-    }
-    
-    private static void initQuestionLabel() {
-        questionLabel.setLocation(10, 0);
-        questionLabel.setSize(90, 30);
-        questionLabel.setVisible(true);
-    }
-    
-    private static void initTestNameField(String user) {
-        testNameField = new JTextField();
-        testNameField.setBounds(95, 5, 415, 20);
-        testNameField.setBackground(Color.WHITE);
-        if (user.equals(TESTER)) {
-            testNameField.setEnabled(false);
-        }
-    }
-    
-    private static void initTestNameLabel() {
-        testNameLabel = new JLabel("Nom du test");
-        testNameLabel.setBounds(0, 0, 90, 30);
-        testNameLabel.setVisible(true);
+        boxAnswer1 = new JCheckBox();
+        boxAnswer1.setLocation(440, 130);
+        boxAnswer1.setSize(30, 30);
     }
     
     private static void initFooterPanel(String user) {
@@ -790,11 +773,11 @@ public class GenerateurTests {
             if (currentTest.isComplete()) {
                 if (currentQuestion.isQuestionComplete()) {
                     saveCurrentQuestion();
-        
+                    
                     currentTest.setTestName(testNameField.getText());
-        
+                    
                     testsList.add(currentTest);
-                    getTestList();
+                    updateTestListComboBox();
                 } else {
                     // TODO Error question is invalid
                 }
