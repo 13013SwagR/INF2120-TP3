@@ -84,7 +84,7 @@ public class GenerateurTests {
     
     
     private static void initStartUpWindow() {
-        
+        importTests();
         startUpWindow = new JFrame("Générateur de tests");
         startUpWindow.setBounds(getStartupWindowPositionX(),
                 getStartupWindowPositionY(), STARTUP_WINDOW_WIDTH, STARTUP_WINDOW_HEIGHT);
@@ -97,8 +97,13 @@ public class GenerateurTests {
         addComponentsToStartupWindow();
         
         startUpWindow.setVisible(true);
-        
-        
+    }
+    
+    private static void importTests() {
+        String fileContent = FileReaderWriter.read();
+        ArrayList fileContentSplitted = new ArrayList();
+        fileContent.split("\n");
+        // TODO
     }
     
     private static void createNewTestButtonActionListener() {
@@ -612,12 +617,16 @@ public class GenerateurTests {
     
     private static void initAddButtonListener() {
         ActionListener addButtonListener = e -> {
-            if (isQuestionComplete()) {
-                saveCurrentQuestion();
-                questionsIndex++;
-                resetQuestionForm();
-                currentQuestion = new Question(questionsIndex);
-                updateButtonsStatus();
+            if (currentQuestion.isQuestionComplete()) {
+                if (isQuestionComplete()) {
+                    saveCurrentQuestion();
+                    questionsIndex++;
+                    resetQuestionForm();
+                    currentQuestion = new Question(questionsIndex);
+                    updateButtonsStatus();
+                }
+            } else {
+                // TODO Error message
             }
         };
         addButton.addActionListener(addButtonListener);
@@ -676,13 +685,17 @@ public class GenerateurTests {
     
     private static void initNextButtonListener(String user) {
         ActionListener nextButtonListener = e -> {
-            if (user.equals(CREATOR)) {
-                saveCurrentQuestion();
+            if (currentQuestion.isQuestionComplete()) {
+                if (user.equals(CREATOR)) {
+                    saveCurrentQuestion();
+                } else {
+                    saveCurrentAnswer();
+                }
+                setNextQuestion();
+                updateButtonsStatus();
             } else {
-                saveCurrentAnswer();
+                // TODO Error message
             }
-            setNextQuestion();
-            updateButtonsStatus();
         };
         nextButton.addActionListener(nextButtonListener);
     }
@@ -695,13 +708,17 @@ public class GenerateurTests {
     
     private static void initPreviousButtonListener(String user) {
         ActionListener previousButtonListener = e -> {
-            if (user.equals(CREATOR)) {
-                saveCurrentQuestion();
+            if (currentQuestion.isQuestionComplete()) {
+                if (user.equals(CREATOR)) {
+                    saveCurrentQuestion();
+                } else {
+                    saveCurrentAnswer();
+                }
+                setPreviousQuestion();
+                updateButtonsStatus();
             } else {
-                saveCurrentAnswer();
+                // TODO Error message
             }
-            setPreviousQuestion();
-            updateButtonsStatus();
         };
         previousButton.addActionListener(previousButtonListener);
     }
@@ -770,13 +787,21 @@ public class GenerateurTests {
     
     private static void initSaveButtonListener() {
         ActionListener saveButtonListener = e -> {
-            saveCurrentQuestion();
-            currentTest.setTestName(testNameField.getText());
             if (currentTest.isComplete()) {
-                testsList.add(currentTest);
-                getTestList();
-            }
+                if (currentQuestion.isQuestionComplete()) {
+                    saveCurrentQuestion();
         
+                    currentTest.setTestName(testNameField.getText());
+        
+                    testsList.add(currentTest);
+                    getTestList();
+                } else {
+                    // TODO Error question is invalid
+                }
+            } else {
+                // TODO Error testName is invalid
+            }
+            
         };
         saveButton.addActionListener(saveButtonListener);
     }
