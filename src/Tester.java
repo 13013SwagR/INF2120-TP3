@@ -12,4 +12,8 @@ public class Tester {
     public String getContents() {
         return "";
     }
+    
+    public static void main(String[] args) {
+    
+    }
 }
