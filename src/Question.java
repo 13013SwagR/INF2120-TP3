@@ -81,6 +81,20 @@ public class Question {
         return answer4;
     }
     
+    public String getGoodAnswerNumber() {
+        String answer = "0";
+        if (this.isAnswer1()) {
+            answer = "1";
+        } else if (this.isAnswer2()) {
+            answer = "2";
+        } else if (this.isAnswer3()) {
+            answer = "3";
+        } else if (this.isAnswer4()) {
+            answer = "4";
+        }
+        return answer;
+    }
+    
     public int getQuestionNumber() {
         return questionNumber;
     }

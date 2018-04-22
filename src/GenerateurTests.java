@@ -366,7 +366,7 @@ public class GenerateurTests {
         
         TEST_NAME_LABEL.setBounds(0, 0, 90, 30);
         
-        testNameField  = new JTextField();
+        testNameField = new JTextField();
         testNameField.setBounds(95, 5, 415, 20);
         testNameField.setBackground(Color.WHITE);
         if (user.equals(TESTER)) {
@@ -725,7 +725,22 @@ public class GenerateurTests {
     }
     
     private static void correctTest() {
-        // TODO
+        StringBuilder testResults = new StringBuilder();
+        int testerTotal = 0;
+        int testTotal = 0;
+        for (Question question : currentTest.getQuestionsList()) {
+            
+            if (question.getTesterAnswer().equals(question.getGoodAnswerNumber())) {
+                testResults.append("1");
+                testerTotal++;
+            } else {
+                testResults.append("0");
+            }
+            testTotal++;
+        }
+        testResults.insert(0, "\n  NOTE FINALE : ");
+        testResults.append("TOTAL          :     ").append(testerTotal).append("/").append(testTotal);
+        
     }
     
     private static void saveCurrentAnswer() {
