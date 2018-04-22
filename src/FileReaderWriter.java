@@ -3,7 +3,7 @@ import java.io.*;
 
 public class FileReaderWriter {
     
-    private final static String FILE_NAME = "tests.txt";
+    private final static String FILE_NAME = "tests2.txt";
     
     public static String read() {
         String fileContent;
@@ -50,7 +50,7 @@ public class FileReaderWriter {
         }
     }
     
-    private static BufferedReader createFileReader() throws IOException  {
+    public static BufferedReader createFileReader()  {
         BufferedReader reader = null;
         Boolean readerCreated = false;
         while (!readerCreated){
@@ -58,10 +58,13 @@ public class FileReaderWriter {
                 reader = new BufferedReader(new FileReader(FILE_NAME));
                 readerCreated = true;
 
-            } catch (FileNotFoundException e) {
-                File fichierTests = new File(FILE_NAME);
-                readerCreated = fichierTests.createNewFile();
-
+            } catch (IOException e) {
+                try {
+                    File fichierTests = new File(FILE_NAME);
+                    readerCreated = fichierTests.createNewFile();
+                }catch(IOException x){
+                    //TODO popUp file not created
+                }
 
             }
         }
