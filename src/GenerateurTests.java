@@ -704,7 +704,7 @@ public class GenerateurTests {
     private static void initCorrectTestButtonListener() {
         ActionListener correctTestButtonListener = e -> {
             saveCurrentAnswer();
-            correctTest();
+            generateCorrectionReport();
         };
         correctTestButton.addActionListener(correctTestButtonListener);
         
@@ -724,23 +724,27 @@ public class GenerateurTests {
         return answer;
     }
     
-    private static void correctTest() {
+    private static void generateCorrectionReport() {
         StringBuilder testResults = new StringBuilder();
         int testerTotal = 0;
         int testTotal = 0;
         for (Question question : currentTest.getQuestionsList()) {
-            
+            testTotal++;
+            testResults.append("      QUESTION ").append(testTotal).append("     :     ");
             if (question.getTesterAnswer().equals(question.getGoodAnswerNumber())) {
                 testResults.append("1");
                 testerTotal++;
             } else {
                 testResults.append("0");
             }
-            testTotal++;
+            testResults.append("/1\n");
+            
         }
+        testResults.insert(0, " %\n");
+        testResults.insert(0, testerTotal / testTotal * 100);
         testResults.insert(0, "\n  NOTE FINALE : ");
-        testResults.append("TOTAL          :     ").append(testerTotal).append("/").append(testTotal);
-        
+        testResults.append("\n      TOTAL          :     ").append(testerTotal).append("/").append
+                (testTotal);
     }
     
     private static void saveCurrentAnswer() {
