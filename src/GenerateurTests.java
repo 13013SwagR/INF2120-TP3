@@ -120,10 +120,41 @@ public class GenerateurTests {
         passTestButton = createStandardJButton("Passer le test sélectionné", -30);
         initPassTestButtonListener();
         deleteTestButton = createStandardJButton("Supprimer le test sélectionné", -80);
+        initDeleteTestButtonListener();
+    }
+    
+    private static void initDeleteTestButtonListener() {
+        ActionListener deleteTestButtonListener = e -> {
+            Object selectedTest;
+            if (testsList.isEmpty()) {
+                // TODO Error message
+            } else {
+                selectedTest = testsListComboBox.getSelectedItem();
+                testsListComboBox.removeItem(selectedTest);
+                testsList.remove(getTestWithTestName(selectedTest.toString()));
+            }
+        };
+        deleteTestButton.addActionListener(deleteTestButtonListener);
+    }
+    
+    private static Test getTestWithTestName(String testName) {
+        Test matchingTest = null;
+        for (Test test : testsList) {
+            if (test.getTestName().equals(testName)) {
+                matchingTest = test;
+            }
+        }
+        return matchingTest;
     }
     
     private static void initPassTestButtonListener() {
-        ActionListener passTestButtonListener = e -> initTesterWindow();
+        ActionListener passTestButtonListener = e -> {
+            if (testsList.isEmpty()) {
+                // TODO Error message
+            } else {
+                initTesterWindow();
+            }
+        };
         passTestButton.addActionListener(passTestButtonListener);
     }
     
@@ -419,7 +450,7 @@ public class GenerateurTests {
         answer1Input = new JTextField();
         answer1Input.setSize(380, 20);
         answer1Input.setLocation(50, 137);
-        if (user == TESTER) {
+        if (user.equals(TESTER)) {
             answer1Input.setEnabled(false);
         }
     }
@@ -522,16 +553,13 @@ public class GenerateurTests {
     }
     
     private static void initRemoveButtonListener() {
-        ActionListener removeButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (anotherQuestionExist()) {
-                    Question questionToRemove = currentQuestion;
-                    setExistingQuestion();
-                    currentTest.removeQuestion(questionToRemove);
-                    System.out.print(questionsIndex);
-                    updateButtonsStatus();
-                }
+        ActionListener removeButtonListener = e -> {
+            if (anotherQuestionExist()) {
+                Question questionToRemove = currentQuestion;
+                setExistingQuestion();
+                currentTest.removeQuestion(questionToRemove);
+                System.out.print(questionsIndex);
+                updateButtonsStatus();
             }
         };
         removeButton.addActionListener(removeButtonListener);
@@ -583,16 +611,13 @@ public class GenerateurTests {
     }
     
     private static void initAddButtonListener() {
-        ActionListener addButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (isQuestionComplete()) {
-                    saveCurrentQuestion();
-                    questionsIndex++;
-                    resetQuestionForm();
-                    currentQuestion = new Question(questionsIndex);
-                    updateButtonsStatus();
-                }
+        ActionListener addButtonListener = e -> {
+            if (isQuestionComplete()) {
+                saveCurrentQuestion();
+                questionsIndex++;
+                resetQuestionForm();
+                currentQuestion = new Question(questionsIndex);
+                updateButtonsStatus();
             }
         };
         addButton.addActionListener(addButtonListener);
@@ -614,8 +639,10 @@ public class GenerateurTests {
     }
     
     private static boolean areAllAnswersWritten() {
-        return !(answer1Input.getText().equals("") || answer2Input.equals("")
-                || answer3Input.equals("") || answer4Input.equals(""));
+        return !answer1Input.getText().equals("")
+                && !answer2Input.getText().equals("")
+                && !answer3Input.getText().equals("")
+                && !answer4Input.getText().equals("");
     }
     
     private static boolean isTheQuestionWritten() {
@@ -648,17 +675,14 @@ public class GenerateurTests {
     }
     
     private static void initNextButtonListener(String user) {
-        ActionListener nextButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (user.equals(CREATOR)) {
-                    saveCurrentQuestion();
-                } else {
-                    currentQuestion.setTesterAnswer(findTesterAnswer());
-                }
-                setNextQuestion();
-                updateButtonsStatus();
+        ActionListener nextButtonListener = e -> {
+            if (user.equals(CREATOR)) {
+                saveCurrentQuestion();
+            } else {
+                saveCurrentAnswer();
             }
+            setNextQuestion();
+            updateButtonsStatus();
         };
         nextButton.addActionListener(nextButtonListener);
     }
@@ -670,17 +694,14 @@ public class GenerateurTests {
     }
     
     private static void initPreviousButtonListener(String user) {
-        ActionListener previousButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (user.equals(CREATOR)) {
-                    saveCurrentQuestion();
-                } else {
-                    currentQuestion.setTesterAnswer(findTesterAnswer());
-                }
-                setPreviousQuestion();
-                updateButtonsStatus();
+        ActionListener previousButtonListener = e -> {
+            if (user.equals(CREATOR)) {
+                saveCurrentQuestion();
+            } else {
+                saveCurrentAnswer();
             }
+            setPreviousQuestion();
+            updateButtonsStatus();
         };
         previousButton.addActionListener(previousButtonListener);
     }
@@ -708,12 +729,9 @@ public class GenerateurTests {
     }
     
     private static void initCorrectTestButtonListener() {
-        ActionListener correctTestButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentQuestion.setTesterAnswer(findTesterAnswer());
-                correctTest();
-            }
+        ActionListener correctTestButtonListener = e -> {
+            saveCurrentAnswer();
+            correctTest();
         };
         correctTestButton.addActionListener(correctTestButtonListener);
         
@@ -738,7 +756,7 @@ public class GenerateurTests {
     }
     
     private static void saveCurrentAnswer() {
-        // TODO
+        currentQuestion.setTesterAnswer(findTesterAnswer());
     }
     
     private static void initSaveButton() {
@@ -751,17 +769,14 @@ public class GenerateurTests {
     }
     
     private static void initSaveButtonListener() {
-        ActionListener saveButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                saveCurrentQuestion();
-                currentTest.setTestName(testNameField.getText());
-                if (currentTest.isComplete()) {
-                    testsList.add(currentTest);
-                    getTestList();
-                }
-            
+        ActionListener saveButtonListener = e -> {
+            saveCurrentQuestion();
+            currentTest.setTestName(testNameField.getText());
+            if (currentTest.isComplete()) {
+                testsList.add(currentTest);
+                getTestList();
             }
+        
         };
         saveButton.addActionListener(saveButtonListener);
     }
@@ -797,7 +812,6 @@ public class GenerateurTests {
     }
     
     private static boolean anotherQuestionExist() {
-        boolean debug1 = currentTest.hasPrevious(questionsIndex);
         return currentTest.hasPrevious(questionsIndex)
                 || currentTest.hasNext(questionsIndex);
     }
