@@ -51,7 +51,20 @@ public class FileReaderWriter {
     }
     
     private static BufferedReader createFileReader() throws IOException {
-        return new BufferedReader(new FileReader(FILE_NAME));
+        BufferedReader reader = null;
+        Boolean readerCreated = false;
+        while (!readerCreated){
+            try {
+                reader = new BufferedReader(new FileReader(FILE_NAME));
+                readerCreated = true;
+
+            } catch (FileNotFoundException e) {
+                File fichierTests = new File(FILE_NAME);
+
+
+            }
+        }
+        return reader;
     }
     
     
