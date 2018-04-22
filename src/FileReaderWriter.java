@@ -50,7 +50,7 @@ public class FileReaderWriter {
         }
     }
     
-    public static BufferedReader createFileReader()  {
+    private static BufferedReader createFileReader()  {
         BufferedReader reader = null;
         Boolean readerCreated = false;
         while (!readerCreated){
