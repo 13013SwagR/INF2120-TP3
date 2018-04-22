@@ -42,7 +42,6 @@ public class Question {
         this.answerOption1 = question1;
         this.answerOption2 = question2;
         this.answerOption3 = question3;
-        
         this.answerOption4 = question4;
     }
     
