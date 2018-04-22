@@ -3,7 +3,7 @@ import java.io.*;
 
 public class FileReaderWriter {
     
-    private final static String FILE_NAME = "tests2.txt";
+    private final static String FILE_NAME = "tests.txt";
     
     public static String read() {
         String fileContent;
