@@ -50,7 +50,7 @@ public class FileReaderWriter {
         }
     }
     
-    private static BufferedReader createFileReader() throws IOException {
+    private static BufferedReader createFileReader() throws IOException  {
         BufferedReader reader = null;
         Boolean readerCreated = false;
         while (!readerCreated){
@@ -60,6 +60,7 @@ public class FileReaderWriter {
 
             } catch (FileNotFoundException e) {
                 File fichierTests = new File(FILE_NAME);
+                readerCreated = fichierTests.createNewFile();
 
 
             }
