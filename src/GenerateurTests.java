@@ -68,6 +68,7 @@ public class GenerateurTests {
     
     private static JTextArea questionStatementInput;
     private static JScrollPane statementInputScrollPane;
+    private static JScrollPane reportAreaScrollPane;
     
     private static void initStartUpWindow() {
         startUpWindow = new JFrame("Générateur de tests");
@@ -686,7 +687,6 @@ public class GenerateurTests {
         saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
         saveButtonPanel.setSize(510, 60);
         saveButtonPanel.setLocation(0, 25);
-        saveButtonPanel.setVisible(true);
         
         if (user.equals(CREATOR)) {
             saveButton = new JButton("Sauvegarder le test");
@@ -726,18 +726,18 @@ public class GenerateurTests {
             answer3Input.setVisible(false);
             answer4Input.setVisible(false);
             questionLabel.setText("RÉSULTAT DU TEST");
-            questionLabel.setSize(130,30);
-            questionLabel.setLocation(190,0);
+            questionLabel.setSize(130, 30);
+            questionLabel.setLocation(190, 0);
             questionStatementInput.setVisible(false);
             statementInputScrollPane.setVisible(false);
             JTextArea reportArea = new JTextArea(report);
-            reportArea.setSize(490,270);
-            reportArea.setLocation(10,10);
+            reportArea.setSize(490, 270);
+            reportArea.setLocation(10, 10);
             reportArea.setDisabledTextColor(Color.BLACK);
             reportArea.setLineWrap(true);
             reportArea.setEnabled(false);
             reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            JScrollPane reportAreaScrollPane = new JScrollPane(reportArea);
+            reportAreaScrollPane = new JScrollPane(reportArea);
             reportAreaScrollPane.setSize(490, 270);
             reportAreaScrollPane.setLocation(10, 10);
             reportAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane
@@ -745,14 +745,58 @@ public class GenerateurTests {
             JButton backToTestButton = new JButton("Revenir au test");
             backToTestButton.setSize(200, 20);
             backToTestButton.setLocation((510 - 200) / 2, 20);
-            saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0,0,0,0,Color.white));
+            
+            initBackToTestListener(backToTestButton);
+            
+            saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.white));
             questionDataPanel.add(reportAreaScrollPane);
             saveButtonPanel.add(backToTestButton);
             testCreatorWindow.repaint();
-            
         };
         correctTestButton.addActionListener(correctTestButtonListener);
         
+    }
+    
+    private static void initBackToTestListener(JButton backToTestButton) {
+        ActionListener backToTestListener = e -> {
+            String report;
+            saveCurrentAnswer();
+            report = generateCorrectionReport();
+            STATEMENT_LABEL.setVisible(true);
+            OPTIONS_STATEMENT_LABEL.setVisible(true);
+            questionNumberLabel.setVisible(true);
+            option1Label.setVisible(true);
+            option2Label.setVisible(true);
+            option3Label.setVisible(true);
+            option4Label.setVisible(true);
+            mainButtonsPanel.setVisible(true);
+            previousButton.setVisible(true);
+            nextButton.setVisible(true);
+            correctTestButton.setVisible(true);
+            boxAnswer1.setVisible(true);
+            boxAnswer2.setVisible(true);
+            boxAnswer3.setVisible(true);
+            boxAnswer4.setVisible(true);
+            answer1Input.setVisible(true);
+            answer2Input.setVisible(true);
+            answer3Input.setVisible(true);
+            answer4Input.setVisible(true);
+            questionLabel.setText("QUETION");
+            questionLabel.setLocation(10, 0);
+            questionLabel.setSize(90, 30);
+            questionStatementInput.setVisible(true);
+            statementInputScrollPane.setVisible(true);
+            reportAreaScrollPane.setVisible(false);
+            JTextArea reportArea = new JTextArea(report);
+            reportArea.setVisible(false);
+            reportArea.setVisible(false);
+            backToTestButton.setVisible(false);
+            initBackToTestListener(backToTestButton);
+            saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
+            testCreatorWindow.repaint();
+            
+        };
+        backToTestButton.addActionListener(backToTestListener);
     }
     
     private static String findTesterAnswer() {
@@ -776,7 +820,7 @@ public class GenerateurTests {
         for (Question question : currentTest.getQuestionsList()) {
             testTotal++;
             testResults.append("\n            QUESTION ").append(testTotal);
-    
+            
             if (testTotal < 10) {
                 testResults.append("  ");
             }
