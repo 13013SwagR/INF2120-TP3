@@ -3,6 +3,10 @@ import java.util.ArrayList;
 public class Test {
     private ArrayList<Question> questionsList = new ArrayList<Question>();
     private String testName;
+
+    public int getNumberOfQuestions(ArrayList<Question> questions){
+        return questions.size();
+    }
     
     public Test(String testName) {
         this.testName = testName;
