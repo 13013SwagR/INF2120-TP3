@@ -9,6 +9,7 @@ public class FileReaderWriter {
     public static String getFileName() {
         return FILE_NAME;
     }
+    
     public static void printTest(Test test){
         String SPACING = "-----";
         String SQUARE = "<>";

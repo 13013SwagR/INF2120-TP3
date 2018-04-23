@@ -114,8 +114,8 @@ public class GenerateurTests {
         importingTest.setTestName(testSections[0].split("\n")[1]);
         amountOfQuestions = Integer.parseInt(testSections[0].split("\n")[2]);
         
-        for (int questionNumber = 1; questionNumber <= amountOfQuestions; questionNumber++) {
-            sectionIndex = (questionNumber * 3) - 3;
+        for (int questionNumber = 0; questionNumber < amountOfQuestions; questionNumber++) {
+            sectionIndex = (questionNumber * 3);
             importingTest.save(importQuestion(
                     testSections[sectionIndex + 1],
                     testSections[sectionIndex + 2],
