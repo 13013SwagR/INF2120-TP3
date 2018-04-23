@@ -29,11 +29,10 @@ public class FileReaderWriter {
         return fileContent;
     }
     
-    public static boolean write(String fileContent) {
+    public static void write(String fileContent) {
         PrintWriter file = createPrintWriter();
         file.print(fileContent);
         file.close();
-        return true;
     }
     
     private static String read(BufferedReader testsFile) throws
@@ -46,10 +45,6 @@ public class FileReaderWriter {
         return fileContent.toString();
     }
     
-    private static boolean isFileEmpty(PrintWriter file) {
-        return file == null;
-    }
-    
     private static PrintWriter createPrintWriter() {
         try {
             return new PrintWriter(new FileWriter(FILE_NAME));
@@ -58,22 +53,17 @@ public class FileReaderWriter {
         }
     }
     
-    private static BufferedReader createFileReader()  {
+    
+    private static BufferedReader createFileReader () throws IOException {
         BufferedReader reader = null;
         Boolean readerCreated = false;
         while (!readerCreated){
             try {
                 reader = new BufferedReader(new FileReader(FILE_NAME));
                 readerCreated = true;
-
             } catch (IOException e) {
-                try {
                     File fichierTests = new File(FILE_NAME);
                     readerCreated = fichierTests.createNewFile();
-                }catch(IOException x){
-                    //TODO popUp file not created
-                }
-
             }
         }
         return reader;
