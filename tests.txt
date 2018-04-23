@@ -1,103 +1,163 @@
-Les couleurs15-----
+Les couleurs
+15
+-----
 Selon la théorie des couleurs, différents mélanges de couleurs donnent d'autres couleurs. On peut par exemple, mélanger deux couleurs primaires pour créer une couleur secondaire.
 
 Sachant cela, quelle couleur donne le mélange de rouge et de bleu ?
 -----
 Orange<>Bleu<>Violet<>Turquoise
------3-----
+-----
+2
+-----
 Quelle est la couleur chaude, parmi les suivantes ?
 -----
 Vert<>Bleu<>Violet<>Orange
------4-----
+-----
+3
+-----
 Quelle est la couleur complémentaire de vert ?
 -----
 Rouge<>Orange<>Bleu<>Violet
------1-----
+-----
+0
+-----
 Parmi les couleurs suivantes, laquelle est une couleur primaire ?
 -----
 Orange<>Bleu<>Vert<>Violet
------2-----
+-----
+1
+-----
 Parmi les couleurs suivantes, laquelle est une couleur secondaire ?
 -----
 Violet<>Bleu<>Jaune<>Rouge
------1-----
+-----
+0
+-----
 Quelle couleur donne le mélange de blanc et de noir ?
 -----
 Brun<>Turquoise<>Vert<>Gris
------4-----
+-----
+3
+-----
 En quelle année fut inventé le premier cercle chromatique (par Isaac Newton) ?
 -----
 1956<>1965<>1966<>1971
------3-----
+-----
+2
+-----
 Quelle est la couleur complémentaire de Orange ?
 -----
 Brun<>Bleu<>Jaune<>Turquoise
------2-----
+-----
+1
+-----
 Parmi les couleurs suivantes, laquelle n'est pas une couleur secondaire ?
 -----
 Brun<>Orange<>Vert<>Violet
------1-----
+-----
+0
+-----
 Quelle couleur donne le mélange de jaune et de bleu ?
 -----
 Violet<>Turquoise<>Vert<>Orange
------3-----
+-----
+2
+-----
 En RVB, quelle est la couleur 255, 255, 255 ?
 -----
 Brun<>turquoise<>Vert<>blanc
------4-----
+-----
+3
+-----
 Parmi les couleurs suivantes, laquelle est une teinte ?
 -----
 Turquoise<>Rose<>Vert<>Orange
------2-----
+-----
+1
+-----
 Quelle est la couleur de l'espérance ?
 -----
 Vert<>Rose<>Violet<>Orange
------1-----
+-----
+0
+-----
 Quelle couleur, parmi les suivantes, est une couleur froide ?
 -----
 Orange<>Jaune<>Violet<>Rouge
------3-----
+-----
+2
+-----
 Quelle est la couleur de la peur ?
 -----
 Rouge<>Bleu<>Brun<>Jaune
------2=====Les oiseaux4-----
+-----
+1
+=====
+Les oiseaux
+4
+-----
 Quelle est la couleur du bec d'un junco ardoisé ?
 -----
 Gris<>Noir<>Bleu<>Rose
------4-----
+-----
+3
+-----
 Parmi les oiseaux suivants, lequel est un rapace ?
 -----
 Mésange<>Aigle<>Corneille<>Paruline
------2-----
+-----
+1
+-----
 Parmi les canards suivants, lequel est un canard plongeur ?
 -----
 Canard Branchu<>Canard Souchet<>Grand Harle<>Canard Colvert
------3-----
+-----
+2
+-----
 Parmi les oiseaux suivants, lequel peut voler à reculon ?
 -----
 Colibri à gorge rubis<>Paruline jaune<>Mésange bicolore<>Sittelle à poitrine blanche
------1=====Math : les multiplications6-----
+-----
+0
+=====
+Math : les multiplications
+6
+-----
 6 x 4 = ?
 -----
 24<>22<>30<>26
------1-----
+-----
+0
+-----
 3 x 5 = ?
 -----
 20<>25<>15<>18
------3-----
+-----
+2
+-----
 9 x 12 = ?
 -----
 84<>102<>96<>108
------4-----
+-----
+3
+-----
 3 x 8 = ?
 -----
 14<>24<>16<>18
------2-----
+-----
+1
+-----
 7 x 6 = ?
 -----
 40<>36<>38<>42
------4-----
+-----
+3
+-----
 4 x 7 = ?
 -----
 28<>30<>26<>34
------1=====
+-----
+0
+=====
+
+

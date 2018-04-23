@@ -1,18 +1,20 @@
+/*
+  Nom: Vincent Dansereau
+  Code Permanent: DANV03049005
+ 
+  Nom: Mathieu Tremblay-Gravel
+  Code Permanent: TREM13079501
+ 
+  Cours: INF1120
+  Professeur: Mélanie Lord
+ 
+  Travail: TP3
+ */
 import java.io.*;
-import java.util.ArrayList;
-
 
 public class FileReaderWriter {
     
     private final static String FILE_NAME = "tests.txt";
-
-    public static String getFileName() {
-        return FILE_NAME;
-    }
-    
-    public static void printTest(Test test){
-    
-    }
 
     public static String read() {
         String fileContent;
@@ -21,17 +23,16 @@ public class FileReaderWriter {
             testsFile = createFileReader();
             fileContent = read(testsFile);
             testsFile.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             fileContent = "";
         }
         return fileContent;
     }
     
-    public static boolean write(String fileContent) {
+    public static void write(String fileContent) {
         PrintWriter file = createPrintWriter();
         file.print(fileContent);
         file.close();
-        return true;
     }
     
     private static String read(BufferedReader testsFile) throws
@@ -39,13 +40,9 @@ public class FileReaderWriter {
         StringBuilder fileContent = new StringBuilder();
         fileContent.append("\n");
         while (testsFile.ready()) {
-            fileContent.append(testsFile.readLine().trim() + "\n");
+            fileContent.append(testsFile.readLine().trim()).append("\n");
         }
         return fileContent.toString();
-    }
-    
-    private static boolean isFileEmpty(PrintWriter file) {
-        return file == null;
     }
     
     private static PrintWriter createPrintWriter() {
@@ -56,22 +53,17 @@ public class FileReaderWriter {
         }
     }
     
-    private static BufferedReader createFileReader()  {
+    
+    private static BufferedReader createFileReader () throws IOException {
         BufferedReader reader = null;
         Boolean readerCreated = false;
         while (!readerCreated){
             try {
                 reader = new BufferedReader(new FileReader(FILE_NAME));
                 readerCreated = true;
-
             } catch (IOException e) {
-                try {
                     File fichierTests = new File(FILE_NAME);
                     readerCreated = fichierTests.createNewFile();
-                }catch(IOException x){
-                    //TODO popUp file not created
-                }
-
             }
         }
         return reader;

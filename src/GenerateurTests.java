@@ -1,4 +1,15 @@
-//import com.sun.xml.internal.bind.v2.TODO;
+/*
+ * Nom: Vincent Dansereau
+ * Code Permanent: DANV03049005
+ *
+ * Nom: Mathieu Tremblay-Gravel
+ * Code Permanent: TREM13079501
+ *
+ * Cours: INF1120
+ * Professeur: Mélanie Lord
+ *
+ * Travail: TP3
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -129,16 +140,20 @@ public class GenerateurTests {
                                            String questionAnswer, int questionNumber) {
         
         Question importingQuestion = new Question(questionNumber);
+    
+        String trimmedQuestionStatement = replaceLast(questionStatement.replaceFirst("\n", ""),
+                "\n","");
+        importingQuestion.setQuestionStatement(trimmedQuestionStatement);
         
-        importingQuestion.setQuestionStatement(questionStatement);
-        
-        importingQuestion = importQuestionAnswerOptions(importingQuestion, questionAnswerOptions);
+        importingQuestion = importQuestionAnswerOptions(importingQuestion, questionAnswerOptions.replaceAll("\n",""));
         
         importingQuestion = importQuestionAnswer(importingQuestion, questionAnswer);
         
         return importingQuestion;
     }
-    
+    private static String replaceLast(String text, String regex, String replacement) {
+        return text.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
+    }
     private static Question importQuestionAnswerOptions(Question importingQuestion, String
             questionAnswerOptions) {
         String[] questionAnswers;
@@ -241,6 +256,7 @@ public class GenerateurTests {
     }
     
     private static void updateTestListComboBox() {
+        testsListComboBox.removeAllItems();
         for (Test test : testsList) {
             testsListComboBox.addItem(test.toString());
             testsListComboBox.setSelectedItem(test);
@@ -519,6 +535,7 @@ public class GenerateurTests {
             mainButtonsPanel = new JPanel(new GridLayout(0, 2, 20, 0));
             mainButtonsPanel.setLocation(172, 0);
             mainButtonsPanel.setSize(165, 15);
+            updateNextButtonStatus();
         }
         
     }
@@ -571,11 +588,11 @@ public class GenerateurTests {
             boxAnswer3.setSelected(currentQuestion.isAnswer3());
             boxAnswer4.setSelected(currentQuestion.isAnswer4());
         } else {
-            boxAnswer1.setSelected(currentQuestion.getTesterAnswer().equals("1"));
-            boxAnswer2.setSelected(currentQuestion.getTesterAnswer().equals("2"));
-            boxAnswer3.setSelected(currentQuestion.getTesterAnswer().equals("3"));
-            boxAnswer4.setSelected(currentQuestion.getTesterAnswer().equals("4"));
-            if (currentQuestion.getTesterAnswer().equals("0")) {
+            boxAnswer1.setSelected(currentQuestion.getTesterAnswer().equals("0"));
+            boxAnswer2.setSelected(currentQuestion.getTesterAnswer().equals("1"));
+            boxAnswer3.setSelected(currentQuestion.getTesterAnswer().equals("2"));
+            boxAnswer4.setSelected(currentQuestion.getTesterAnswer().equals("3"));
+            if (currentQuestion.getTesterAnswer().equals("9")) {
                 boxAnswersGroup.clearSelection();
             }
         }
@@ -656,7 +673,7 @@ public class GenerateurTests {
                 }
             } else {
                 saveCurrentAnswer();
-                if (currentQuestion.getTesterAnswer().equals("0")) {
+                if (currentQuestion.getTesterAnswer().equals("9")) {
                     errorAlert(NO_ANSWER_ERROR);
                 } else {
                     
@@ -687,7 +704,7 @@ public class GenerateurTests {
                 
             } else {
                 saveCurrentAnswer();
-                if (currentQuestion.getTesterAnswer().equals("0")) {
+                if (currentQuestion.getTesterAnswer().equals("9")) {
                     errorAlert(NO_ANSWER_ERROR);
                 } else {
                     setPreviousQuestion(user);
@@ -724,7 +741,7 @@ public class GenerateurTests {
     private static void initCorrectTestButtonListener() {
         ActionListener correctTestButtonListener = e -> {
             saveCurrentAnswer();
-            if (!currentQuestion.getTesterAnswer().equals("0")) {
+            if (!currentQuestion.getTesterAnswer().equals("9")) {
                 if (currentTest.allQuestionsAreAnswered()) {
                     String report;
                     report = generateCorrectionReport();
@@ -759,6 +776,7 @@ public class GenerateurTests {
                     reportArea.setLineWrap(true);
                     reportArea.setEnabled(false);
                     reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    reportArea.setFont(new Font("Courier New", Font.PLAIN,18));
                     reportAreaScrollPane = new JScrollPane(reportArea);
                     reportAreaScrollPane.setSize(490, 270);
                     reportAreaScrollPane.setLocation(10, 10);
@@ -822,15 +840,15 @@ public class GenerateurTests {
     }
     
     private static String findTesterAnswer() {
-        String answer = "0";
+        String answer = "9";
         if (boxAnswer1.isSelected()) {
-            answer = "1";
+            answer = "0";
         } else if (boxAnswer2.isSelected()) {
-            answer = "2";
+            answer = "1";
         } else if (boxAnswer3.isSelected()) {
-            answer = "3";
+            answer = "2";
         } else if (boxAnswer4.isSelected()) {
-            answer = "4";
+            answer = "3";
         }
         return answer;
     }
@@ -856,7 +874,7 @@ public class GenerateurTests {
             testResults.append("/1");
         }
         testResults.insert(0, " %\n");
-        testResults.insert(0, (float) testerTotal / testTotal * 100);
+        testResults.insert(0, Math.round((float) testerTotal / testTotal * 100));
         testResults.insert(0, "\n    NOTE FINALE   :   ");
         testResults.append("\n\n            TOTAL                      :           ").append
                 (testerTotal).append("/").append(testTotal).append("\n\n");
@@ -893,10 +911,11 @@ public class GenerateurTests {
     
     private static void exportTests() {
         StringBuilder fileContent  = new StringBuilder();
-        String sectionSeparator = "-----";
+        String sectionSeparator = "\n-----\n";
         String answerSeparator = "<>";
+        
         for (Test test : testsList) {
-            fileContent.append(test.getTestName()).append(test.getNumberOfQuestions());
+            fileContent.append(test.getTestName()).append("\n").append(test.getNumberOfQuestions());
             
             for (Question question : test.getQuestionsList()) {
                 fileContent.append(sectionSeparator).append(question.getQuestionStatement())
@@ -907,7 +926,7 @@ public class GenerateurTests {
                         .append(sectionSeparator).append(question.getGoodAnswerNumber());
             }
             
-            fileContent.append("=====");
+            fileContent.append("\n=====\n");
         }
         FileReaderWriter.write(fileContent.toString());
     }
