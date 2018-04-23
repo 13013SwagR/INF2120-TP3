@@ -18,6 +18,16 @@ public class GenerateurTests {
     
     private static final String TESTER = "Tester";
     private static final String CREATOR = "Creator";
+    private static final String QUESTION_STATEMENT_ERROR = "La question courante n'est pas "
+            + "valide!\nL'énoné de la question doit contenir\nentre 1 et 500 caractères.";
+    private static final String ANSWER_OPTIONS_ERROR = "La question courane n'est pas "
+            + "valide!\nChacun des choix de réponse doit contenir\nentre 1 et 50 caractères.";
+    private static final String ANSWER_SELECTION_ERROR = "La question courante n'est pas "
+            + "valide!\nLa bonne réponse doit être cochée dans les choix de réponses.";
+    private static final String EMPTY_TEST_LIST_ERROR = "La liste de tests est vide!";
+    private static final String NO_ANSWER_ERROR = "Veuillez sélectionner une réponse!";
+    private static final String TEST_NAME_ERROR = "Le test courant n'est pas valide!\nLe nom doit"
+            + " contenir entre 1 et 50 caractères";
     
     private final static int TEST_CREATOR_WINDOW_WIDTH = 550;
     private final static int TEST_CREATOR_WINDOW_HEIGHT = 540;
@@ -25,8 +35,6 @@ public class GenerateurTests {
     private final static int STARTUP_WINDOW_HEIGHT = 360;
     private final static int HAUT_BOUTON = 30;
     private final static int LARGEUR_BOUTON = 250;
-    
-    private static int questionsIndex;
     
     private static ArrayList<Test> testsList = new ArrayList<>();
     private static Question currentQuestion;
@@ -98,7 +106,7 @@ public class GenerateurTests {
     }
     
     private static Test importTest(String test) {
-        Test importingTest = new Test();
+        Test importingTest = new Test("");
         int sectionIndex;
         int amountOfQuestions;
         
@@ -183,7 +191,7 @@ public class GenerateurTests {
         ActionListener deleteTestButtonListener = e -> {
             Object selectedTest;
             if (testsList.isEmpty()) {
-                // TODO Error message
+                errorAlert(EMPTY_TEST_LIST_ERROR);
             } else {
                 selectedTest = testsListComboBox.getSelectedItem();
                 testsListComboBox.removeItem(selectedTest);
@@ -207,7 +215,7 @@ public class GenerateurTests {
         ActionListener passTestButtonListener = e -> {
             Object selectedTest;
             if (testsList.isEmpty()) {
-                // TODO Error message
+                errorAlert(EMPTY_TEST_LIST_ERROR);
             } else {
                 selectedTest = testsListComboBox.getSelectedItem();
                 currentTest = getTestWithTestName(selectedTest.toString());
@@ -276,9 +284,8 @@ public class GenerateurTests {
     
     
     private static void initTestCreatorWindow() {
-        currentQuestion = new Question(questionsIndex);
-        currentTest = new Test();
-        questionsIndex = 1;
+        currentQuestion = new Question(0);
+        currentTest = new Test("");
         
         testCreatorWindow = new JFrame("Créer un test");
         testCreatorWindow.setSize(TEST_CREATOR_WINDOW_WIDTH, TEST_CREATOR_WINDOW_HEIGHT);
@@ -386,12 +393,9 @@ public class GenerateurTests {
         questionLabel.setLocation(10, 0);
         questionLabel.setSize(90, 30);
         
-        questionNumberLabel = new JLabel(Integer.toString(questionsIndex));
+        questionNumberLabel = new JLabel(Integer.toString(currentQuestion.getQuestionNumber() + 1));
         questionNumberLabel.setSize(30, 30);
         questionNumberLabel.setLocation(90, 0);
-        if (user.equals(TESTER)) {
-            questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber()));
-        }
     }
     
     private static void initQuestionDataPanel(String user) {
@@ -519,10 +523,11 @@ public class GenerateurTests {
     private static void initRemoveButtonListener(String user) {
         ActionListener removeButtonListener = e -> {
             if (anotherQuestionExist()) {
+                saveCurrentQuestion();
                 Question questionToRemove = currentQuestion;
                 setExistingQuestion(user);
                 currentTest.removeQuestion(questionToRemove);
-                System.out.print(questionsIndex);
+                adjustCurrentQuestionNumberAndLabel();
                 updateRemoveButtonStatus();
                 updateNextButtonStatus();
                 updatePreviousButtonStatus();
@@ -532,23 +537,21 @@ public class GenerateurTests {
     }
     
     private static void setExistingQuestion(String user) {
-        if (currentTest.hasNext(questionsIndex)) {
+        if (currentTest.hasNext(currentQuestion.getQuestionNumber())) {
             setNextQuestion(user);
-            questionsIndex--;
-            adjustCurrentQuestionNumberToCurrentQuestionIndex();
         } else {
             setPreviousQuestion(user);
         }
     }
     
-    private static void adjustCurrentQuestionNumberToCurrentQuestionIndex() {
-        currentQuestion.setQuestionNumber(questionsIndex);
-        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber()));
+    private static void adjustCurrentQuestionNumberAndLabel() {
+        currentTest.resetQuestionsNumber();
+        currentQuestion.setQuestionNumber(currentTest.getQuestionsList().indexOf(currentQuestion));
+        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber() + 1));
     }
     
     private static void setNextQuestion(String user) {
-        currentQuestion = currentTest.getNextQuestion(questionsIndex);
-        questionsIndex++;
+        currentQuestion = currentTest.getNextQuestion(currentQuestion.getQuestionNumber());
         setToCurrentQuestion(user);
     }
     
@@ -558,7 +561,7 @@ public class GenerateurTests {
         answer2Input.setText(currentQuestion.getAnswerOption2());
         answer3Input.setText(currentQuestion.getAnswerOption3());
         answer4Input.setText(currentQuestion.getAnswerOption4());
-        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber()));
+        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber() + 1));
         if (user.equals(CREATOR)) {
             boxAnswer1.setSelected(currentQuestion.isAnswer1());
             boxAnswer2.setSelected(currentQuestion.isAnswer2());
@@ -577,28 +580,40 @@ public class GenerateurTests {
     }
     
     private static void setPreviousQuestion(String user) {
-        currentQuestion = currentTest.getPreviousQuestion(questionsIndex - 1);
-        questionsIndex--;
+        currentQuestion = currentTest.getPreviousQuestion(currentQuestion.getQuestionNumber());
         setToCurrentQuestion(user);
     }
     
     private static void initAddButtonListener() {
         ActionListener addButtonListener = e -> {
+            saveCurrentQuestion();
             if (currentQuestion.isQuestionComplete()) {
-                if (isQuestionComplete()) {
-                    saveCurrentQuestion();
-                    questionsIndex++;
-                    resetQuestionForm();
-                    currentQuestion = new Question(questionsIndex);
-                    updateRemoveButtonStatus();
-                    updateNextButtonStatus();
-                    updatePreviousButtonStatus();
-                }
+                currentQuestion = new Question(currentQuestion.getQuestionNumber() + 1);
+                currentTest.addQuestion(currentQuestion, currentQuestion.getQuestionNumber());
+                resetQuestionForm();
+                adjustCurrentQuestionNumberAndLabel();
+                updateRemoveButtonStatus();
+                updateNextButtonStatus();
+                updatePreviousButtonStatus();
             } else {
-                // TODO Error message
+                incompleteQuestionAlert();
             }
         };
         addButton.addActionListener(addButtonListener);
+    }
+    
+    private static void incompleteQuestionAlert() {
+        if (!currentQuestion.isQuestionStatementFilled()) {
+            errorAlert(QUESTION_STATEMENT_ERROR);
+        } else if (!currentQuestion.isAnswerOptionsComplete()) {
+            errorAlert(ANSWER_OPTIONS_ERROR);
+        } else {
+            errorAlert(ANSWER_SELECTION_ERROR);
+        }
+    }
+    
+    private static void errorAlert(String errorMessage) {
+        JOptionPane.showMessageDialog(testCreatorWindow, errorMessage, "ERREUR", JOptionPane.ERROR_MESSAGE);
     }
     
     private static void resetQuestionForm() {
@@ -608,28 +623,7 @@ public class GenerateurTests {
         answer3Input.setText("");
         answer4Input.setText("");
         boxAnswersGroup.clearSelection();
-        questionNumberLabel.setText(Integer.toString(questionsIndex));
-    }
-    
-    private static boolean isQuestionComplete() {
-        return isACheckBoxSelected() && isTheQuestionWritten() &&
-                areAllAnswersWritten();
-    }
-    
-    private static boolean areAllAnswersWritten() {
-        return !answer1Input.getText().equals("")
-                && !answer2Input.getText().equals("")
-                && !answer3Input.getText().equals("")
-                && !answer4Input.getText().equals("");
-    }
-    
-    private static boolean isTheQuestionWritten() {
-        return !questionStatementInput.getText().equals("");
-    }
-    
-    private static boolean isACheckBoxSelected() {
-        return boxAnswer1.isSelected() || boxAnswer2.isSelected() ||
-                boxAnswer3.isSelected() || boxAnswer4.isSelected();
+        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber() + 1));
     }
     
     private static void saveCurrentQuestion() {
@@ -646,38 +640,59 @@ public class GenerateurTests {
     
     private static void initNextButtonListener(String user) {
         ActionListener nextButtonListener = (ActionEvent e) -> {
-            if (currentQuestion.isQuestionComplete()) {
-                if (user.equals(CREATOR)) {
-                    saveCurrentQuestion();
+            saveCurrentQuestion();
+            saveCurrentAnswer();;
+            if (user.equals(CREATOR)) {
+                if (currentQuestion.isQuestionComplete()) {
+                    
+                    setNextQuestion(user);
                     updateRemoveButtonStatus();
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
                 } else {
-                    saveCurrentAnswer();
+                    incompleteQuestionAlert();
                 }
-                setNextQuestion(user);
-                updateNextButtonStatus();
-                updatePreviousButtonStatus();
             } else {
-                // TODO Error message
+                if (findTesterAnswer().equals("0")) {
+                    errorAlert(NO_ANSWER_ERROR);
+                } else {
+                    
+                    setNextQuestion(user);
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                }
             }
+            
         };
         nextButton.addActionListener(nextButtonListener);
     }
     
     private static void initPreviousButtonListener(String user) {
         ActionListener previousButtonListener = e -> {
-            if (currentQuestion.isQuestionComplete()) {
-                if (user.equals(CREATOR)) {
-                    saveCurrentQuestion();
+            saveCurrentQuestion();
+            if (user.equals(CREATOR)) {
+                if (currentQuestion.isQuestionComplete()) {
+                    
                     updateRemoveButtonStatus();
+                    setPreviousQuestion(user);
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                    
+                } else {
+                    incompleteQuestionAlert();
+                }
+            } else {
+                if (findTesterAnswer().equals("0")) {
+                    errorAlert(NO_ANSWER_ERROR);
                 } else {
                     saveCurrentAnswer();
+                    setPreviousQuestion(user);
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
                 }
-                setPreviousQuestion(user);
-                updateNextButtonStatus();
-                updatePreviousButtonStatus();
-            } else {
-                // TODO Error message
             }
+            
+            
         };
         previousButton.addActionListener(previousButtonListener);
     }
@@ -847,27 +862,30 @@ public class GenerateurTests {
     
     private static void initSaveButtonListener() {
         ActionListener saveButtonListener = e -> {
-            if (currentTest.isComplete()) {
-                if (currentQuestion.isQuestionComplete()) {
-                    saveCurrentQuestion();
-                    
-                    currentTest.setTestName(testNameField.getText());
-                    
+            currentTest.setTestName(testNameField.getText());
+            saveCurrentQuestion();
+            if (currentQuestion.isQuestionComplete()) {
+                if (currentTest.hasAName()) {
                     testsList.add(currentTest);
                     updateTestListComboBox();
+                    // TODO export tests
+                    JOptionPane.showMessageDialog(testCreatorWindow, "Le test a été sauvegardé.");
+                    testCreatorWindow.setVisible(false);
+                    testCreatorWindow.dispose();
                 } else {
-                    // TODO Error question is invalid
+                    errorAlert(TEST_NAME_ERROR);
                 }
             } else {
-                // TODO Error testName is invalid
+                incompleteQuestionAlert();
             }
+            
             
         };
         saveButton.addActionListener(saveButtonListener);
     }
     
     private static void updatePreviousButtonStatus() {
-        if (currentTest.hasPrevious(questionsIndex)) {
+        if (currentTest.hasPrevious(currentQuestion.getQuestionNumber())) {
             previousButton.setEnabled(true);
         } else {
             previousButton.setEnabled(false);
@@ -875,7 +893,7 @@ public class GenerateurTests {
     }
     
     private static void updateNextButtonStatus() {
-        if (currentTest.hasNext(questionsIndex)) {
+        if (currentTest.hasNext(currentQuestion.getQuestionNumber())) {
             nextButton.setEnabled(true);
         } else {
             nextButton.setEnabled(false);
@@ -891,8 +909,8 @@ public class GenerateurTests {
     }
     
     private static boolean anotherQuestionExist() {
-        return currentTest.hasPrevious(questionsIndex)
-                || currentTest.hasNext(questionsIndex);
+        return currentTest.hasPrevious(currentQuestion.getQuestionNumber())
+                || currentTest.hasNext(currentQuestion.getQuestionNumber());
     }
     
     private static void initTesterWindow() {
