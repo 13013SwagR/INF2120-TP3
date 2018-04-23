@@ -3,6 +3,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GenerateurTests {
@@ -160,7 +163,7 @@ public class GenerateurTests {
         ActionListener createNewTestButtonListener = e -> initTestCreatorWindow();
         createNewTestButton.addActionListener(createNewTestButtonListener);
     }
-    
+
     private static void addComponentsToStartupWindow() {
         startUpWindow.getContentPane().add(createNewTestButton);
         startUpWindow.getContentPane().add(passTestButton);
@@ -234,6 +237,7 @@ public class GenerateurTests {
             testsListComboBox.setSelectedItem(test);
         }
     }
+
     
     private static JPanel createStartUpWindowBlackLine() {
         JPanel blackLine;
@@ -761,6 +765,7 @@ public class GenerateurTests {
                     
                     testsList.add(currentTest);
                     updateTestListComboBox();
+                    FileReaderWriter.printTest(currentTest);
                 } else {
                     // TODO Error question is invalid
                 }
