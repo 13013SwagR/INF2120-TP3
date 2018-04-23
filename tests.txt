@@ -1,7 +1,7 @@
 Les couleurs
 15
 -----
-Selon la théorie des couleurs, différents mélanges de couleurs donnent d'autres couleurs. On peut par exemple, mélanger deux couleurs primaires pour créer une couleur secondaire. 
+Selon la théorie des couleurs, différents mélanges de couleurs donnent d'autres couleurs. On peut par exemple, mélanger deux couleurs primaires pour créer une couleur secondaire.
 
 Sachant cela, quelle couleur donne le mélange de rouge et de bleu ?
 -----
@@ -116,7 +116,7 @@ Canard Branchu<>Canard Souchet<>Grand Harle<>Canard Colvert
 -----
 Parmi les oiseaux suivants, lequel peut voler à reculon ?
 -----
-Colibri à gorge rubis<>Paruline jaune<>Mésange bicolore<>Sittelle à poitrine blanche 
+Colibri à gorge rubis<>Paruline jaune<>Mésange bicolore<>Sittelle à poitrine blanche
 -----
 0
 =====

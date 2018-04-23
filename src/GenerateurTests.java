@@ -662,7 +662,7 @@ public class GenerateurTests {
                 }
             } else {
                 saveCurrentAnswer();
-                if (currentQuestion.getTesterAnswer().equals("0")) {
+                if (currentQuestion.getTesterAnswer().equals("9")) {
                     errorAlert(NO_ANSWER_ERROR);
                 } else {
                     
@@ -693,7 +693,7 @@ public class GenerateurTests {
                 
             } else {
                 saveCurrentAnswer();
-                if (currentQuestion.getTesterAnswer().equals("0")) {
+                if (currentQuestion.getTesterAnswer().equals("9")) {
                     errorAlert(NO_ANSWER_ERROR);
                 } else {
                     setPreviousQuestion(user);
@@ -765,6 +765,7 @@ public class GenerateurTests {
                     reportArea.setLineWrap(true);
                     reportArea.setEnabled(false);
                     reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    reportArea.setFont(new Font("Courier New", Font.PLAIN,18));
                     reportAreaScrollPane = new JScrollPane(reportArea);
                     reportAreaScrollPane.setSize(490, 270);
                     reportAreaScrollPane.setLocation(10, 10);
