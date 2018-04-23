@@ -82,7 +82,7 @@ public class Question {
     }
     
     public String getGoodAnswerNumber() {
-        String answer = "0";
+        String answer = null;
         if (this.isAnswer1()) {
             answer = "1";
         } else if (this.isAnswer2()) {

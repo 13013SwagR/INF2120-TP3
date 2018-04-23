@@ -28,6 +28,7 @@ public class GenerateurTests {
     private static final String NO_ANSWER_ERROR = "Veuillez sélectionner une réponse!";
     private static final String TEST_NAME_ERROR = "Le test courant n'est pas valide!\nLe nom doit"
             + " contenir entre 1 et 50 caractères";
+    private static final String INCOMPLETE_TEST_ERROR = "Veuillez compléter le test!";
     
     private final static int TEST_CREATOR_WINDOW_WIDTH = 550;
     private final static int TEST_CREATOR_WINDOW_HEIGHT = 540;
@@ -640,9 +641,8 @@ public class GenerateurTests {
     
     private static void initNextButtonListener(String user) {
         ActionListener nextButtonListener = (ActionEvent e) -> {
-            saveCurrentQuestion();
-            saveCurrentAnswer();;
             if (user.equals(CREATOR)) {
+                saveCurrentQuestion();
                 if (currentQuestion.isQuestionComplete()) {
                     
                     setNextQuestion(user);
@@ -653,7 +653,8 @@ public class GenerateurTests {
                     incompleteQuestionAlert();
                 }
             } else {
-                if (findTesterAnswer().equals("0")) {
+                saveCurrentAnswer();
+                if (currentQuestion.getTesterAnswer().equals("0")) {
                     errorAlert(NO_ANSWER_ERROR);
                 } else {
                     
@@ -669,27 +670,29 @@ public class GenerateurTests {
     
     private static void initPreviousButtonListener(String user) {
         ActionListener previousButtonListener = e -> {
-            saveCurrentQuestion();
+            
+            
             if (user.equals(CREATOR)) {
+                saveCurrentQuestion();
                 if (currentQuestion.isQuestionComplete()) {
-                    
                     updateRemoveButtonStatus();
                     setPreviousQuestion(user);
                     updateNextButtonStatus();
                     updatePreviousButtonStatus();
-                    
                 } else {
                     incompleteQuestionAlert();
                 }
+                
             } else {
-                if (findTesterAnswer().equals("0")) {
+                saveCurrentAnswer();
+                if (currentQuestion.getTesterAnswer().equals("0")) {
                     errorAlert(NO_ANSWER_ERROR);
                 } else {
-                    saveCurrentAnswer();
                     setPreviousQuestion(user);
                     updateNextButtonStatus();
                     updatePreviousButtonStatus();
                 }
+                
             }
             
             
@@ -718,55 +721,63 @@ public class GenerateurTests {
     
     private static void initCorrectTestButtonListener() {
         ActionListener correctTestButtonListener = e -> {
-            String report;
             saveCurrentAnswer();
-            report = generateCorrectionReport();
-            STATEMENT_LABEL.setVisible(false);
-            OPTIONS_STATEMENT_LABEL.setVisible(false);
-            questionNumberLabel.setVisible(false);
-            option1Label.setVisible(false);
-            option2Label.setVisible(false);
-            option3Label.setVisible(false);
-            option4Label.setVisible(false);
-            mainButtonsPanel.setVisible(false);
-            previousButton.setVisible(false);
-            nextButton.setVisible(false);
-            correctTestButton.setVisible(false);
-            boxAnswer1.setVisible(false);
-            boxAnswer2.setVisible(false);
-            boxAnswer3.setVisible(false);
-            boxAnswer4.setVisible(false);
-            answer1Input.setVisible(false);
-            answer2Input.setVisible(false);
-            answer3Input.setVisible(false);
-            answer4Input.setVisible(false);
-            questionLabel.setText("RÉSULTAT DU TEST");
-            questionLabel.setSize(130, 30);
-            questionLabel.setLocation(190, 0);
-            questionStatementInput.setVisible(false);
-            statementInputScrollPane.setVisible(false);
-            JTextArea reportArea = new JTextArea(report);
-            reportArea.setSize(490, 270);
-            reportArea.setLocation(10, 10);
-            reportArea.setDisabledTextColor(Color.BLACK);
-            reportArea.setLineWrap(true);
-            reportArea.setEnabled(false);
-            reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            reportAreaScrollPane = new JScrollPane(reportArea);
-            reportAreaScrollPane.setSize(490, 270);
-            reportAreaScrollPane.setLocation(10, 10);
-            reportAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane
-                    .VERTICAL_SCROLLBAR_AS_NEEDED);
-            JButton backToTestButton = new JButton("Revenir au test");
-            backToTestButton.setSize(200, 20);
-            backToTestButton.setLocation((510 - 200) / 2, 20);
-            
-            initBackToTestListener(backToTestButton);
-            
-            saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.white));
-            questionDataPanel.add(reportAreaScrollPane);
-            saveButtonPanel.add(backToTestButton);
-            testCreatorWindow.repaint();
+            if (!currentQuestion.getTesterAnswer().equals("0")) {
+                if (currentTest.allQuestionsAreAnswered()) {
+                    String report;
+                    report = generateCorrectionReport();
+                    STATEMENT_LABEL.setVisible(false);
+                    OPTIONS_STATEMENT_LABEL.setVisible(false);
+                    questionNumberLabel.setVisible(false);
+                    option1Label.setVisible(false);
+                    option2Label.setVisible(false);
+                    option3Label.setVisible(false);
+                    option4Label.setVisible(false);
+                    mainButtonsPanel.setVisible(false);
+                    previousButton.setVisible(false);
+                    nextButton.setVisible(false);
+                    correctTestButton.setVisible(false);
+                    boxAnswer1.setVisible(false);
+                    boxAnswer2.setVisible(false);
+                    boxAnswer3.setVisible(false);
+                    boxAnswer4.setVisible(false);
+                    answer1Input.setVisible(false);
+                    answer2Input.setVisible(false);
+                    answer3Input.setVisible(false);
+                    answer4Input.setVisible(false);
+                    questionLabel.setText("RÉSULTAT DU TEST");
+                    questionLabel.setSize(130, 30);
+                    questionLabel.setLocation(190, 0);
+                    questionStatementInput.setVisible(false);
+                    statementInputScrollPane.setVisible(false);
+                    JTextArea reportArea = new JTextArea(report);
+                    reportArea.setSize(490, 270);
+                    reportArea.setLocation(10, 10);
+                    reportArea.setDisabledTextColor(Color.BLACK);
+                    reportArea.setLineWrap(true);
+                    reportArea.setEnabled(false);
+                    reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    reportAreaScrollPane = new JScrollPane(reportArea);
+                    reportAreaScrollPane.setSize(490, 270);
+                    reportAreaScrollPane.setLocation(10, 10);
+                    reportAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane
+                            .VERTICAL_SCROLLBAR_AS_NEEDED);
+                    JButton backToTestButton = new JButton("Revenir au test");
+                    backToTestButton.setSize(200, 20);
+                    backToTestButton.setLocation((510 - 200) / 2, 20);
+        
+                    initBackToTestListener(backToTestButton);
+        
+                    saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.white));
+                    questionDataPanel.add(reportAreaScrollPane);
+                    saveButtonPanel.add(backToTestButton);
+                    testCreatorWindow.repaint();
+                } else {
+                    errorAlert(INCOMPLETE_TEST_ERROR);
+                }
+            } else {
+                errorAlert(NO_ANSWER_ERROR);
+            }
         };
         correctTestButton.addActionListener(correctTestButtonListener);
         
@@ -774,9 +785,6 @@ public class GenerateurTests {
     
     private static void initBackToTestListener(JButton backToTestButton) {
         ActionListener backToTestListener = e -> {
-            String report;
-            saveCurrentAnswer();
-            report = generateCorrectionReport();
             STATEMENT_LABEL.setVisible(true);
             OPTIONS_STATEMENT_LABEL.setVisible(true);
             questionNumberLabel.setVisible(true);
@@ -796,15 +804,12 @@ public class GenerateurTests {
             answer2Input.setVisible(true);
             answer3Input.setVisible(true);
             answer4Input.setVisible(true);
-            questionLabel.setText("QUETION");
+            questionLabel.setText("QUESTION");
             questionLabel.setLocation(10, 0);
             questionLabel.setSize(90, 30);
             questionStatementInput.setVisible(true);
             statementInputScrollPane.setVisible(true);
             reportAreaScrollPane.setVisible(false);
-            JTextArea reportArea = new JTextArea(report);
-            reportArea.setVisible(false);
-            reportArea.setVisible(false);
             backToTestButton.setVisible(false);
             initBackToTestListener(backToTestButton);
             saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
@@ -849,7 +854,7 @@ public class GenerateurTests {
             testResults.append("/1");
         }
         testResults.insert(0, " %\n");
-        testResults.insert(0, testerTotal / testTotal * 100);
+        testResults.insert(0, (float)testerTotal / testTotal * 100);
         testResults.insert(0, "\n    NOTE FINALE   :   ");
         testResults.append("\n\n            TOTAL                      :           ").append
                 (testerTotal).append("/").append(testTotal).append("\n\n");

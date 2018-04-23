@@ -8,6 +8,13 @@ public class Test {
         return questions.size();
     }
     
+    public boolean allQuestionsAreAnswered() {
+        boolean result = true;
+        for (Question question : this.questionsList) {
+            result = result && (!question.getTesterAnswer().equals("0"));
+        }
+        return result;
+    }
     public Test(String testName) {
         this.testName = testName;
     }
