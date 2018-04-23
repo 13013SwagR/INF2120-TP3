@@ -703,8 +703,53 @@ public class GenerateurTests {
     
     private static void initCorrectTestButtonListener() {
         ActionListener correctTestButtonListener = e -> {
+            String report;
             saveCurrentAnswer();
-            generateCorrectionReport();
+            report = generateCorrectionReport();
+            STATEMENT_LABEL.setVisible(false);
+            OPTIONS_STATEMENT_LABEL.setVisible(false);
+            questionNumberLabel.setVisible(false);
+            option1Label.setVisible(false);
+            option2Label.setVisible(false);
+            option3Label.setVisible(false);
+            option4Label.setVisible(false);
+            mainButtonsPanel.setVisible(false);
+            previousButton.setVisible(false);
+            nextButton.setVisible(false);
+            correctTestButton.setVisible(false);
+            boxAnswer1.setVisible(false);
+            boxAnswer2.setVisible(false);
+            boxAnswer3.setVisible(false);
+            boxAnswer4.setVisible(false);
+            answer1Input.setVisible(false);
+            answer2Input.setVisible(false);
+            answer3Input.setVisible(false);
+            answer4Input.setVisible(false);
+            questionLabel.setText("RÉSULTAT DU TEST");
+            questionLabel.setSize(130,30);
+            questionLabel.setLocation(190,0);
+            questionStatementInput.setVisible(false);
+            statementInputScrollPane.setVisible(false);
+            JTextArea reportArea = new JTextArea(report);
+            reportArea.setSize(490,270);
+            reportArea.setLocation(10,10);
+            reportArea.setDisabledTextColor(Color.BLACK);
+            reportArea.setLineWrap(true);
+            reportArea.setEnabled(false);
+            reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            JScrollPane reportAreaScrollPane = new JScrollPane(reportArea);
+            reportAreaScrollPane.setSize(490, 270);
+            reportAreaScrollPane.setLocation(10, 10);
+            reportAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane
+                    .VERTICAL_SCROLLBAR_AS_NEEDED);
+            JButton backToTestButton = new JButton("Revenir au test");
+            backToTestButton.setSize(200, 20);
+            backToTestButton.setLocation((510 - 200) / 2, 20);
+            saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0,0,0,0,Color.white));
+            questionDataPanel.add(reportAreaScrollPane);
+            saveButtonPanel.add(backToTestButton);
+            testCreatorWindow.repaint();
+            
         };
         correctTestButton.addActionListener(correctTestButtonListener);
         
@@ -724,27 +769,32 @@ public class GenerateurTests {
         return answer;
     }
     
-    private static void generateCorrectionReport() {
+    private static String generateCorrectionReport() {
         StringBuilder testResults = new StringBuilder();
         int testerTotal = 0;
         int testTotal = 0;
         for (Question question : currentTest.getQuestionsList()) {
             testTotal++;
-            testResults.append("      QUESTION ").append(testTotal).append("     :     ");
+            testResults.append("\n            QUESTION ").append(testTotal);
+    
+            if (testTotal < 10) {
+                testResults.append("  ");
+            }
+            testResults.append("           :           ");
             if (question.getTesterAnswer().equals(question.getGoodAnswerNumber())) {
                 testResults.append("1");
                 testerTotal++;
             } else {
                 testResults.append("0");
             }
-            testResults.append("/1\n");
-            
+            testResults.append("/1");
         }
         testResults.insert(0, " %\n");
         testResults.insert(0, testerTotal / testTotal * 100);
-        testResults.insert(0, "\n  NOTE FINALE : ");
-        testResults.append("\n      TOTAL          :     ").append(testerTotal).append("/").append
-                (testTotal);
+        testResults.insert(0, "\n    NOTE FINALE   :   ");
+        testResults.append("\n\n            TOTAL                      :           ").append
+                (testerTotal).append("/").append(testTotal).append("\n\n");
+        return testResults.toString();
     }
     
     private static void saveCurrentAnswer() {
