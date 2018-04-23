@@ -1,7 +1,19 @@
+/*
+ * Nom: Vincent Dansereau
+ * Code Permanent: DANV03049005
+ *
+ * Nom: Mathieu Tremblay-Gravel
+ * Code Permanent: TREM13079501
+ *
+ * Cours: INF1120
+ * Professeur: Mélanie Lord
+ *
+ * Travail: TP3
+ */
 import java.util.ArrayList;
 
 public class Test {
-    private ArrayList<Question> questionsList = new ArrayList<Question>();
+    private ArrayList<Question> questionsList = new ArrayList<>();
     private String testName;
     
     public int getNumberOfQuestions() {
@@ -38,7 +50,7 @@ public class Test {
         this.questionsList.remove(question);
     }
     
-    public boolean isAQuestion(Question question) {
+    private boolean isAQuestion(Question question) {
         return this.questionsList.contains(question);
     }
     

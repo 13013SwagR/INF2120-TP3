@@ -1,4 +1,15 @@
-//import com.sun.xml.internal.bind.v2.TODO;
+/*
+ * Nom: Vincent Dansereau
+ * Code Permanent: DANV03049005
+ *
+ * Nom: Mathieu Tremblay-Gravel
+ * Code Permanent: TREM13079501
+ *
+ * Cours: INF1120
+ * Professeur: Mélanie Lord
+ *
+ * Travail: TP3
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -140,7 +151,7 @@ public class GenerateurTests {
         
         return importingQuestion;
     }
-    public static String replaceLast(String text, String regex, String replacement) {
+    private static String replaceLast(String text, String regex, String replacement) {
         return text.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
     }
     private static Question importQuestionAnswerOptions(Question importingQuestion, String
@@ -863,7 +874,7 @@ public class GenerateurTests {
             testResults.append("/1");
         }
         testResults.insert(0, " %\n");
-        testResults.insert(0, (float) testerTotal / testTotal * 100);
+        testResults.insert(0, Math.round((float) testerTotal / testTotal * 100));
         testResults.insert(0, "\n    NOTE FINALE   :   ");
         testResults.append("\n\n            TOTAL                      :           ").append
                 (testerTotal).append("/").append(testTotal).append("\n\n");

@@ -1,3 +1,15 @@
+/*
+ * Nom: Vincent Dansereau
+ * Code Permanent: DANV03049005
+ *
+ * Nom: Mathieu Tremblay-Gravel
+ * Code Permanent: TREM13079501
+ *
+ * Cours: INF1120
+ * Professeur: Mélanie Lord
+ *
+ * Travail: TP3
+ */
 public class Question {
     private int questionNumber;
     private String questionStatement;

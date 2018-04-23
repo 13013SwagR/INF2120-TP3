@@ -1,18 +1,20 @@
+/*
+  Nom: Vincent Dansereau
+  Code Permanent: DANV03049005
+ 
+  Nom: Mathieu Tremblay-Gravel
+  Code Permanent: TREM13079501
+ 
+  Cours: INF1120
+  Professeur: Mélanie Lord
+ 
+  Travail: TP3
+ */
 import java.io.*;
-import java.util.ArrayList;
-
 
 public class FileReaderWriter {
     
     private final static String FILE_NAME = "tests.txt";
-
-    public static String getFileName() {
-        return FILE_NAME;
-    }
-    
-    public static void printTest(Test test){
-    
-    }
 
     public static String read() {
         String fileContent;
@@ -21,7 +23,7 @@ public class FileReaderWriter {
             testsFile = createFileReader();
             fileContent = read(testsFile);
             testsFile.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             fileContent = "";
         }
         return fileContent;
@@ -39,7 +41,7 @@ public class FileReaderWriter {
         StringBuilder fileContent = new StringBuilder();
         fileContent.append("\n");
         while (testsFile.ready()) {
-            fileContent.append(testsFile.readLine().trim() + "\n");
+            fileContent.append(testsFile.readLine().trim()).append("\n");
         }
         return fileContent.toString();
     }
