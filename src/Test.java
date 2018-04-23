@@ -8,19 +8,13 @@ public class Test {
         return questions.size();
     }
     
-    public Test() {
+    public Test(String testName) {
+        this.testName = testName;
     }
     
-    public boolean isComplete() {
-        boolean result = true;
-        for (Question question : questionsList) {
-            result = result && question.isQuestionComplete();
-        }
-        return result && hasAName();
-    }
-    
-    private boolean hasAName() {
-        return testName != null && testName.length() > 0;
+    public boolean hasAName() {
+        return testName.replaceAll(" ", "").length() > 0
+                && testName.replaceAll(" ", "").length() < 50;
     }
     
     public void save(Question question) {
@@ -42,7 +36,7 @@ public class Test {
     
     public boolean hasNext(int questionIndex) {
         
-        return hasMoreThanNQuestion(questionIndex);
+        return hasMoreThanNQuestion(questionIndex + 1);
     }
     
     public boolean hasPrevious(int questionIndex) {
@@ -54,11 +48,11 @@ public class Test {
     }
     
     private boolean isFirstQuestion(int questionIndex) {
-        return 0 == questionIndex - 1;
+        return 0 == questionIndex;
     }
     
     public Question getNextQuestion(int questionIndex) {
-        return this.questionsList.get(questionIndex);
+        return this.questionsList.get(questionIndex + 1);
     }
     
     public Question getPreviousQuestion(int questionIndex) {
@@ -77,8 +71,14 @@ public class Test {
         return questionsList;
     }
     
-    public void setQuestionsList(ArrayList<Question> questionsList) {
-        this.questionsList = questionsList;
+    public void resetQuestionsNumber() {
+        for (Question question : this.questionsList) {
+            question.setQuestionNumber(this.questionsList.indexOf(question));
+        }
+    }
+    
+    public void addQuestion(Question question, int questionNumber) {
+        this.questionsList.add(questionNumber, question);
     }
     
     @Override

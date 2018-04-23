@@ -107,18 +107,24 @@ public class Question {
         return isAnswerOptionsComplete() && isAnswerSelected() && isQuestionStatementFilled();
     }
     
-    private boolean isQuestionStatementFilled() {
-        return this.questionStatement.length() > 0;
+    public boolean isQuestionStatementFilled() {
+        return questionStatement.replaceAll(" ", "").length() > 0
+                && questionStatement.replaceAll(" ", "").length() < 500;
     }
     
-    private boolean isAnswerSelected() {
+    public boolean isAnswerSelected() {
         return answer1 || answer2 || answer3 || answer4;
     }
     
-    private boolean isAnswerOptionsComplete() {
-        return answerOption1.length() > 0 &&
-                answerOption2.length() > 0 &&
-                answerOption3.length() > 0 && answerOption4.length() > 0;
+    public boolean isAnswerOptionsComplete() {
+        return (answerOption1.replaceAll(" ", "").length() > 0) &&
+                (answerOption2.replaceAll(" ", "").length() > 0) &&
+                (answerOption3.replaceAll(" ", "").length() > 0) &&
+                (answerOption4.replaceAll(" ", "").length() > 0) &&
+                (answerOption1.replaceAll(" ", "").length() < 50) &&
+                (answerOption2.replaceAll(" ", "").length() < 50) &&
+                (answerOption3.replaceAll(" ", "").length() < 50) &&
+                (answerOption4.replaceAll(" ", "").length() < 50);
     }
     
     public String getTesterAnswer() {
