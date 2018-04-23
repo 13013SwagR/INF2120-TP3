@@ -22,7 +22,7 @@ public class Question {
         this.answer2 = false;
         this.answer3 = false;
         this.answer4 = false;
-        this.testerAnswer = "0";
+        this.testerAnswer = "9";
     }
     
     public String getQuestionStatement() {
@@ -84,13 +84,13 @@ public class Question {
     public String getGoodAnswerNumber() {
         String answer = null;
         if (this.isAnswer1()) {
-            answer = "1";
+            answer = "0";
         } else if (this.isAnswer2()) {
-            answer = "2";
+            answer = "1";
         } else if (this.isAnswer3()) {
-            answer = "3";
+            answer = "2";
         } else if (this.isAnswer4()) {
-            answer = "4";
+            answer = "3";
         }
         return answer;
     }

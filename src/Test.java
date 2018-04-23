@@ -11,7 +11,7 @@ public class Test {
     public boolean allQuestionsAreAnswered() {
         boolean result = true;
         for (Question question : this.questionsList) {
-            result = result && (!question.getTesterAnswer().equals("0"));
+            result = result && (!question.getTesterAnswer().equals("9"));
         }
         return result;
     }
@@ -87,7 +87,7 @@ public class Test {
     
     public void resetTesterAnswers() {
         for (Question question : this.questionsList) {
-            question.setTesterAnswer("0");
+            question.setTesterAnswer("9");
         }
     }
     

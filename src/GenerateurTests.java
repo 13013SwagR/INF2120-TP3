@@ -577,11 +577,11 @@ public class GenerateurTests {
             boxAnswer3.setSelected(currentQuestion.isAnswer3());
             boxAnswer4.setSelected(currentQuestion.isAnswer4());
         } else {
-            boxAnswer1.setSelected(currentQuestion.getTesterAnswer().equals("1"));
-            boxAnswer2.setSelected(currentQuestion.getTesterAnswer().equals("2"));
-            boxAnswer3.setSelected(currentQuestion.getTesterAnswer().equals("3"));
-            boxAnswer4.setSelected(currentQuestion.getTesterAnswer().equals("4"));
-            if (currentQuestion.getTesterAnswer().equals("0")) {
+            boxAnswer1.setSelected(currentQuestion.getTesterAnswer().equals("0"));
+            boxAnswer2.setSelected(currentQuestion.getTesterAnswer().equals("1"));
+            boxAnswer3.setSelected(currentQuestion.getTesterAnswer().equals("2"));
+            boxAnswer4.setSelected(currentQuestion.getTesterAnswer().equals("3"));
+            if (currentQuestion.getTesterAnswer().equals("9")) {
                 boxAnswersGroup.clearSelection();
             }
         }
@@ -730,7 +730,7 @@ public class GenerateurTests {
     private static void initCorrectTestButtonListener() {
         ActionListener correctTestButtonListener = e -> {
             saveCurrentAnswer();
-            if (!currentQuestion.getTesterAnswer().equals("0")) {
+            if (!currentQuestion.getTesterAnswer().equals("9")) {
                 if (currentTest.allQuestionsAreAnswered()) {
                     String report;
                     report = generateCorrectionReport();
@@ -828,15 +828,15 @@ public class GenerateurTests {
     }
     
     private static String findTesterAnswer() {
-        String answer = "0";
+        String answer = "9";
         if (boxAnswer1.isSelected()) {
-            answer = "1";
+            answer = "0";
         } else if (boxAnswer2.isSelected()) {
-            answer = "2";
+            answer = "1";
         } else if (boxAnswer3.isSelected()) {
-            answer = "3";
+            answer = "2";
         } else if (boxAnswer4.isSelected()) {
-            answer = "4";
+            answer = "3";
         }
         return answer;
     }
