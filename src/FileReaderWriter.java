@@ -11,21 +11,7 @@ public class FileReaderWriter {
     }
     
     public static void printTest(Test test){
-        String SPACING = "-----";
-        String SQUARE = "<>";
-        ArrayList<Question> currentTestQuestions = test.getQuestionsList();
-        String testWriter = test.getTestName() + test.getNumberOfQuestions(currentTestQuestions);
-
-        for(Question q : currentTestQuestions){
-            testWriter += SPACING + q.getQuestionStatement()
-                    + SPACING + q.getAnswerOption1()
-                    + SQUARE + q.getAnswerOption2()
-                    + SQUARE + q.getAnswerOption3()
-                    + SQUARE + q.getAnswerOption4()
-                    + SPACING + q.getGoodAnswerNumber();
-        }
-        testWriter += "=====";
-
+    
     }
 
     public static String read() {
@@ -43,10 +29,7 @@ public class FileReaderWriter {
     
     public static boolean write(String fileContent) {
         PrintWriter file = createPrintWriter();
-        if (isFileEmpty(file)) {
-            return false;
-        }
-        file.println(fileContent);
+        file.print(fileContent);
         file.close();
         return true;
     }

@@ -197,6 +197,7 @@ public class GenerateurTests {
                 selectedTest = testsListComboBox.getSelectedItem();
                 testsListComboBox.removeItem(selectedTest);
                 testsList.remove(getTestWithTestName(selectedTest.toString()));
+                exportTests();
             }
         };
         deleteTestButton.addActionListener(deleteTestButtonListener);
@@ -220,6 +221,7 @@ public class GenerateurTests {
             } else {
                 selectedTest = testsListComboBox.getSelectedItem();
                 currentTest = getTestWithTestName(selectedTest.toString());
+                currentTest.resetTesterAnswers();
                 currentQuestion = currentTest.getQuestionsList().get(0);
                 initTesterWindow();
             }
@@ -364,7 +366,7 @@ public class GenerateurTests {
         centerPanel.setSize(510, 330);
         centerPanel.setLocation(18, 75);
         
-        initQuestionIdPanel(user);
+        initQuestionIdPanel();
         initQuestionDataPanel(user);
     }
     
@@ -385,7 +387,7 @@ public class GenerateurTests {
         }
     }
     
-    private static void initQuestionIdPanel(String user) {
+    private static void initQuestionIdPanel() {
         questionIdPanel = new JPanel(null);
         questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         questionIdPanel.setSize(510, 40);
@@ -765,9 +767,9 @@ public class GenerateurTests {
                     JButton backToTestButton = new JButton("Revenir au test");
                     backToTestButton.setSize(200, 20);
                     backToTestButton.setLocation((510 - 200) / 2, 20);
-        
+                    
                     initBackToTestListener(backToTestButton);
-        
+                    
                     saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.white));
                     questionDataPanel.add(reportAreaScrollPane);
                     saveButtonPanel.add(backToTestButton);
@@ -854,7 +856,7 @@ public class GenerateurTests {
             testResults.append("/1");
         }
         testResults.insert(0, " %\n");
-        testResults.insert(0, (float)testerTotal / testTotal * 100);
+        testResults.insert(0, (float) testerTotal / testTotal * 100);
         testResults.insert(0, "\n    NOTE FINALE   :   ");
         testResults.append("\n\n            TOTAL                      :           ").append
                 (testerTotal).append("/").append(testTotal).append("\n\n");
@@ -873,7 +875,7 @@ public class GenerateurTests {
                 if (currentTest.hasAName()) {
                     testsList.add(currentTest);
                     updateTestListComboBox();
-                    // TODO export tests
+                    exportTests();
                     JOptionPane.showMessageDialog(testCreatorWindow, "Le test a été sauvegardé.");
                     testCreatorWindow.setVisible(false);
                     testCreatorWindow.dispose();
@@ -887,6 +889,27 @@ public class GenerateurTests {
             
         };
         saveButton.addActionListener(saveButtonListener);
+    }
+    
+    private static void exportTests() {
+        StringBuilder fileContent  = new StringBuilder();
+        String sectionSeparator = "-----";
+        String answerSeparator = "<>";
+        for (Test test : testsList) {
+            fileContent.append(test.getTestName()).append(test.getNumberOfQuestions());
+            
+            for (Question question : test.getQuestionsList()) {
+                fileContent.append(sectionSeparator).append(question.getQuestionStatement())
+                        .append(sectionSeparator).append(question.getAnswerOption1())
+                        .append(answerSeparator).append(question.getAnswerOption2())
+                        .append(answerSeparator).append(question.getAnswerOption3())
+                        .append(answerSeparator).append(question.getAnswerOption4())
+                        .append(sectionSeparator).append(question.getGoodAnswerNumber());
+            }
+            
+            fileContent.append("=====");
+        }
+        FileReaderWriter.write(fileContent.toString());
     }
     
     private static void updatePreviousButtonStatus() {
