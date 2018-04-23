@@ -129,16 +129,20 @@ public class GenerateurTests {
                                            String questionAnswer, int questionNumber) {
         
         Question importingQuestion = new Question(questionNumber);
+    
+        String trimmedQuestionStatement = replaceLast(questionStatement.replaceFirst("\n", ""),
+                "\n","");
+        importingQuestion.setQuestionStatement(trimmedQuestionStatement);
         
-        importingQuestion.setQuestionStatement(questionStatement);
-        
-        importingQuestion = importQuestionAnswerOptions(importingQuestion, questionAnswerOptions);
+        importingQuestion = importQuestionAnswerOptions(importingQuestion, questionAnswerOptions.replaceAll("\n",""));
         
         importingQuestion = importQuestionAnswer(importingQuestion, questionAnswer);
         
         return importingQuestion;
     }
-    
+    public static String replaceLast(String text, String regex, String replacement) {
+        return text.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
+    }
     private static Question importQuestionAnswerOptions(Question importingQuestion, String
             questionAnswerOptions) {
         String[] questionAnswers;
@@ -241,6 +245,7 @@ public class GenerateurTests {
     }
     
     private static void updateTestListComboBox() {
+        testsListComboBox.removeAllItems();
         for (Test test : testsList) {
             testsListComboBox.addItem(test.toString());
             testsListComboBox.setSelectedItem(test);
@@ -519,6 +524,7 @@ public class GenerateurTests {
             mainButtonsPanel = new JPanel(new GridLayout(0, 2, 20, 0));
             mainButtonsPanel.setLocation(172, 0);
             mainButtonsPanel.setSize(165, 15);
+            updateNextButtonStatus();
         }
         
     }
@@ -893,10 +899,11 @@ public class GenerateurTests {
     
     private static void exportTests() {
         StringBuilder fileContent  = new StringBuilder();
-        String sectionSeparator = "-----";
+        String sectionSeparator = "\n-----\n";
         String answerSeparator = "<>";
+        
         for (Test test : testsList) {
-            fileContent.append(test.getTestName()).append(test.getNumberOfQuestions());
+            fileContent.append(test.getTestName()).append("\n").append(test.getNumberOfQuestions());
             
             for (Question question : test.getQuestionsList()) {
                 fileContent.append(sectionSeparator).append(question.getQuestionStatement())
@@ -907,7 +914,7 @@ public class GenerateurTests {
                         .append(sectionSeparator).append(question.getGoodAnswerNumber());
             }
             
-            fileContent.append("=====");
+            fileContent.append("\n=====\n");
         }
         FileReaderWriter.write(fileContent.toString());
     }
