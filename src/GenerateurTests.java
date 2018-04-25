@@ -258,7 +258,7 @@ public class GenerateurTests {
     private static void updateTestListComboBox() {
         testsListComboBox.removeAllItems();
         for (Test test : testsList) {
-            testsListComboBox.addItem(test.toString());
+            testsListComboBox.addItem("("+test.getNumberOfQuestions()+ ") "+ test.toString());
             testsListComboBox.setSelectedItem(test);
         }
     }
