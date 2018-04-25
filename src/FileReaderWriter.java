@@ -12,10 +12,17 @@
  */
 import java.io.*;
 
+/**
+ * Cette classe permet de lire et ecrire dans un fichier
+ */
 public class FileReaderWriter {
     
     private final static String FILE_NAME = "tests.txt";
 
+    /**
+     * Methode permettant la lecture du texte
+     * @return
+     */
     public static String read() {
         String fileContent;
         BufferedReader testsFile;
@@ -28,13 +35,23 @@ public class FileReaderWriter {
         }
         return fileContent;
     }
-    
+
+    /**
+     * Methode permettant d'ecrire dans le fichier
+     * @param fileContent
+     */
     public static void write(String fileContent) {
         PrintWriter file = createPrintWriter();
         file.print(fileContent);
         file.close();
     }
-    
+
+    /**
+     * Seconde methode de lecture
+     * @param testsFile
+     * @return
+     * @throws IOException
+     */
     private static String read(BufferedReader testsFile) throws
                                                          IOException {
         StringBuilder fileContent = new StringBuilder();
@@ -44,7 +61,11 @@ public class FileReaderWriter {
         }
         return fileContent.toString();
     }
-    
+
+    /**
+     * Methode permettant de creer un PrintWriter
+     * @return
+     */
     private static PrintWriter createPrintWriter() {
         try {
             return new PrintWriter(new FileWriter(FILE_NAME));
@@ -52,8 +73,12 @@ public class FileReaderWriter {
             return null;
         }
     }
-    
-    
+
+    /**
+     * Methode permettant de creer un FileReader
+     * @return
+     * @throws IOException
+     */
     private static BufferedReader createFileReader () throws IOException {
         BufferedReader reader = null;
         Boolean readerCreated = false;

@@ -10,6 +10,11 @@
  *
  * Travail: TP3
  */
+/**
+ * Description: Ce programme permet de generer des questionnaires et offre a l'utilisateur de tenter sa chance
+ * en completant un test, de creer ses propres tests ou de supprimer des tests. Les tests existant sont conserves
+ * dans le fichier tests.txt  .
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -227,7 +232,7 @@ public class GenerateurTests {
     }
 
     /**
-     * Les méthodes qui suivent servent a implémenter la fenetre de demarrage
+     * Les méthodes qui suivent servent a implémenter la fenetre de demarrage et ajoute ses composantes
      */
     private static void createNewTestButtonListener() {
         ActionListener createNewTestButtonListener = e -> initTestCreatorWindow();
@@ -1037,7 +1042,10 @@ public class GenerateurTests {
         }
         FileReaderWriter.write(fileContent.toString());
     }
-    
+
+    /**
+     * Ces methode mettent a jour les differents boutons
+     */
     private static void updatePreviousButtonStatus() {
         if (currentTest.hasPrevious(currentQuestion.getQuestionNumber())) {
             previousButton.setEnabled(true);
