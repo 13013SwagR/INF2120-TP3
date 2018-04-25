@@ -23,7 +23,7 @@ public class Question {
     private boolean answer4;
     private String testerAnswer;
     
-    public Question(int questionNumber) {
+    Question(int questionNumber) {
         this.questionNumber = questionNumber;
         this.questionStatement = "";
         this.answerOption1 = "";
@@ -116,16 +116,12 @@ public class Question {
     }
     
     public boolean isQuestionComplete() {
-        return isAnswerOptionsComplete() && isAnswerSelected() && isQuestionStatementFilled();
+        return isAnswerOptionsComplete() && (answer1 || answer2 || answer3 || answer4) && isQuestionStatementFilled();
     }
     
     public boolean isQuestionStatementFilled() {
         return questionStatement.replaceAll(" ", "").length() > 0
                 && questionStatement.replaceAll(" ", "").length() < 500;
-    }
-    
-    public boolean isAnswerSelected() {
-        return answer1 || answer2 || answer3 || answer4;
     }
     
     public boolean isAnswerOptionsComplete() {

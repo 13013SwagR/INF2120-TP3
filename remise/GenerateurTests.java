@@ -69,9 +69,6 @@ public class GenerateurTests {
     private static JButton saveButton;
     
     private static JButton correctTestButton;
-    private static JButton createNewTestButton;
-    private static JButton passTestButton;
-    private static JButton deleteTestButton;
     private static JComboBox<String> testsListComboBox;
     private static JCheckBox boxAnswer1;
     private static JCheckBox boxAnswer2;
@@ -92,143 +89,16 @@ public class GenerateurTests {
     
     private static void initStartUpWindow() {
         startUpWindow = new JFrame("Générateur de tests");
-        startUpWindow.setBounds(getStartupWindowPositionX(),
-                getStartupWindowPositionY(), STARTUP_WINDOW_WIDTH, STARTUP_WINDOW_HEIGHT);
+        startUpWindow.setBounds((int) ((getScreenWidth() / 2) - (STARTUP_WINDOW_WIDTH / 2)),
+                (int) ((getScreenHeight() / 2) - (STARTUP_WINDOW_HEIGHT / 2)), STARTUP_WINDOW_WIDTH, STARTUP_WINDOW_HEIGHT);
         startUpWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startUpWindow.setResizable(false);
         startUpWindow.setLayout(null);
-        
-        initStartupWindowButtons();
-        initTestsListComboBox();
-        importTests();
-        addComponentsToStartupWindow();
-        
-        startUpWindow.setVisible(true);
-    }
     
-    private static void importTests() {
-        String fileContent = FileReaderWriter.read();
-        
-        for (String test : fileContent.split("=====")) {
-            if (test.contains("-----")) {
-                testsList.add(importTest(test));
-            }
-        }
-        updateTestListComboBox();
-    }
-    
-    private static Test importTest(String test) {
-        Test importingTest = new Test("");
-        int sectionIndex;
-        int amountOfQuestions;
-        
-        String[] testSections = test.split("-----");
-        importingTest.setTestName(testSections[0].split("\n")[1]);
-        amountOfQuestions = Integer.parseInt(testSections[0].split("\n")[2]);
-        
-        for (int questionNumber = 0; questionNumber < amountOfQuestions; questionNumber++) {
-            sectionIndex = (questionNumber * 3);
-            importingTest.save(importQuestion(
-                    testSections[sectionIndex + 1],
-                    testSections[sectionIndex + 2],
-                    testSections[sectionIndex + 3], questionNumber));
-        }
-        return importingTest;
-    }
-    
-    private static Question importQuestion(String questionStatement, String questionAnswerOptions,
-                                           String questionAnswer, int questionNumber) {
-        
-        Question importingQuestion = new Question(questionNumber);
-    
-        String trimmedQuestionStatement = replaceLast(questionStatement.replaceFirst("\n", ""),
-                "\n","");
-        importingQuestion.setQuestionStatement(trimmedQuestionStatement);
-        
-        importingQuestion = importQuestionAnswerOptions(importingQuestion, questionAnswerOptions.replaceAll("\n",""));
-        
-        importingQuestion = importQuestionAnswer(importingQuestion, questionAnswer);
-        
-        return importingQuestion;
-    }
-    private static String replaceLast(String text, String regex, String replacement) {
-        return text.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
-    }
-    private static Question importQuestionAnswerOptions(Question importingQuestion, String
-            questionAnswerOptions) {
-        String[] questionAnswers;
-        questionAnswers = questionAnswerOptions.split("<>");
-        importingQuestion.setAnswerOptions(questionAnswers[0], questionAnswers[1],
-                questionAnswers[2], questionAnswers[3]);
-        return importingQuestion;
-    }
-    
-    private static Question importQuestionAnswer(Question importingQuestion, String questionSection) {
-        questionSection = questionSection.replaceAll("\n", "");
-        switch (questionSection) {
-            case "0":
-                importingQuestion.setAnswers(true, false, false, false);
-                break;
-            case "1":
-                importingQuestion.setAnswers(false, true, false, false);
-                break;
-            case "2":
-                importingQuestion.setAnswers(false, false, true, false);
-                break;
-            case "3":
-                importingQuestion.setAnswers(false, false, false, true);
-        }
-        return importingQuestion;
-    }
-    
-    private static void createNewTestButtonListener() {
+        JButton createNewTestButton = createStandardJButton("Créer un nouveau test", 150);
         ActionListener createNewTestButtonListener = e -> initTestCreatorWindow();
         createNewTestButton.addActionListener(createNewTestButtonListener);
-    }
-    
-    private static void addComponentsToStartupWindow() {
-        startUpWindow.getContentPane().add(createNewTestButton);
-        startUpWindow.getContentPane().add(passTestButton);
-        startUpWindow.getContentPane().add(deleteTestButton);
-        startUpWindow.getContentPane().add(createStartUpWindowBlackLine());
-        startUpWindow.getContentPane().add(testsListComboBox);
-    }
-    
-    private static void initStartupWindowButtons() {
-        createNewTestButton = createStandardJButton("Créer un nouveau test", 150);
-        createNewTestButtonListener();
-        passTestButton = createStandardJButton("Passer le test sélectionné", -30);
-        initPassTestButtonListener();
-        deleteTestButton = createStandardJButton("Supprimer le test sélectionné", -80);
-        initDeleteTestButtonListener();
-    }
-    
-    private static void initDeleteTestButtonListener() {
-        ActionListener deleteTestButtonListener = e -> {
-            Object selectedTest;
-            if (testsList.isEmpty()) {
-                errorAlert(EMPTY_TEST_LIST_ERROR);
-            } else {
-                selectedTest = testsListComboBox.getSelectedItem();
-                testsListComboBox.removeItem(selectedTest);
-                testsList.remove(getTestWithTestName(selectedTest.toString()));
-                exportTests();
-            }
-        };
-        deleteTestButton.addActionListener(deleteTestButtonListener);
-    }
-    
-    private static Test getTestWithTestName(String testName) {
-        Test matchingTest = null;
-        for (Test test : testsList) {
-            if (test.getTestName().equals(testName)) {
-                matchingTest = test;
-            }
-        }
-        return matchingTest;
-    }
-    
-    private static void initPassTestButtonListener() {
+        JButton passTestButton = createStandardJButton("Passer le test sélectionné", -30);
         ActionListener passTestButtonListener = e -> {
             Object selectedTest;
             if (testsList.isEmpty()) {
@@ -242,9 +112,19 @@ public class GenerateurTests {
             }
         };
         passTestButton.addActionListener(passTestButtonListener);
-    }
-    
-    private static void initTestsListComboBox() {
+        JButton deleteTestButton = createStandardJButton("Supprimer le test sélectionné", -80);
+        ActionListener deleteTestButtonListener = e -> {
+            Object selectedTest;
+            if (testsList.isEmpty()) {
+                errorAlert(EMPTY_TEST_LIST_ERROR);
+            } else {
+                selectedTest = testsListComboBox.getSelectedItem();
+                testsListComboBox.removeItem(selectedTest);
+                testsList.remove(getTestWithTestName(selectedTest.toString()));
+                exportTests();
+            }
+        };
+        deleteTestButton.addActionListener(deleteTestButtonListener);
         testsListComboBox = new JComboBox<>();
         updateTestListComboBox();
         testsListComboBox.setEnabled(true);
@@ -253,6 +133,82 @@ public class GenerateurTests {
                 (startUpWindow.getHeight() / 2) - 40,
                 LARGEUR_BOUTON,
                 HAUT_BOUTON - 10);
+        importTests();
+        startUpWindow.getContentPane().add(createNewTestButton);
+        startUpWindow.getContentPane().add(passTestButton);
+        startUpWindow.getContentPane().add(deleteTestButton);
+        JPanel blackLine;
+        blackLine = new JPanel();
+        blackLine.setSize(startUpWindow.getWidth() - 40, 1);
+        blackLine.setLocation((startUpWindow.getWidth() - blackLine.getWidth())
+                / 2, (
+                startUpWindow.getHeight() / 2) - 85);
+        blackLine.setBackground(Color.black);
+        startUpWindow.getContentPane().add(blackLine);
+        startUpWindow.getContentPane().add(testsListComboBox);
+    
+        startUpWindow.setVisible(true);
+    }
+    
+    private static void importTests() {
+        String fileContent = FileReaderWriter.read();
+        
+        for (String test : fileContent.split("=====")) {
+            if (test.contains("-----")) {
+                Test importingTest = new Test("");
+                int sectionIndex;
+                int amountOfQuestions;
+    
+                String[] testSections = test.split("-----");
+                importingTest.setTestName(testSections[0].split("\n")[1]);
+                amountOfQuestions = Integer.parseInt(testSections[0].split("\n")[2]);
+    
+                for (int questionNumber = 0; questionNumber < amountOfQuestions; questionNumber++) {
+                    sectionIndex = (questionNumber * 3);
+    
+                    Question importingQuestion = new Question(questionNumber);
+    
+                    String trimmedQuestionStatement = testSections[sectionIndex
+                            + 1].replaceFirst("\n", "").replaceFirst("(?s)(.*)" + "\n", "$1" + "");
+                    importingQuestion.setQuestionStatement(trimmedQuestionStatement);
+    
+                    String[] questionAnswers;
+                    questionAnswers = testSections[sectionIndex + 2].replaceAll("\n","").split("<>");
+                    importingQuestion.setAnswerOptions(questionAnswers[0], questionAnswers[1],
+                            questionAnswers[2], questionAnswers[3]);
+    
+                    String questionSection = testSections[sectionIndex + 3];
+                    questionSection = questionSection.replaceAll("\n", "");
+                    switch (questionSection) {
+                        case "0":
+                            importingQuestion.setAnswers(true, false, false, false);
+                            break;
+                        case "1":
+                            importingQuestion.setAnswers(false, true, false, false);
+                            break;
+                        case "2":
+                            importingQuestion.setAnswers(false, false, true, false);
+                            break;
+                        case "3":
+                            importingQuestion.setAnswers(false, false, false, true);
+                    }
+    
+                    importingTest.save(importingQuestion);
+                }
+                testsList.add(importingTest);
+            }
+        }
+        updateTestListComboBox();
+    }
+    
+    private static Test getTestWithTestName(String testName) {
+        Test matchingTest = null;
+        for (Test test : testsList) {
+            if (test.getTestName().equals(testName)) {
+                matchingTest = test;
+            }
+        }
+        return matchingTest;
     }
     
     private static void updateTestListComboBox() {
@@ -261,25 +217,6 @@ public class GenerateurTests {
             testsListComboBox.addItem(test.toString());
             testsListComboBox.setSelectedItem(test);
         }
-    }
-    
-    private static JPanel createStartUpWindowBlackLine() {
-        JPanel blackLine;
-        blackLine = new JPanel();
-        blackLine.setSize(startUpWindow.getWidth() - 40, 1);
-        blackLine.setLocation((startUpWindow.getWidth() - blackLine.getWidth())
-                / 2, (
-                startUpWindow.getHeight() / 2) - 85);
-        blackLine.setBackground(Color.black);
-        return blackLine;
-    }
-    
-    private static int getStartupWindowPositionX() {
-        return (int) ((getScreenWidth() / 2) - (STARTUP_WINDOW_WIDTH / 2));
-    }
-    
-    private static int getStartupWindowPositionY() {
-        return (int) ((getScreenHeight() / 2) - (STARTUP_WINDOW_HEIGHT / 2));
     }
     
     private static double getScreenHeight() {
@@ -381,57 +318,32 @@ public class GenerateurTests {
         centerPanel = new JPanel(null);
         centerPanel.setSize(510, 330);
         centerPanel.setLocation(18, 75);
-        
-        initQuestionIdPanel();
-        initQuestionDataPanel(user);
-    }
     
-    private static void initHeaderPanel(String user) {
-        headerPanel = new JPanel(null);
-        headerPanel.setSize(510, 35);
-        headerPanel.setLocation(18, (30));
-        
-        TEST_NAME_LABEL.setBounds(0, 0, 90, 30);
-        
-        testNameField = new JTextField();
-        testNameField.setBounds(95, 5, 415, 20);
-        testNameField.setBackground(Color.WHITE);
-        if (user.equals(TESTER)) {
-            testNameField.setEnabled(false);
-            testNameField.setText(currentTest.getTestName());
-            testNameField.setDisabledTextColor(Color.BLACK);
-        }
-    }
-    
-    private static void initQuestionIdPanel() {
         questionIdPanel = new JPanel(null);
         questionIdPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         questionIdPanel.setSize(510, 40);
         questionIdPanel.setLocation(0, 0);
-        
+    
         questionLabel.setLocation(10, 0);
         questionLabel.setSize(90, 30);
-        
+    
         questionNumberLabel = new JLabel(Integer.toString(currentQuestion.getQuestionNumber() + 1));
         questionNumberLabel.setSize(30, 30);
         questionNumberLabel.setLocation(90, 0);
-    }
-    
-    private static void initQuestionDataPanel(String user) {
         questionDataPanel = new JPanel(null);
         questionDataPanel.setSize(510, 290);
         questionDataPanel.setLocation(0, 39);
         questionDataPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+    
         STATEMENT_LABEL.setSize(90, 30);
         STATEMENT_LABEL.setLocation(20, 0);
-        
+    
         questionStatementInput = new JTextArea();
         questionStatementInput.setSize(480, 50);
         questionStatementInput.setLocation(20, 25);
         questionStatementInput.setLineWrap(true);
         questionStatementInput.setWrapStyleWord(true);
-        
+    
         statementInputScrollPane = new JScrollPane(questionStatementInput);
         statementInputScrollPane.setSize(480, 50);
         statementInputScrollPane.setLocation(20, 25);
@@ -442,14 +354,10 @@ public class GenerateurTests {
             questionStatementInput.setText(currentQuestion.getQuestionStatement());
             questionStatementInput.setDisabledTextColor(Color.BLACK);
         }
-        
+    
         OPTIONS_STATEMENT_LABEL.setSize(420, 30);
         OPTIONS_STATEMENT_LABEL.setLocation(20, 90);
-        
-        initOptions(user);
-    }
     
-    private static void initOptions(String user) {
         option1Label.setSize(40, 30);
         option1Label.setLocation(20, 130);
         answer1Input = new JTextField();
@@ -458,7 +366,7 @@ public class GenerateurTests {
         boxAnswer1 = new JCheckBox();
         boxAnswer1.setLocation(440, 130);
         boxAnswer1.setSize(30, 30);
-        
+    
         option2Label.setSize(40, 30);
         option2Label.setLocation(20, 160);
         answer2Input = new JTextField();
@@ -467,7 +375,7 @@ public class GenerateurTests {
         boxAnswer2 = new JCheckBox();
         boxAnswer2.setLocation(440, 160);
         boxAnswer2.setSize(30, 30);
-        
+    
         option3Label.setSize(40, 30);
         option3Label.setLocation(20, 190);
         answer3Input = new JTextField();
@@ -476,7 +384,7 @@ public class GenerateurTests {
         boxAnswer3 = new JCheckBox();
         boxAnswer3.setLocation(440, 190);
         boxAnswer3.setSize(30, 30);
-        
+    
         option4Label.setSize(40, 30);
         option4Label.setLocation(20, 220);
         answer4Input = new JTextField();
@@ -506,27 +414,128 @@ public class GenerateurTests {
         boxAnswersGroup.add(boxAnswer4);
     }
     
+    private static void initHeaderPanel(String user) {
+        headerPanel = new JPanel(null);
+        headerPanel.setSize(510, 35);
+        headerPanel.setLocation(18, (30));
+        
+        TEST_NAME_LABEL.setBounds(0, 0, 90, 30);
+        
+        testNameField = new JTextField();
+        testNameField.setBounds(95, 5, 415, 20);
+        testNameField.setBackground(Color.WHITE);
+        if (user.equals(TESTER)) {
+            testNameField.setEnabled(false);
+            testNameField.setText(currentTest.getTestName());
+            testNameField.setDisabledTextColor(Color.BLACK);
+        }
+    }
+    
     private static void initFooterPanel(String user) {
         footerPanel = new JPanel(null);
         footerPanel.setSize(510, 90);
         footerPanel.setLocation(18, 420);
-        
-        initMainButtonsPanel(user);
-        initSaveButtonPanel(user);
-    }
     
-    private static void initMainButtonsPanel(String user) {
         previousButton = new JButton("<");
         previousButton.setEnabled(false);
-        initPreviousButtonListener(user);
+        ActionListener previousButtonListener = e -> {
+            
+            
+            if (user.equals(CREATOR)) {
+                saveCurrentQuestion();
+                if (currentQuestion.isQuestionComplete()) {
+                    updateRemoveButtonStatus();
+                    setPreviousQuestion(user);
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                } else {
+                    incompleteQuestionAlert();
+                }
+                
+            } else {
+                saveCurrentAnswer();
+                if (currentQuestion.getTesterAnswer().equals("9")) {
+                    errorAlert(NO_ANSWER_ERROR);
+                } else {
+                    setPreviousQuestion(user);
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                }
+                
+            }
+            
+            
+        };
+        previousButton.addActionListener(previousButtonListener);
         nextButton = new JButton(">");
-        initNextButtonListener(user);
+        ActionListener nextButtonListener = (ActionEvent e) -> {
+            if (user.equals(CREATOR)) {
+                saveCurrentQuestion();
+                if (currentQuestion.isQuestionComplete()) {
+                    
+                    setNextQuestion(user);
+                    updateRemoveButtonStatus();
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                } else {
+                    incompleteQuestionAlert();
+                }
+            } else {
+                saveCurrentAnswer();
+                if (currentQuestion.getTesterAnswer().equals("9")) {
+                    errorAlert(NO_ANSWER_ERROR);
+                } else {
+                    
+                    setNextQuestion(user);
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                }
+            }
+            
+        };
+        nextButton.addActionListener(nextButtonListener);
         if (user.equals(CREATOR)) {
             addButton = new JButton("+");
-            initAddButtonListener();
+            ActionListener addButtonListener = e -> {
+                saveCurrentQuestion();
+                if (currentQuestion.isQuestionComplete()) {
+                    currentQuestion = new Question(currentQuestion.getQuestionNumber() + 1);
+                    currentTest.addQuestion(currentQuestion, currentQuestion.getQuestionNumber());
+                    questionStatementInput.setText("");
+                    answer1Input.setText("");
+                    answer2Input.setText("");
+                    answer3Input.setText("");
+                    answer4Input.setText("");
+                    boxAnswersGroup.clearSelection();
+                    questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber() + 1));
+                    adjustCurrentQuestionNumberAndLabel();
+                    updateRemoveButtonStatus();
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                } else {
+                    incompleteQuestionAlert();
+                }
+            };
+            addButton.addActionListener(addButtonListener);
             removeButton = new JButton("-");
             removeButton.setEnabled(false);
-            initRemoveButtonListener(user);
+            ActionListener removeButtonListener = e -> {
+                if (anotherQuestionExist()) {
+                    saveCurrentQuestion();
+                    Question questionToRemove = currentQuestion;
+                    if (currentTest.hasNext(currentQuestion.getQuestionNumber())) {
+                        setNextQuestion(user);
+                    } else {
+                        setPreviousQuestion(user);
+                    }
+                    currentTest.removeQuestion(questionToRemove);
+                    adjustCurrentQuestionNumberAndLabel();
+                    updateRemoveButtonStatus();
+                    updateNextButtonStatus();
+                    updatePreviousButtonStatus();
+                }
+            };
+            removeButton.addActionListener(removeButtonListener);
             mainButtonsPanel = new JPanel(new GridLayout(0, 4, 20, 0));
             mainButtonsPanel.setLocation(90, 0);
             mainButtonsPanel.setSize(330, 15);
@@ -537,30 +546,127 @@ public class GenerateurTests {
             mainButtonsPanel.setSize(165, 15);
             updateNextButtonStatus();
         }
-        
-    }
     
-    private static void initRemoveButtonListener(String user) {
-        ActionListener removeButtonListener = e -> {
-            if (anotherQuestionExist()) {
+        saveButtonPanel = new JPanel(null);
+        saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
+        saveButtonPanel.setSize(510, 60);
+        saveButtonPanel.setLocation(0, 25);
+    
+        if (user.equals(CREATOR)) {
+            saveButton = new JButton("Sauvegarder le test");
+            saveButton.setSize(200, 20);
+            saveButton.setLocation((510 - 200) / 2, 20);
+            ActionListener saveButtonListener = e -> {
+                currentTest.setTestName(testNameField.getText());
                 saveCurrentQuestion();
-                Question questionToRemove = currentQuestion;
-                setExistingQuestion(user);
-                currentTest.removeQuestion(questionToRemove);
-                adjustCurrentQuestionNumberAndLabel();
-                updateRemoveButtonStatus();
-                updateNextButtonStatus();
-                updatePreviousButtonStatus();
-            }
-        };
-        removeButton.addActionListener(removeButtonListener);
-    }
+                if (currentQuestion.isQuestionComplete()) {
+                    if (currentTest.hasAName()) {
+                        testsList.add(currentTest);
+                        updateTestListComboBox();
+                        exportTests();
+                        JOptionPane.showMessageDialog(testCreatorWindow, "Le test a été sauvegardé.");
+                        testCreatorWindow.setVisible(false);
+                        testCreatorWindow.dispose();
+                    } else {
+                        errorAlert(TEST_NAME_ERROR);
+                    }
+                } else {
+                    incompleteQuestionAlert();
+                }
+                
+                
+            };
+            saveButton.addActionListener(saveButtonListener);
+        } else if (user.equals(TESTER)) {
+            correctTestButton = new JButton("Corriger le test");
+            correctTestButton.setSize(200, 20);
+            correctTestButton.setLocation((510 - 200) / 2, 20);
+            ActionListener correctTestButtonListener = e -> {
+                saveCurrentAnswer();
+                if (!currentQuestion.getTesterAnswer().equals("9")) {
+                    if (currentTest.allQuestionsAreAnswered()) {
+                        String report;
+                        StringBuilder testResults = new StringBuilder();
+                        int testerTotal = 0;
+                        int testTotal = 0;
+                        for (Question question : currentTest.getQuestionsList()) {
+                            testTotal++;
+                            testResults.append("\n            QUESTION ").append(testTotal);
+                            
+                            if (testTotal < 10) {
+                                testResults.append("  ");
+                            }
+                            testResults.append("           :           ");
+                            if (question.getTesterAnswer().equals(question.getGoodAnswerNumber())) {
+                                testResults.append("1");
+                                testerTotal++;
+                            } else {
+                                testResults.append("0");
+                            }
+                            testResults.append("/1");
+                        }
+                        testResults.insert(0, " %\n");
+                        testResults.insert(0, Math.round((float) testerTotal / testTotal * 100));
+                        testResults.insert(0, "\n    NOTE FINALE   :   ");
+                        testResults.append("\n\n            TOTAL                      :           ").append
+                                (testerTotal).append("/").append(testTotal).append("\n\n");
+                        report = testResults.toString();
+                        STATEMENT_LABEL.setVisible(false);
+                        OPTIONS_STATEMENT_LABEL.setVisible(false);
+                        questionNumberLabel.setVisible(false);
+                        option1Label.setVisible(false);
+                        option2Label.setVisible(false);
+                        option3Label.setVisible(false);
+                        option4Label.setVisible(false);
+                        mainButtonsPanel.setVisible(false);
+                        previousButton.setVisible(false);
+                        nextButton.setVisible(false);
+                        correctTestButton.setVisible(false);
+                        boxAnswer1.setVisible(false);
+                        boxAnswer2.setVisible(false);
+                        boxAnswer3.setVisible(false);
+                        boxAnswer4.setVisible(false);
+                        answer1Input.setVisible(false);
+                        answer2Input.setVisible(false);
+                        answer3Input.setVisible(false);
+                        answer4Input.setVisible(false);
+                        questionLabel.setText("RÉSULTAT DU TEST");
+                        questionLabel.setSize(130, 30);
+                        questionLabel.setLocation(190, 0);
+                        questionStatementInput.setVisible(false);
+                        statementInputScrollPane.setVisible(false);
+                        JTextArea reportArea = new JTextArea(report);
+                        reportArea.setSize(490, 270);
+                        reportArea.setLocation(10, 10);
+                        reportArea.setDisabledTextColor(Color.BLACK);
+                        reportArea.setLineWrap(true);
+                        reportArea.setEnabled(false);
+                        reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                        reportArea.setFont(new Font("Courier New", Font.PLAIN,18));
+                        reportAreaScrollPane = new JScrollPane(reportArea);
+                        reportAreaScrollPane.setSize(490, 270);
+                        reportAreaScrollPane.setLocation(10, 10);
+                        reportAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane
+                                .VERTICAL_SCROLLBAR_AS_NEEDED);
+                        JButton backToTestButton = new JButton("Revenir au test");
+                        backToTestButton.setSize(200, 20);
+                        backToTestButton.setLocation((510 - 200) / 2, 20);
+                        
+                        initBackToTestListener(backToTestButton);
+                        
+                        saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.white));
+                        questionDataPanel.add(reportAreaScrollPane);
+                        saveButtonPanel.add(backToTestButton);
+                        testCreatorWindow.repaint();
+                    } else {
+                        errorAlert(INCOMPLETE_TEST_ERROR);
+                    }
+                } else {
+                    errorAlert(NO_ANSWER_ERROR);
+                }
+            };
+            correctTestButton.addActionListener(correctTestButtonListener);
     
-    private static void setExistingQuestion(String user) {
-        if (currentTest.hasNext(currentQuestion.getQuestionNumber())) {
-            setNextQuestion(user);
-        } else {
-            setPreviousQuestion(user);
         }
     }
     
@@ -604,24 +710,6 @@ public class GenerateurTests {
         setToCurrentQuestion(user);
     }
     
-    private static void initAddButtonListener() {
-        ActionListener addButtonListener = e -> {
-            saveCurrentQuestion();
-            if (currentQuestion.isQuestionComplete()) {
-                currentQuestion = new Question(currentQuestion.getQuestionNumber() + 1);
-                currentTest.addQuestion(currentQuestion, currentQuestion.getQuestionNumber());
-                resetQuestionForm();
-                adjustCurrentQuestionNumberAndLabel();
-                updateRemoveButtonStatus();
-                updateNextButtonStatus();
-                updatePreviousButtonStatus();
-            } else {
-                incompleteQuestionAlert();
-            }
-        };
-        addButton.addActionListener(addButtonListener);
-    }
-    
     private static void incompleteQuestionAlert() {
         if (!currentQuestion.isQuestionStatementFilled()) {
             errorAlert(QUESTION_STATEMENT_ERROR);
@@ -636,16 +724,6 @@ public class GenerateurTests {
         JOptionPane.showMessageDialog(testCreatorWindow, errorMessage, "ERREUR", JOptionPane.ERROR_MESSAGE);
     }
     
-    private static void resetQuestionForm() {
-        questionStatementInput.setText("");
-        answer1Input.setText("");
-        answer2Input.setText("");
-        answer3Input.setText("");
-        answer4Input.setText("");
-        boxAnswersGroup.clearSelection();
-        questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber() + 1));
-    }
-    
     private static void saveCurrentQuestion() {
         currentQuestion.setQuestionStatement(questionStatementInput.getText());
         currentQuestion.setAnswerOptions(answer1Input.getText(),
@@ -656,151 +734,6 @@ public class GenerateurTests {
                 boxAnswer3.isSelected(),
                 boxAnswer4.isSelected());
         currentTest.save(currentQuestion);
-    }
-    
-    private static void initNextButtonListener(String user) {
-        ActionListener nextButtonListener = (ActionEvent e) -> {
-            if (user.equals(CREATOR)) {
-                saveCurrentQuestion();
-                if (currentQuestion.isQuestionComplete()) {
-                    
-                    setNextQuestion(user);
-                    updateRemoveButtonStatus();
-                    updateNextButtonStatus();
-                    updatePreviousButtonStatus();
-                } else {
-                    incompleteQuestionAlert();
-                }
-            } else {
-                saveCurrentAnswer();
-                if (currentQuestion.getTesterAnswer().equals("9")) {
-                    errorAlert(NO_ANSWER_ERROR);
-                } else {
-                    
-                    setNextQuestion(user);
-                    updateNextButtonStatus();
-                    updatePreviousButtonStatus();
-                }
-            }
-            
-        };
-        nextButton.addActionListener(nextButtonListener);
-    }
-    
-    private static void initPreviousButtonListener(String user) {
-        ActionListener previousButtonListener = e -> {
-            
-            
-            if (user.equals(CREATOR)) {
-                saveCurrentQuestion();
-                if (currentQuestion.isQuestionComplete()) {
-                    updateRemoveButtonStatus();
-                    setPreviousQuestion(user);
-                    updateNextButtonStatus();
-                    updatePreviousButtonStatus();
-                } else {
-                    incompleteQuestionAlert();
-                }
-                
-            } else {
-                saveCurrentAnswer();
-                if (currentQuestion.getTesterAnswer().equals("9")) {
-                    errorAlert(NO_ANSWER_ERROR);
-                } else {
-                    setPreviousQuestion(user);
-                    updateNextButtonStatus();
-                    updatePreviousButtonStatus();
-                }
-                
-            }
-            
-            
-        };
-        previousButton.addActionListener(previousButtonListener);
-    }
-    
-    private static void initSaveButtonPanel(String user) {
-        saveButtonPanel = new JPanel(null);
-        saveButtonPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
-        saveButtonPanel.setSize(510, 60);
-        saveButtonPanel.setLocation(0, 25);
-        
-        if (user.equals(CREATOR)) {
-            saveButton = new JButton("Sauvegarder le test");
-            saveButton.setSize(200, 20);
-            saveButton.setLocation((510 - 200) / 2, 20);
-            initSaveButtonListener();
-        } else if (user.equals(TESTER)) {
-            correctTestButton = new JButton("Corriger le test");
-            correctTestButton.setSize(200, 20);
-            correctTestButton.setLocation((510 - 200) / 2, 20);
-            initCorrectTestButtonListener();
-        }
-    }
-    
-    private static void initCorrectTestButtonListener() {
-        ActionListener correctTestButtonListener = e -> {
-            saveCurrentAnswer();
-            if (!currentQuestion.getTesterAnswer().equals("9")) {
-                if (currentTest.allQuestionsAreAnswered()) {
-                    String report;
-                    report = generateCorrectionReport();
-                    STATEMENT_LABEL.setVisible(false);
-                    OPTIONS_STATEMENT_LABEL.setVisible(false);
-                    questionNumberLabel.setVisible(false);
-                    option1Label.setVisible(false);
-                    option2Label.setVisible(false);
-                    option3Label.setVisible(false);
-                    option4Label.setVisible(false);
-                    mainButtonsPanel.setVisible(false);
-                    previousButton.setVisible(false);
-                    nextButton.setVisible(false);
-                    correctTestButton.setVisible(false);
-                    boxAnswer1.setVisible(false);
-                    boxAnswer2.setVisible(false);
-                    boxAnswer3.setVisible(false);
-                    boxAnswer4.setVisible(false);
-                    answer1Input.setVisible(false);
-                    answer2Input.setVisible(false);
-                    answer3Input.setVisible(false);
-                    answer4Input.setVisible(false);
-                    questionLabel.setText("RÉSULTAT DU TEST");
-                    questionLabel.setSize(130, 30);
-                    questionLabel.setLocation(190, 0);
-                    questionStatementInput.setVisible(false);
-                    statementInputScrollPane.setVisible(false);
-                    JTextArea reportArea = new JTextArea(report);
-                    reportArea.setSize(490, 270);
-                    reportArea.setLocation(10, 10);
-                    reportArea.setDisabledTextColor(Color.BLACK);
-                    reportArea.setLineWrap(true);
-                    reportArea.setEnabled(false);
-                    reportArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                    reportArea.setFont(new Font("Courier New", Font.PLAIN,18));
-                    reportAreaScrollPane = new JScrollPane(reportArea);
-                    reportAreaScrollPane.setSize(490, 270);
-                    reportAreaScrollPane.setLocation(10, 10);
-                    reportAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane
-                            .VERTICAL_SCROLLBAR_AS_NEEDED);
-                    JButton backToTestButton = new JButton("Revenir au test");
-                    backToTestButton.setSize(200, 20);
-                    backToTestButton.setLocation((510 - 200) / 2, 20);
-                    
-                    initBackToTestListener(backToTestButton);
-                    
-                    saveButtonPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.white));
-                    questionDataPanel.add(reportAreaScrollPane);
-                    saveButtonPanel.add(backToTestButton);
-                    testCreatorWindow.repaint();
-                } else {
-                    errorAlert(INCOMPLETE_TEST_ERROR);
-                }
-            } else {
-                errorAlert(NO_ANSWER_ERROR);
-            }
-        };
-        correctTestButton.addActionListener(correctTestButtonListener);
-        
     }
     
     private static void initBackToTestListener(JButton backToTestButton) {
@@ -839,7 +772,7 @@ public class GenerateurTests {
         backToTestButton.addActionListener(backToTestListener);
     }
     
-    private static String findTesterAnswer() {
+    private static void saveCurrentAnswer() {
         String answer = "9";
         if (boxAnswer1.isSelected()) {
             answer = "0";
@@ -850,63 +783,7 @@ public class GenerateurTests {
         } else if (boxAnswer4.isSelected()) {
             answer = "3";
         }
-        return answer;
-    }
-    
-    private static String generateCorrectionReport() {
-        StringBuilder testResults = new StringBuilder();
-        int testerTotal = 0;
-        int testTotal = 0;
-        for (Question question : currentTest.getQuestionsList()) {
-            testTotal++;
-            testResults.append("\n            QUESTION ").append(testTotal);
-            
-            if (testTotal < 10) {
-                testResults.append("  ");
-            }
-            testResults.append("           :           ");
-            if (question.getTesterAnswer().equals(question.getGoodAnswerNumber())) {
-                testResults.append("1");
-                testerTotal++;
-            } else {
-                testResults.append("0");
-            }
-            testResults.append("/1");
-        }
-        testResults.insert(0, " %\n");
-        testResults.insert(0, Math.round((float) testerTotal / testTotal * 100));
-        testResults.insert(0, "\n    NOTE FINALE   :   ");
-        testResults.append("\n\n            TOTAL                      :           ").append
-                (testerTotal).append("/").append(testTotal).append("\n\n");
-        return testResults.toString();
-    }
-    
-    private static void saveCurrentAnswer() {
-        currentQuestion.setTesterAnswer(findTesterAnswer());
-    }
-    
-    private static void initSaveButtonListener() {
-        ActionListener saveButtonListener = e -> {
-            currentTest.setTestName(testNameField.getText());
-            saveCurrentQuestion();
-            if (currentQuestion.isQuestionComplete()) {
-                if (currentTest.hasAName()) {
-                    testsList.add(currentTest);
-                    updateTestListComboBox();
-                    exportTests();
-                    JOptionPane.showMessageDialog(testCreatorWindow, "Le test a été sauvegardé.");
-                    testCreatorWindow.setVisible(false);
-                    testCreatorWindow.dispose();
-                } else {
-                    errorAlert(TEST_NAME_ERROR);
-                }
-            } else {
-                incompleteQuestionAlert();
-            }
-            
-            
-        };
-        saveButton.addActionListener(saveButtonListener);
+        currentQuestion.setTesterAnswer(answer);
     }
     
     private static void exportTests() {

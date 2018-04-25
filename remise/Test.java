@@ -28,7 +28,7 @@ public class Test {
         return result;
     }
     
-    public Test(String testName) {
+    Test(String testName) {
         this.testName = testName;
     }
     
@@ -38,7 +38,7 @@ public class Test {
     }
     
     public void save(Question question) {
-        if (isAQuestion(question)) {
+        if (this.questionsList.contains(question)) {
             int questionIndex = this.questionsList.indexOf(question);
             this.questionsList.set(questionIndex, question);
         } else {
@@ -50,25 +50,17 @@ public class Test {
         this.questionsList.remove(question);
     }
     
-    private boolean isAQuestion(Question question) {
-        return this.questionsList.contains(question);
-    }
-    
     public boolean hasNext(int questionIndex) {
         
         return hasMoreThanNQuestion(questionIndex + 1);
     }
     
     public boolean hasPrevious(int questionIndex) {
-        return hasMoreThanNQuestion(0) && !isFirstQuestion(questionIndex);
+        return hasMoreThanNQuestion(0) && !(0 == questionIndex);
     }
     
     private boolean hasMoreThanNQuestion(int n) {
         return questionsList.size() > n;
-    }
-    
-    private boolean isFirstQuestion(int questionIndex) {
-        return 0 == questionIndex;
     }
     
     public Question getNextQuestion(int questionIndex) {
