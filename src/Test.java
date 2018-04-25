@@ -12,6 +12,12 @@
  */
 import java.util.ArrayList;
 
+/**
+ * Classe Test: permet de créer un nouveau questionnaire qui sera ajouté
+ * à la liste des autrees questionnaires déjà créés.
+ *  questionsList: ArrayList regroupant l'ensemble des questions du test
+ *  testName: le nom du test
+ */
 public class Test {
     private ArrayList<Question> questionsList = new ArrayList<>();
     private String testName;

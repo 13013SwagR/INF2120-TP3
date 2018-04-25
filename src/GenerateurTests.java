@@ -16,6 +16,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**
+ * GenerateurTests: Classe mère qui génère les fenêtres et les implémentent
+ *
+ */
 public class GenerateurTests {
     private static JLabel TEST_NAME_LABEL = new JLabel("Nom du test");
     private static JLabel questionLabel = new JLabel("QUESTION");
@@ -89,7 +93,10 @@ public class GenerateurTests {
     private static JTextArea questionStatementInput;
     private static JScrollPane statementInputScrollPane;
     private static JScrollPane reportAreaScrollPane;
-    
+
+    /**
+     * Méthode d'initialisation de la fenêtre #1
+     */
     private static void initStartUpWindow() {
         startUpWindow = new JFrame("Générateur de tests");
         startUpWindow.setBounds(getStartupWindowPositionX(),
@@ -105,7 +112,11 @@ public class GenerateurTests {
         
         startUpWindow.setVisible(true);
     }
-    
+
+    /**
+     * Méthode permettant d'ajouter les tests présents dans le fichier tests.txt
+     * et les ajoutes à la liste des tests et à l'ArrayList testsList
+     */
     private static void importTests() {
         String fileContent = FileReaderWriter.read();
         
@@ -116,7 +127,12 @@ public class GenerateurTests {
         }
         updateTestListComboBox();
     }
-    
+
+    /**
+     * Méthode qui subdivise un String en un Test et le retourne
+     * @param test
+     * @return
+     */
     private static Test importTest(String test) {
         Test importingTest = new Test("");
         int sectionIndex;
@@ -135,7 +151,15 @@ public class GenerateurTests {
         }
         return importingTest;
     }
-    
+
+    /**
+     * Méthode qui subdivise un String en une Question
+     * @param questionStatement
+     * @param questionAnswerOptions
+     * @param questionAnswer
+     * @param questionNumber
+     * @return
+     */
     private static Question importQuestion(String questionStatement, String questionAnswerOptions,
                                            String questionAnswer, int questionNumber) {
         
@@ -151,9 +175,24 @@ public class GenerateurTests {
         
         return importingQuestion;
     }
+
+    /**
+     * Méthode qui remplace le caractere final d'un string par un autre
+     * @param text
+     * @param regex
+     * @param replacement
+     * @return
+     */
     private static String replaceLast(String text, String regex, String replacement) {
         return text.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
     }
+
+    /**
+     * Méthode qui subdivise un String en des reponses à des questions et les ajoute à l'objet Question
+     * @param importingQuestion
+     * @param questionAnswerOptions
+     * @return
+     */
     private static Question importQuestionAnswerOptions(Question importingQuestion, String
             questionAnswerOptions) {
         String[] questionAnswers;
@@ -162,7 +201,13 @@ public class GenerateurTests {
                 questionAnswers[2], questionAnswers[3]);
         return importingQuestion;
     }
-    
+
+    /**
+     * Méthode qui retourne la réponse a une question
+     * @param importingQuestion
+     * @param questionSection
+     * @return
+     */
     private static Question importQuestionAnswer(Question importingQuestion, String questionSection) {
         questionSection = questionSection.replaceAll("\n", "");
         switch (questionSection) {
@@ -180,7 +225,10 @@ public class GenerateurTests {
         }
         return importingQuestion;
     }
-    
+
+    /**
+     * Les méthodes qui suivent servent a implémenter la fenetre de demarrage
+     */
     private static void createNewTestButtonListener() {
         ActionListener createNewTestButtonListener = e -> initTestCreatorWindow();
         createNewTestButton.addActionListener(createNewTestButtonListener);
@@ -202,7 +250,7 @@ public class GenerateurTests {
         deleteTestButton = createStandardJButton("Supprimer le test sélectionné", -80);
         initDeleteTestButtonListener();
     }
-    
+
     private static void initDeleteTestButtonListener() {
         ActionListener deleteTestButtonListener = e -> {
             Object selectedTest;
@@ -217,7 +265,11 @@ public class GenerateurTests {
         };
         deleteTestButton.addActionListener(deleteTestButtonListener);
     }
-    
+
+    /**
+     * @param testName le nom du teste
+     * @return le test possedant ce nom
+     */
     private static Test getTestWithTestName(String testName) {
         Test matchingTest = null;
         for (Test test : testsList) {
@@ -227,7 +279,7 @@ public class GenerateurTests {
         }
         return matchingTest;
     }
-    
+
     private static void initPassTestButtonListener() {
         ActionListener passTestButtonListener = e -> {
             Object selectedTest;
@@ -243,7 +295,10 @@ public class GenerateurTests {
         };
         passTestButton.addActionListener(passTestButtonListener);
     }
-    
+
+    /**
+     * Liste deroulante contenant les noms des differents tests
+     */
     private static void initTestsListComboBox() {
         testsListComboBox = new JComboBox<>();
         updateTestListComboBox();
@@ -254,7 +309,10 @@ public class GenerateurTests {
                 LARGEUR_BOUTON,
                 HAUT_BOUTON - 10);
     }
-    
+
+    /**
+     * Methode permettant de faire une mise a jour des tests presents dans la liste deroullante
+     */
     private static void updateTestListComboBox() {
         testsListComboBox.removeAllItems();
         for (Test test : testsList) {
@@ -273,7 +331,11 @@ public class GenerateurTests {
         blackLine.setBackground(Color.black);
         return blackLine;
     }
-    
+
+    /**
+     * Ces méthodes permettent de centrer la fenetre au milieu de l'ecrant
+     * @return les coordonnes du coin supperieur droit de la fenetre
+     */
     private static int getStartupWindowPositionX() {
         return (int) ((getScreenWidth() / 2) - (STARTUP_WINDOW_WIDTH / 2));
     }
@@ -300,8 +362,10 @@ public class GenerateurTests {
                 , LARGEUR_BOUTON, HAUT_BOUTON);
         return newJButton;
     }
-    
-    
+
+    /**
+     * Les methodes qui suivent initialisent la fenetre permettant de creer de nouvaux tests
+     */
     private static void initTestCreatorWindow() {
         currentQuestion = new Question(0);
         currentTest = new Test("");
@@ -319,8 +383,11 @@ public class GenerateurTests {
         
         addComponentsToTestCreatorWindow(CREATOR);
     }
-    
-    
+
+    /**
+     * Centrage de la fenetre au milieu de l'ecran
+     * @return
+     */
     private static int getTestCreatorWindowPositionY() {
         return (int) ((getScreenHeight() / 2) - (TEST_CREATOR_WINDOW_HEIGHT
                 / 2));
@@ -329,7 +396,10 @@ public class GenerateurTests {
     private static int getTestCreatorWindowPositionX() {
         return (int) ((getScreenWidth() / 2) - (TEST_CREATOR_WINDOW_WIDTH / 2));
     }
-    
+    /**
+     * Ajout des composantes de la fenetre de creation
+     * @param user
+     */
     private static void addComponentsToTestCreatorWindow(String user) {
         mainButtonsPanel.add(previousButton);
         if (user.equals(CREATOR)) {
@@ -376,7 +446,11 @@ public class GenerateurTests {
         
         testCreatorWindow.getContentPane().add(footerPanel);
     }
-    
+
+    /**
+     * Initialisation des JPanels de la fenetre de creation de test
+     * @param user
+     */
     private static void initCenterPanel(String user) {
         centerPanel = new JPanel(null);
         centerPanel.setSize(510, 330);
@@ -448,7 +522,11 @@ public class GenerateurTests {
         
         initOptions(user);
     }
-    
+
+    /**
+     * Initialisation des champs de texte et des boutons reponses de la fenetre de creation de test
+     * @param user
+     */
     private static void initOptions(String user) {
         option1Label.setSize(40, 30);
         option1Label.setLocation(20, 130);
@@ -514,7 +592,11 @@ public class GenerateurTests {
         initMainButtonsPanel(user);
         initSaveButtonPanel(user);
     }
-    
+
+    /**
+     * initialisation des boutons permettant de naviguer d'une question a l'autre dans la fentre de creation de tests
+     * @param user
+     */
     private static void initMainButtonsPanel(String user) {
         previousButton = new JButton("<");
         previousButton.setEnabled(false);
@@ -621,7 +703,10 @@ public class GenerateurTests {
         };
         addButton.addActionListener(addButtonListener);
     }
-    
+
+    /**
+     * Les methodes qui suivent permettent l'apparition de messages d'erreurs
+     */
     private static void incompleteQuestionAlert() {
         if (!currentQuestion.isQuestionStatementFilled()) {
             errorAlert(QUESTION_STATEMENT_ERROR);
@@ -645,7 +730,10 @@ public class GenerateurTests {
         boxAnswersGroup.clearSelection();
         questionNumberLabel.setText(Integer.toString(currentQuestion.getQuestionNumber() + 1));
     }
-    
+
+    /**
+     * Methode permettant de sauvegarder une question  en cour de creation
+     */
     private static void saveCurrentQuestion() {
         currentQuestion.setQuestionStatement(questionStatementInput.getText());
         currentQuestion.setAnswerOptions(answer1Input.getText(),
@@ -657,7 +745,11 @@ public class GenerateurTests {
                 boxAnswer4.isSelected());
         currentTest.save(currentQuestion);
     }
-    
+
+    /**
+     * Initialisation des boutons permettant de naviquer entre les differents question en cour de creation
+     * @param user
+     */
     private static void initNextButtonListener(String user) {
         ActionListener nextButtonListener = (ActionEvent e) -> {
             if (user.equals(CREATOR)) {
@@ -802,7 +894,11 @@ public class GenerateurTests {
         correctTestButton.addActionListener(correctTestButtonListener);
         
     }
-    
+
+    /**
+     * Initialisation d'un bouton permettant de revenir sur les questions du test
+     * @param backToTestButton
+     */
     private static void initBackToTestListener(JButton backToTestButton) {
         ActionListener backToTestListener = e -> {
             STATEMENT_LABEL.setVisible(true);
@@ -838,7 +934,11 @@ public class GenerateurTests {
         };
         backToTestButton.addActionListener(backToTestListener);
     }
-    
+
+    /**
+     * Methode permettant de trouver la reponse donnee par l'utilisateur
+     * @return
+     */
     private static String findTesterAnswer() {
         String answer = "9";
         if (boxAnswer1.isSelected()) {
@@ -852,7 +952,11 @@ public class GenerateurTests {
         }
         return answer;
     }
-    
+
+    /**
+     * Methode permettant de generer les resultats de l'utilisateur apres avoir complete un test
+     * @return
+     */
     private static String generateCorrectionReport() {
         StringBuilder testResults = new StringBuilder();
         int testerTotal = 0;
@@ -908,7 +1012,10 @@ public class GenerateurTests {
         };
         saveButton.addActionListener(saveButtonListener);
     }
-    
+
+    /**
+     * Methode permettant de transforme les tests en un string qui sera ajoute au fichier text
+     */
     private static void exportTests() {
         StringBuilder fileContent  = new StringBuilder();
         String sectionSeparator = "\n-----\n";
@@ -959,7 +1066,10 @@ public class GenerateurTests {
         return currentTest.hasPrevious(currentQuestion.getQuestionNumber())
                 || currentTest.hasNext(currentQuestion.getQuestionNumber());
     }
-    
+
+    /**
+     * Initialisation de la fenetre permettant de passer un test.
+     */
     private static void initTesterWindow() {
         testCreatorWindow = new JFrame("Passer un test");
         testCreatorWindow.setSize(TEST_CREATOR_WINDOW_WIDTH, TEST_CREATOR_WINDOW_HEIGHT);
