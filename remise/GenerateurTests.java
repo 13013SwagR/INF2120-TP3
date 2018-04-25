@@ -212,11 +212,21 @@ public class GenerateurTests {
     }
     
     private static void updateTestListComboBox() {
+        String name;
         testsListComboBox.removeAllItems();
+        for (int i = 0; i< testsList.size(); i++){
+            name = testsList.get(i).getTestName();
+            name = name.replaceAll("[0-9]","");
+            name = i + name;
+            testsList.get(i).setTestName(name);
+        }
         for (Test test : testsList) {
+
             testsListComboBox.addItem(test.toString());
             testsListComboBox.setSelectedItem(test);
         }
+
+
     }
     
     private static double getScreenHeight() {
