@@ -1,0 +1,1459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/GenerateurTests.java" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de7627b6-b8a2-4d56-b9a3-5e05fb86016e" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/out/production/TP3INF2120/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="GenerateurTests.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/remise/GenerateurTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+              <folding>
+                <element signature="e#4680#5157#0" expanded="false" />
+                <element signature="e#5371#5784#0" expanded="false" />
+                <element signature="method#importTests#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="e#18389#19287#0" expanded="false" />
+                <element signature="e#19438#20311#0" expanded="false" />
+                <element signature="e#20496#21502#0" expanded="false" />
+                <element signature="e#21703#22397#0" expanded="false" />
+                <element signature="e#24544#29408#0" expanded="false" />
+                <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#initBackToTestListener#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="e#32719#34123#0" expanded="false" />
+                <element signature="method#saveCurrentAnswer#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#exportTests#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+                <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestFinal2.java" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Downloads/TestFinal2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="49" column="21" lean-forward="false" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+              <folding>
+                <element signature="e#2131#2132#0" expanded="true" />
+                <element signature="e#2179#2180#0" expanded="true" />
+                <element signature="e#2231#2232#0" expanded="true" />
+                <element signature="e#2277#2278#0" expanded="true" />
+                <element signature="e#2316#2317#0" expanded="true" />
+                <element signature="e#2348#2349#0" expanded="true" />
+                <element signature="e#2387#2388#0" expanded="true" />
+                <element signature="e#2418#2419#0" expanded="true" />
+                <element signature="e#2464#2465#0" expanded="true" />
+                <element signature="e#2499#2500#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>passT</find>
+      <find>importTest</find>
+      <find>correc</find>
+      <find>previous</find>
+      <find>add</find>
+      <find>passTes</find>
+      <find>deleteTes</find>
+      <find>expo</find>
+      <find>rese</find>
+      <find>corr</find>
+      <find>save</find>
+      <find>saveB</find>
+      <find>initSave</find>
+      <find>exportT</find>
+      <find>export</find>
+      <find>equals(&quot;0&quot;</find>
+      <find>genr</find>
+      <find>nextB</find>
+      <find>cour</find>
+      <find>Couri</find>
+      <find>100</find>
+      <find>&quot;0&quot;</find>
+      <find>thro</find>
+      <find>update</find>
+      <find>listener</find>
+      <find>button</find>
+      <find>action</find>
+      <find>sav</find>
+      <find>get</find>
+      <find>getC</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Tester.java" />
+        <option value="$PROJECT_DIR$/tests.txt" />
+        <option value="$PROJECT_DIR$/src/Question.java" />
+        <option value="$PROJECT_DIR$/src/GenerateurTests.java" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/remise/FileReaderWriter.java" />
+        <option value="$PROJECT_DIR$/remise/Question.java" />
+        <option value="$PROJECT_DIR$/remise/Test.java" />
+        <option value="$PROJECT_DIR$/remise/GenerateurTests.java" />
+        <option value="$PROJECT_DIR$/src/FileReaderWriter.java" />
+        <option value="$USER_HOME$/Downloads/TestFinal2.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="683" />
+    <option name="width" value="683" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Performance</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Internationalization issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>JavaBeans issuesJava</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>Probable bugsJava</id>
+          </State>
+          <State>
+            <id>Probable bugsKotlin</id>
+          </State>
+          <State>
+            <id>Properties Files</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/TestFinal2.java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.TestFinal2">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration name="GenerateurTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="GenerateurTests" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="INF2120-TP3" />
+      <envs />
+    </configuration>
+    <configuration name="TestFinal2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="TestFinal2" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.GenerateurTests" />
+      <item index="1" class="java.lang.String" itemvalue="Application.TestFinal2" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.TestFinal2" />
+        <item index="1" class="java.lang.String" itemvalue="Application.GenerateurTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de7627b6-b8a2-4d56-b9a3-5e05fb86016e" name="Default" comment="" />
+      <created>1524420923006</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524420923006</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Fix importTests&#10;Fix passTestButton&#10;Refactoring GenerateurTests">
+      <created>1524421166618</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1524421166618</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix passTestButton part 2 &#10;Refactoring GenerateurTests">
+      <created>1524423057385</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1524423057385</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix next/previousButton pour TesterWindow.&#10;Refactoring GenerateurTests">
+      <created>1524427888601</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524427888601</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Début correctTest méthode.">
+      <created>1524429887850</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1524429887850</updated>
+    </task>
+    <task id="LOCAL-00005" summary="generateCorrectionReport -&gt; contenu fait.">
+      <created>1524431653992</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1524431653992</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fin affichage du testReport">
+      <created>1524441892468</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1524441892468</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Ajout bouton et logique backToTestButton">
+      <created>1524443234566</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1524443234566</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Ajout messages d'erreurs&#10;Fix questionNumberLabel et suppression de questionIndex&#10;Ajout de méthodes dans Test">
+      <created>1524453375058</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1524453375058</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Commit to merge">
+      <created>1524454094526</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524454094526</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix importTest">
+      <created>1524455658910</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1524455658910</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fix fenêtre 3 next/previousButton">
+      <created>1524458785298</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524458785298</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Déplacement du exportTests dans GenerateurTests&#10;Ajouts sur exportTests&#10;Ajout sur FileReaderWriter.write">
+      <created>1524461075967</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1524461075967</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Ajustment import/exportTests&#10;Bug fix nextButton dans un tests à question unique&#10;Bug fix liste déroule menu principale">
+      <created>1524487852397</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524487852397</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Bug fix import/export &#10;les questions sont maintenant toutes de 0 à 3 &#10;et la réponse par défaut est 9">
+      <created>1524489806696</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1524489806696</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Nettoyage des fichiers/dossiers">
+      <created>1524490073317</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1524490073317</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Ajout police dans le rapport.">
+      <created>1524491381945</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1524491381945</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Ajout des commentaires d'entête de classe&#10;Fix Bug FileNotFound, nullPointerException">
+      <created>1524492904411</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1524492904411</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Refactoring FileReaderWriter">
+      <created>1524493093215</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1524493093215</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Création du dossier remise.">
+      <created>1524670036633</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1524670036633</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Refactoring">
+      <created>1524670960966</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1524670960966</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Ajout fichier test original">
+      <created>1524671034580</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1524671034580</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="683" y="0" width="1372" height="747" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0549273" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18939394" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18939394" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix importTests&#10;Fix passTestButton&#10;Refactoring GenerateurTests" />
+    <MESSAGE value="Fix passTestButton part 2 &#10;Refactoring GenerateurTests" />
+    <MESSAGE value="Fix next/previousButton pour TesterWindow.&#10;Refactoring GenerateurTests" />
+    <MESSAGE value="Début correctTest méthode." />
+    <MESSAGE value="generateCorrectionReport -&gt; contenu fait." />
+    <MESSAGE value="Fin affichage du testReport" />
+    <MESSAGE value="Ajout bouton et logique backToTestButton" />
+    <MESSAGE value="Ajout messages d'erreurs&#10;Fix questionNumberLabel et suppression de questionIndex&#10;Ajout de méthodes dans Test" />
+    <MESSAGE value="Commit to merge" />
+    <MESSAGE value="Fix importTest" />
+    <MESSAGE value="Fix fenêtre 3 next/previousButton" />
+    <MESSAGE value="Déplacement du exportTests dans GenerateurTests&#10;Ajouts sur exportTests&#10;Ajout sur FileReaderWriter.write" />
+    <MESSAGE value="Ajustment import/exportTests&#10;Bug fix nextButton dans un tests à question unique&#10;Bug fix liste déroule menu principale" />
+    <MESSAGE value="Bug fix import/export &#10;les questions sont maintenant toutes de 0 à 3 &#10;et la réponse par défaut est 9" />
+    <MESSAGE value="Nettoyage des fichiers/dossiers" />
+    <MESSAGE value="Ajout police dans le rapport." />
+    <MESSAGE value="Ajout des commentaires d'entête de classe&#10;Fix Bug FileNotFound, nullPointerException" />
+    <MESSAGE value="Refactoring FileReaderWriter" />
+    <MESSAGE value="Création du dossier remise." />
+    <MESSAGE value="Refactoring" />
+    <MESSAGE value="Ajout fichier test original" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout fichier test original" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Question.java</url>
+          <line>211</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GenerateurTests.java</url>
+          <line>839</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GenerateurTests.java</url>
+          <line>841</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GenerateurTests.java</url>
+          <line>909</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Question.java</url>
+          <line>139</line>
+          <properties class="Question" method="getGoodAnswerNumber">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="28" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/remise/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding>
+            <element signature="e#4680#5157#0" expanded="false" />
+            <element signature="e#5371#5784#0" expanded="false" />
+            <element signature="method#importTests#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="e#18389#19287#0" expanded="false" />
+            <element signature="e#19438#20311#0" expanded="false" />
+            <element signature="e#20496#21502#0" expanded="false" />
+            <element signature="e#21703#22397#0" expanded="false" />
+            <element signature="e#24544#29408#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initBackToTestListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="e#32719#34123#0" expanded="false" />
+            <element signature="method#saveCurrentAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#exportTests#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="method#setQuestionStatement#0;class#Question#0" expanded="false" />
+            <element signature="method#setAnswerOptions#0;class#Question#0" expanded="false" />
+            <element signature="method#setAnswers#0;class#Question#0" expanded="false" />
+            <element signature="method#getGoodAnswerNumber#0;class#Question#0" expanded="false" />
+            <element signature="method#isQuestionComplete#0;class#Question#0" expanded="false" />
+            <element signature="method#isQuestionStatementFilled#0;class#Question#0" expanded="false" />
+            <element signature="method#isAnswerOptionsComplete#0;class#Question#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="method#allQuestionsAreAnswered#0;class#Test#0" expanded="false" />
+            <element signature="method#hasAName#0;class#Test#0" expanded="false" />
+            <element signature="method#save#0;class#Test#0" expanded="false" />
+            <element signature="method#hasNext#0;class#Test#0" expanded="false" />
+            <element signature="method#hasPrevious#0;class#Test#0" expanded="false" />
+            <element signature="method#getNextQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#getPreviousQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#resetQuestionsNumber#0;class#Test#0" expanded="false" />
+            <element signature="method#resetTesterAnswers#0;class#Test#0" expanded="false" />
+            <element signature="method#addQuestion#0;class#Test#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#1679#0" expanded="true" />
+            <element signature="method#read#0;class#FileReaderWriter#0" expanded="false" />
+            <element signature="method#write#0;class#FileReaderWriter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2625">
+          <caret line="218" column="0" lean-forward="false" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+          <folding>
+            <element signature="e#4680#5157#0" expanded="false" />
+            <element signature="e#5371#5784#0" expanded="false" />
+            <element signature="method#importTests#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="e#18389#19287#0" expanded="false" />
+            <element signature="e#19438#20311#0" expanded="false" />
+            <element signature="e#20496#21502#0" expanded="false" />
+            <element signature="e#21703#22397#0" expanded="false" />
+            <element signature="e#24544#29408#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initBackToTestListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="e#32719#34123#0" expanded="false" />
+            <element signature="method#saveCurrentAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#exportTests#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="method#setQuestionStatement#0;class#Question#0" expanded="false" />
+            <element signature="method#setAnswerOptions#0;class#Question#0" expanded="false" />
+            <element signature="method#setAnswers#0;class#Question#0" expanded="false" />
+            <element signature="method#getGoodAnswerNumber#0;class#Question#0" expanded="false" />
+            <element signature="method#isQuestionComplete#0;class#Question#0" expanded="false" />
+            <element signature="method#isQuestionStatementFilled#0;class#Question#0" expanded="false" />
+            <element signature="method#isAnswerOptionsComplete#0;class#Question#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#1679#0" expanded="true" />
+            <element signature="method#read#0;class#FileReaderWriter#0" expanded="false" />
+            <element signature="method#write#0;class#FileReaderWriter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13950">
+          <caret line="930" column="28" lean-forward="false" selection-start-line="930" selection-start-column="28" selection-end-line="930" selection-end-column="28" />
+          <folding>
+            <element signature="method#initStartUpWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importTest#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#replaceLast#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswerOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createNewTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToStartupWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initStartupWindowButtons#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initDeleteTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPassTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestsListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStartUpWindowBlackLine#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCenterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionIdPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionDataPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initFooterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initMainButtonsPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initRemoveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setExistingQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initAddButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#resetQuestionForm#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initNextButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPreviousButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCorrectTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#findTesterAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#generateCorrectionReport#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="method#allQuestionsAreAnswered#0;class#Test#0" expanded="false" />
+            <element signature="method#hasAName#0;class#Test#0" expanded="false" />
+            <element signature="method#save#0;class#Test#0" expanded="false" />
+            <element signature="method#hasNext#0;class#Test#0" expanded="false" />
+            <element signature="method#hasPrevious#0;class#Test#0" expanded="false" />
+            <element signature="method#getNextQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#getPreviousQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#resetQuestionsNumber#0;class#Test#0" expanded="false" />
+            <element signature="method#resetTesterAnswers#0;class#Test#0" expanded="false" />
+            <element signature="method#addQuestion#0;class#Test#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#5875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3345">
+          <caret line="930" column="28" lean-forward="false" selection-start-line="930" selection-start-column="28" selection-end-line="930" selection-end-column="28" />
+          <folding>
+            <element signature="method#initStartUpWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importTest#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#replaceLast#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswerOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createNewTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToStartupWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initStartupWindowButtons#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initDeleteTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPassTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestsListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStartUpWindowBlackLine#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCenterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionIdPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionDataPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initFooterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initMainButtonsPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initRemoveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setExistingQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initAddButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#resetQuestionForm#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initNextButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPreviousButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCorrectTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#findTesterAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#generateCorrectionReport#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#5875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="31" column="23" lean-forward="false" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#allQuestionsAreAnswered#0;class#Test#0" expanded="false" />
+            <element signature="method#hasAName#0;class#Test#0" expanded="false" />
+            <element signature="method#save#0;class#Test#0" expanded="false" />
+            <element signature="method#hasNext#0;class#Test#0" expanded="false" />
+            <element signature="method#hasPrevious#0;class#Test#0" expanded="false" />
+            <element signature="method#getNextQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#getPreviousQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#resetQuestionsNumber#0;class#Test#0" expanded="false" />
+            <element signature="method#resetTesterAnswers#0;class#Test#0" expanded="false" />
+            <element signature="method#addQuestion#0;class#Test#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="56" column="16" lean-forward="false" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#1679#0" expanded="true" />
+            <element signature="method#read#0;class#FileReaderWriter#0" expanded="false" />
+            <element signature="method#write#0;class#FileReaderWriter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/io/PrintWriter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="109" column="46" lean-forward="false" selection-start-line="109" selection-start-column="46" selection-end-line="109" selection-end-column="46" />
+          <folding>
+            <element signature="method#initStartUpWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importTest#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#replaceLast#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswerOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createNewTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToStartupWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initStartupWindowButtons#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initDeleteTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPassTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestsListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStartUpWindowBlackLine#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCenterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionIdPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionDataPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initFooterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initMainButtonsPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initRemoveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setExistingQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initAddButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#resetQuestionForm#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initNextButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPreviousButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCorrectTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#findTesterAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#generateCorrectionReport#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#5875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="58" column="38" lean-forward="true" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tester.java" />
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/io/File.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="318" column="19" lean-forward="false" selection-start-line="318" selection-start-column="19" selection-end-line="318" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests (copy).txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/io/PrintWriter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="113" column="5" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="method#allQuestionsAreAnswered#0;class#Test#0" expanded="false" />
+            <element signature="method#hasAName#0;class#Test#0" expanded="false" />
+            <element signature="method#save#0;class#Test#0" expanded="false" />
+            <element signature="method#hasNext#0;class#Test#0" expanded="false" />
+            <element signature="method#hasPrevious#0;class#Test#0" expanded="false" />
+            <element signature="method#getNextQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#getPreviousQuestion#0;class#Test#0" expanded="false" />
+            <element signature="method#resetQuestionsNumber#0;class#Test#0" expanded="false" />
+            <element signature="method#resetTesterAnswers#0;class#Test#0" expanded="false" />
+            <element signature="method#addQuestion#0;class#Test#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="74" column="28" lean-forward="false" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#5875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="361" column="62" lean-forward="false" selection-start-line="361" selection-start-column="56" selection-end-line="361" selection-end-column="62" />
+          <folding>
+            <element signature="method#initStartUpWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importTest#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#replaceLast#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswerOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#importQuestionAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createNewTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToStartupWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initStartupWindowButtons#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initDeleteTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPassTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestsListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStartUpWindowBlackLine#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getStartupWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCenterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionIdPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initQuestionDataPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initOptions#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initFooterPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initMainButtonsPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initRemoveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setExistingQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initAddButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#resetQuestionForm#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initNextButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initPreviousButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initCorrectTestButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#findTesterAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#generateCorrectionReport#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initSaveButtonListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/FileReaderWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#1679#0" expanded="true" />
+            <element signature="method#read#0;class#FileReaderWriter#0" expanded="false" />
+            <element signature="method#write#0;class#FileReaderWriter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="method#setQuestionStatement#0;class#Question#0" expanded="false" />
+            <element signature="method#setAnswerOptions#0;class#Question#0" expanded="false" />
+            <element signature="method#setAnswers#0;class#Question#0" expanded="false" />
+            <element signature="method#getGoodAnswerNumber#0;class#Question#0" expanded="false" />
+            <element signature="method#isQuestionComplete#0;class#Question#0" expanded="false" />
+            <element signature="method#isQuestionStatementFilled#0;class#Question#0" expanded="false" />
+            <element signature="method#isAnswerOptionsComplete#0;class#Question#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/javax/swing/AbstractButton.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="892" column="16" lean-forward="false" selection-start-line="892" selection-start-column="16" selection-end-line="892" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remise/GenerateurTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+          <folding>
+            <element signature="e#4680#5157#0" expanded="false" />
+            <element signature="e#5371#5784#0" expanded="false" />
+            <element signature="method#importTests#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestWithTestName#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateTestListComboBox#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenHeight#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getScreenWidth#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#createStandardJButton#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionY#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#getTestCreatorWindowPositionX#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#addComponentsToTestCreatorWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initHeaderPanel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="e#18389#19287#0" expanded="false" />
+            <element signature="e#19438#20311#0" expanded="false" />
+            <element signature="e#20496#21502#0" expanded="false" />
+            <element signature="e#21703#22397#0" expanded="false" />
+            <element signature="e#24544#29408#0" expanded="false" />
+            <element signature="method#adjustCurrentQuestionNumberAndLabel#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setNextQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setToCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#setPreviousQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#incompleteQuestionAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#errorAlert#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#saveCurrentQuestion#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initBackToTestListener#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="e#32719#34123#0" expanded="false" />
+            <element signature="method#saveCurrentAnswer#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#exportTests#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updatePreviousButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateNextButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#updateRemoveButtonStatus#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#anotherQuestionExist#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#initTesterWindow#0;class#GenerateurTests#0" expanded="false" />
+            <element signature="method#main#0;class#GenerateurTests#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/TestFinal2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="49" column="21" lean-forward="false" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+          <folding>
+            <element signature="e#2131#2132#0" expanded="true" />
+            <element signature="e#2179#2180#0" expanded="true" />
+            <element signature="e#2231#2232#0" expanded="true" />
+            <element signature="e#2277#2278#0" expanded="true" />
+            <element signature="e#2316#2317#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+            <element signature="e#2387#2388#0" expanded="true" />
+            <element signature="e#2418#2419#0" expanded="true" />
+            <element signature="e#2464#2465#0" expanded="true" />
+            <element signature="e#2499#2500#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>INF2120-TP3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
